@@ -43,8 +43,15 @@ const getAvailableSitters = async (dOfB: string, sT: string, eT: string, dNOfB: 
       return !bookingOverlaps;
     });
   });
-
   return availableSitters;
+};
+
+const getAllSitters = async () => {
+  await client.connect();
+  const db: mongoDB.Db = client.db('saltdb');
+  const col: mongoDB.Collection = db.collection('sitters');
+  const sitter = col.find({});
+  return sitter;
 };
 
 const getSitterById = async (id:string) => {
@@ -74,6 +81,7 @@ const getUserBookings = async (id: string) => {
 
 
 export {
+  getAllSitters,
   getAvailableSitters,
   getSitterById,
   saveBookings,
