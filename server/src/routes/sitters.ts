@@ -7,7 +7,6 @@ const sitters = Router();
 sitters.get('/', async (_req, res) => {
   const sitter = await getAllSitters();
   res.json(sitter);
-  console.log('here', sitter);
 });
 
 
@@ -31,7 +30,6 @@ sitters.get('/:id', async (req, res) => {
   const { id } = req.params;
   const sitter = await getSitterById(id);
   res.json(sitter);
-  console.log('here', sitter);
 });
 
 export default sitters;

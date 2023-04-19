@@ -1,5 +1,6 @@
 import Router from 'express';
 import { saveBookings, getUserBookings } from '../handlers';
+import { InsertedBooking } from 'types';
 
 const bookings = Router();
 
@@ -10,8 +11,8 @@ bookings.get('/:userId', async (req, res) => {
 });
 
 bookings.post('/', async (req, res) => {
-  const InsertBooking = req.body;
-  const booking = await saveBookings(InsertBooking);
+  const insertBooking: InsertedBooking = req.body;
+  const booking = await saveBookings(insertBooking);
   res.json(booking);
 });
 

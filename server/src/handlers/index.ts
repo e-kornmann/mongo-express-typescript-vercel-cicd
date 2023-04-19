@@ -1,8 +1,9 @@
 import * as mongoDB from 'mongodb';
 import * as Moment from 'moment';
 import { extendMoment } from 'moment-range';
+import { User } from 'types';
 
-import { InsertedBooking } from '../types/types';
+import { AuthUser, InsertedBooking } from '../types/types';
 import client from '../db/client';
 
 
@@ -79,6 +80,21 @@ const getUserBookings = async (id: string) => {
   return allBookings;
 };
 
+const saveUser = async (user: User) => {
+  await client.connect();
+  const db: mongoDB.Db = client.db('saltdb');
+  const col: mongoDB.Collection = db.collection('users');
+  const addUser = await col.insertOne(user);
+  return addUser
+};
+
+const getUser = async (email: string) => {
+  await client.connect();
+  const db: mongoDB.Db = client.db('saltdb');
+  const col: mongoDB.Collection = db.collection('users');
+  const user = await col.findOne(({ userEmail: email }) as AuthUser);
+  return user
+};
 
 export {
   getAllSitters,
@@ -86,4 +102,6 @@ export {
   getSitterById,
   saveBookings,
   getUserBookings,
+  saveUser,
+  getUser
 };
