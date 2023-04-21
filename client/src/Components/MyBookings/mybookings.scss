@@ -1,0 +1,56 @@
+@use '../../app.scss';
+
+.main__container__mybookingstable {
+  display: grid;
+  grid-template-columns: 75%  25%;
+  grid-auto-rows: 35px;
+  font-size: 18px;
+  color: app.$purple;
+  font-weight: 500;
+  padding: 34px 0;
+  align-items: end; 
+}  
+
+.main__container__mybookingstable--name {
+  grid-column: 1 / 2;
+  border-bottom: 1px solid app.$purple;
+  font-weight: 700;
+  padding-bottom: 13px;
+}
+
+.main__container__mybookingstable--date {
+  grid-column: 1 / 2;
+}
+
+.main__container__mybookingstable--duration {
+  grid-column: 2 / 3;
+}
+
+.main__container__mybookingstable--priceinfo {
+  grid-column: 1 / 3;
+}
+
+.main__container__mybookingstable--calcprice {
+  grid-column: 1 / 2;
+  border-bottom: 1px solid app.$purple;
+  padding-bottom: 13px;
+}
+
+.main__container__mybookingstable--id {
+  grid-column: 2 / 3;
+  border-bottom: 1px solid app.$purple;
+  padding-bottom: 13px;
+}
+
+.main__container__mybookingstable--totalprice {
+  grid-column: 1 / 2; 
+}
+
+.main__container__mybookingstable--totalprice-out {
+  grid-column: 2 / 3;
+  font-weight: 700;
+}
+  
+.buttons-container {
+  grid-column: 1/3;
+}

@@ -1,0 +1,27 @@
+@use '../../app.scss';
+
+.form__container-input{
+  margin-top: 10px;
+  color: app.$purple;
+  font-size: 25px;
+  border: 3px solid white;
+  border-radius: 3px;
+  padding: 10px;
+ }
+
+.form__container-input::placeholder {
+  color: app.$purple;
+  font-weight: 300;
+}
+  
+
+.form__container-redirect {
+  color: #ffffff;
+  padding: 10px;
+  position: relative;
+  font-weight: 300;
+}
+
+.signout{
+  cursor: pointer;
+}

@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './Components/Header/Header';
+import { Link } from 'react-router-dom';
+import background from './Assets/bg.svg';
+import AuthDetails from './Components/AuthDetails';
+import { InsertedBooking } from './types';
+import { useSelector } from 'react-redux';
 
 function App() {
+    const booking: InsertedBooking = useSelector((state: any) => state.booking)
+    const user: InsertedBooking = useSelector((state: any) => state.user)
+
+
+console.log(booking);
+console.log(user);
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <>
+    <AuthDetails />
+    <div className="mainpage" style={{ backgroundImage: `url(${background})` }}>
+    <Header/>
+    <div className='main__title'>You go out... <br /> we take care <br /> of your <br /> little ones </div>
+    <div className='main__btns'>
+      <Link className='main__link' to='/login'>Log in</Link>
+      <Link className='main__link' to='/register'>Create Account</Link>
+      <Link className='pick__date' to='/calendar'>Pick Date</Link>
     </div>
+    </div>
+   </>
   );
 }
 

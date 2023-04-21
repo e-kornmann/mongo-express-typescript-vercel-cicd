@@ -1,0 +1,92 @@
+db.sitters.insertMany([
+  {
+    "id": "642578029fdf623741730929",
+    "name": "Alex",
+    "gender": "He/Him",
+    "dateOfBirth": "23/03/1990",
+    "description": "Alex is a highly experienced and qualified babysitter with 4 years of experience working with children. Alex also has a passion for playing football and loves to use it as a way to connect with kids and bond with them. In addition to football, Alex has a knack for coming up with fun and engaging games to keep kids entertained and stimulated. but who also knows how to create an environment of joy, creativity, and fun.",
+    "availability": {"Monday": "false", "Tuesday": "true","Wednesday": "false", "Thursday": "true", "Friday": "false", "Saturday": "true", "Sunday": "false"},
+    "image": "https://i.ibb.co/HVtxRKv/alex.jpg"
+  },
+  {
+    "id": "64257834b8ccc8ae91bc70df",
+    "name": "Sarah",
+    "gender": "She/Her",
+    "dateOfBirth": "13/08/1988",
+    "description": "Sarah is a highly experienced and qualified babysitter with 4 years of experience working with children. Alex also has a passion for playing football and loves to use it as a way to connect with kids and bond with them. In addition to football, Alex has a knack for coming up with fun and engaging games to keep kids entertained and stimulated. but who also knows how to create an environment of joy, creativity, and fun.",
+    "availability": { "Monday": "true", "Tuesday": "true","Wednesday": "true", "Thursday": "true", "Friday": "true", "Saturday": "true", "Sunday": "true"},
+    "image": "https://i.ibb.co/ymTKDX0/sarah.jpg"
+  },
+  {
+    "id": "642578029fdf623722730929",
+    "name": "Nico",
+    "gender": "He/Him",
+    "dateOfBirth": "23/03/1990",
+    "description": "Nico is a kind and enthusiastic babysitter with a background in music. He has over 5 years of experience caring for children and loves to incorporate music into his babysitting routine. Nico is skilled in playing several instruments, including the guitar, piano, and ukulele, and enjoys teaching kids how to play as well. He is available for babysitting on Tuesdays, Thursdays, and weekends.",
+    "availability": { "Monday": "true", "Tuesday": "true","Wednesday": "true", "Thursday": "false", "Friday": "false", "Saturday": "true", "Sunday": "false"},
+    "image": "https://i.ibb.co/jZyT33D/brian.jpg"
+  },
+  {
+    "id": "642578029fdf623722730879",
+    "name": "Hugo",
+    "gender": "He/Him",
+    "dateOfBirth": "23/03/1990",
+    "description": "Hugo is a highly experienced and qualified babysitter with 4 years of experience working with children. Alex also has a passion for playing football and loves to use it as a way to connect with kids and bond with them. In addition to football, Alex has a knack for coming up with fun and engaging games to keep kids entertained and stimulated. but who also knows how to create an environment of joy, creativity, and fun.",
+    "availability": { "Monday": "false", "Tuesday": "false","Wednesday": "false", "Thursday": "false", "Friday": "false", "Saturday": "false", "Sunday": "false"},
+    "image": "https://i.ibb.co/JKmdQ0X/hugo.jpg"
+  },
+  {
+    "id": "642578029fdf623741730935",
+    "name": "Britney",
+    "gender": "She/Her",
+    "dateOfBirth": "26/01/1995",
+    "description": "Britney is a compassionate and reliable babysitter with over 3 years of experience caring for children. She has a natural talent for connecting with kids and creating a warm and nurturing environment. Britney understands that each child is unique and requires individual attention, and she goes above and beyond to meet their needs.In addition to her caring nature, Britney is also great at coming up with fun and educational activities to keep children engaged and entertained. She loves to sing, dance, read books and play games with the kids she cares for. Britney is also trained in basic first aid and has a keen eye for identifying potential hazards and taking appropriate precautions to ensure the safety of the children in her care. Parents can trust Britney to provide a secure and loving environment for their little ones, allowing them to relax and enjoy their time away from home.",
+    "availability": { "Monday": "false", "Tuesday": "false","Wednesday": "false", "Thursday": "false", "Friday": "true", "Saturday": "true", "Sunday": "true"},
+    "image": "https://i.ibb.co/jZ6t2gd/britney.jpg"
+  },
+  {
+    "id": "642578029fdf623741730936",
+    "name": "Simon",
+    "gender": "He/Him",
+    "dateOfBirth": "16/08/2000",
+    "description": "Simon is a patient and attentive babysitter with over 3 years of experience working with children. He has a natural ability to connect with kids and create a calm and comforting environment for them. Simon is also great at coming up with engaging and educational activities that help kids learn and grow. He is available for babysitting on weekdays and weekends.",
+    "availability": { "Monday": "true", "Tuesday": "true","Wednesday": "false", "Thursday": "false", "Friday": "false", "Saturday": "false", "Sunday": "true"},
+    "image": "https://i.ibb.co/T4yG0Zz/simon.jpg"
+  },
+  {
+    "id": "642578029fdf623741730937",
+    "name": "Kanye East",
+    "gender": "He/Him",
+    "dateOfBirth": "18/02/1999",
+    "description": "Kanye East is a skilled and experienced babysitter with a passion for working with children. He has a natural ability to connect with kids of all ages and create a fun, safe and engaging environment for them. Kanye has been working as a babysitter for several years and has developed a range of skills and techniques to help children feel comfortable and happy in his care. He is patient, kind and compassionate, and always takes the time to listen to the needs and concerns of the children he cares for. Kanye is also creative and imaginative, and he loves to come up with new games and activities to keep kids entertained and stimulated. Whether it's playing board games, doing crafts, or going on outdoor adventures, Kanye always ensures that the children he cares for are having fun while learning and growing. Parents can trust Kanye to provide top-notch care for their children, knowing that he is reliable, responsible and committed to their well-being. His extensive experience and training in childcare, as well as his natural talent for working with kids, make him an excellent choice for families seeking a trustworthy and skilled babysitter.",
+    "availability": { "Monday": "true", "Tuesday": "false","Wednesday": "true", "Thursday": "false", "Friday": "true", "Saturday": "false", "Sunday": "true"},
+    "image": "https://media.istockphoto.com/id/1372428308/photo/young-man-smiling-while-wearing-a-yellow-shirt-by-a-yellow-wall.jpg?b=1&s=170667a&w=0&k=20&c=eHEYVv7LG5R2TLgDq2DOP6hd1daSu7GbCILS3ZRDk6A="
+  },
+  {
+    "id": "642578029fdf623741730938",
+    "name": "Elise",
+    "gender": "She/Her",
+    "dateOfBirth": "20/05/1994",
+    "description": "Elise is a skilled and dedicated babysitter with two years of experience working in the childcare industry. She loves spending time with children and has a natural talent for creating a fun and safe environment for them to learn and grow. One of Victoria's favorite things to do with kids is to read to them. She believes that reading not only helps children develop important literacy skills, but also fosters their imagination and creativity. She often brings her favorite children's books to read aloud to the children she cares for, and encourages them to ask questions and participate in the story. Parents who entrust their children to Victoria can rest assured that they are in good hands. She is reliable, responsible, and always puts the children's safety and well-being first. With her passion for childcare and commitment to excellence, Victoria is a top choice for families seeking a caring and experienced babysitter.",
+    "availability": { "Monday": "true", "Tuesday": "false","Wednesday": "true", "Thursday": "true", "Friday": "false", "Saturday": "false", "Sunday": "true"},
+    "image": "https://i.ibb.co/vZKpv0p/elise.jpg"
+  },
+  {
+    "id": "642578029fdf623741730939",
+    "name": "Chelsea",
+    "gender": "She/Her",
+    "dateOfBirth": "30/01/1989",
+    "description": "Chelsea is a highly experienced and nurturing babysitter with a passion for storytelling. She has over 6 years of experience working with children of all ages and loves to engage their imagination with her creative tales. In addition to her storytelling skills, Chelsea is also great at coming up with fun and educational activities to keep kids entertained and stimulated. She is available for babysitting on Mondays, Wednesdays, Fridays, and Saturdays.",
+    "availability": { "Monday": "false", "Tuesday": "false","Wednesday": "true", "Thursday": "false", "Friday": "false", "Saturday": "false", "Sunday": "true"},
+    "image": "https://i.ibb.co/47mLwyY/chelsea.jpg"
+  },
+  {
+    "id": "642578029fdf623741730940",
+    "name": "Lila",
+    "gender": "She/Her",
+    "dateOfBirth": "10/06/1995",
+    "description": "Lila is a creative and responsible babysitter with a passion for arts and crafts. She has over 4 years of experience working with children and loves to come up with fun and imaginative craft projects for kids to enjoy. Lila is also great at playing games, reading books, and engaging in other interactive activities that keep kids entertained and stimulated. She is available for babysitting on weekdays and weekends.",
+    "availability": { "Monday": "false", "Tuesday": "true","Wednesday": "false", "Thursday": "true", "Friday": "false", "Saturday": "true", "Sunday": "false"},
+    "image": "https://media.istockphoto.com/id/936419870/photo/charming-female-on-yellow-backdrop.jpg?s=612x612&w=0&k=20&c=OcsaV1ceOQzjj8KopR4NEMKSJKU_1GOBr4ykZeC7zSQ="
+  }
+]);

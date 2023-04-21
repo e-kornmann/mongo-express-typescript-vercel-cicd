@@ -51,7 +51,7 @@ const getAllSitters = async () => {
   await client.connect();
   const db: mongoDB.Db = client.db('saltdb');
   const col: mongoDB.Collection = db.collection('sitters');
-  const sitter = col.find({});
+  const sitter = (await col.find({}).toArray())
   return sitter;
 };
 
@@ -88,11 +88,11 @@ const saveUser = async (user: User) => {
   return addUser
 };
 
-const getUser = async (email: string) => {
+const getUser = async (id: string) => {
   await client.connect();
   const db: mongoDB.Db = client.db('saltdb');
   const col: mongoDB.Collection = db.collection('users');
-  const user = await col.findOne(({ userEmail: email }) as AuthUser);
+  const user = await col.findOne(({ userId: id }) as AuthUser);
   return user
 };
 

@@ -6,8 +6,8 @@ const users = Router();
 
 users.get('/:userId', async (req, res) => {
   const { userId } = req.params;
-  const userBookings = await getUser(userId);
-  res.json(userBookings);
+  const userData = await getUser(userId);
+  res.json(userData);
 });
 
 users.post('/', async (req, res) => {

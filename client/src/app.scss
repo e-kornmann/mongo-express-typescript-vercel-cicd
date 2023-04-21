@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&display=swap');
+    
+$main-bg-color:  #FFB3C1;
+$purple:#37008a; 
+$dark-purple:#4402a5; 
+$islandaqua: #00C9B8;
+$gray: #E2E0E5;
+$grapefruitred: #FF5E54;
+
+* {
+ font-family: 'Blinker', sans-serif;
+ letter-spacing: 0.02em;
+}
+
+h1, h2, h3, h4 {
+  padding: 30px 0 30px;
+  font-size: 28px;
+  text-align: center;
+  color: $purple;
+  font-weight: 300;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 22px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 20px;
+  color: white;
+  font-weight: 600;
+}
+
+.mainpage, .islandaquabg, .graybg {
+  position: fixed;
+  background-color: $main-bg-color;
+  background-repeat: repeat;
+  background-size: 225% 150%, cover;
+  background-position: center, 50% 50%;
+  height: 100%;
+  width: 100%;
+  letter-spacing: 0.00em;
+  overflow-y: auto;
+}
+
+.islandaquabg {
+  background-color: $islandaqua;
+}
+
+.graybg {
+  background-color: $gray;
+}
+  
+.main__title {
+  position: relative;
+  top: 12%;
+  vertical-align: middle;
+  text-align: center;
+  color: $purple;
+  font-size: 4.8em;
+  line-height: 0.9em;
+  font-weight: 800;
+}
+
+.navigation {
+  position: fixed;
+  background-color: transparent;
+  top: 20px;
+  left: 10px;
+  z-index: 5;
+  line-height: 27px;
+  font-size: 14px;
+}
+
+@media only screen and (max-height: 800px) {
+  .main__title {
+    top: 5%;
+      font-size: 3.8em;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+  .main__title {
+      font-size: 3.9em;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+  .main__title {
+      font-size: 4.2em;
+    }
+}
+
+@media only screen and (min-width: 801px) {
+  .main__title {
+      font-size: 4.8em;
+    }
+}
+
+.main__btns { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 70px;
+  width: 100%;
+}
+
+.main__link, .pick__date {
+  font-weight: 600;
+  text-decoration: none;
+  border: 3px solid white;
+  border-radius: 3px;
+  width: 80%;
+  max-width: 630px;
+  padding: 13px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 25px;
+  color: white;
+}
+
+.pick__date {
+  background-color: white;
+  color: $purple;
+}
+
+.form__container, .picker, .main__container {
+  position: relative;
+  top: 6%;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 600px;
+  margin: 0px auto 130px;
+}
+
+
+.main__container--button__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0px 20px 160px;
+}
+
+.btn--back, .btn {
+  background-color: transparent;
+  color: white;
+  border: $purple;
+  font-weight: 600;
+  font-size: 24px;
+  padding: 14px 0 16px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 30px;
+  border: 3px solid white;
+  border-radius: 3px;
+} 
+
+.btn:hover {
+  background-color: $dark-purple;
+}
+
+
+.btn {
+  background-color: $purple;
+  text-align: center;
+  text-decoration: none;
+  border: 3px solid $purple;
+} 

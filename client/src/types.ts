@@ -8,16 +8,17 @@ export type SitterType = {
   image: string
 };
 
-export type User ={
-  userId: string,
-  username: string;
-  email: string;
-  address:string;
+export type User = {
+  userId: string;
+  userName: string;
+  userEmail: string;
+  userAddress:string;
 }
 
 export type AuthUser = {
   userId: string,
   userEmail: string,
+  status: string,
 };
 
 export type Reservation = {
