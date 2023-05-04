@@ -8,18 +8,19 @@ export type SitterType = {
   image: string
 };
 
-export type User = {
-  userId: string;
+export type AuthUser = {
+  userId?: string,
+  userEmail: string,
+  userPassword?: string,
+};
+
+export interface User extends AuthUser {
   userName: string;
-  userEmail: string;
   userAddress:string;
+  status?: string,
+  stored?: string,
 }
 
-export type AuthUser = {
-  userId: string,
-  userEmail: string,
-  status: string,
-};
 
 export type Reservation = {
   sitterId?: string,

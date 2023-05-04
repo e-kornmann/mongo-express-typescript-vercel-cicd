@@ -5,57 +5,71 @@ import {
   firebaseAuth,
 } from '../../firebase';
 
-import { AuthUser } from '../../types';
-import { doc, setDoc } from 'firebase/firestore';
+import { AuthUser, User } from '../../types';
+import { doc, setDoc, updateDoc } from 'firebase/firestore';
 
 
-export const signUp = createAsyncThunk('user/signUp', async (data: any) => {
-  const { userEmail, userPassword, userAddress } = data;
-  const userCredential = await createUserWithEmailAndPassword(firebaseAuth, userEmail, userPassword);
+export const signUp = createAsyncThunk('user/signUp', async (data: User) => {
+  const { userName, userEmail, userPassword, userAddress } = data;
+  const userCredential = await createUserWithEmailAndPassword(firebaseAuth, userEmail, userPassword!);
   const { uid } = userCredential.user;
-
-  await setDoc(doc(db, 'users', uid), {
-    userEmail: userEmail,
-    userPassword: userPassword,
+  try {
+   await setDoc(doc(db, 'users', uid), {
+    userName: userName,
     userAddress: userAddress
-  });
-
-
-
-
-
+  })
+  } catch (error) {
+  console.log(error);
+}
 });
 
-export const signIn = createAsyncThunk('user/signIn', async (data: any) => {
+export const updateUser = createAsyncThunk('user/updateUser', async ({ userId, userName, userAddress }: User) => {
+  if (!userId) {
+    throw new Error('Invalid userId');
+  }
+  const docRef = doc(db, 'users', userId);
+  updateDoc(docRef, {userName: userName, userAddress: userAddress})
+  .then(docRef => { console.log("Document updated") });
+});
+
+
+export const signIn = createAsyncThunk('user/signIn', async (data: AuthUser) => {
   const { userEmail, userPassword } = data;
-  const userCredential = await signInWithEmailAndPassword(firebaseAuth, userEmail, userPassword);
+  const userCredential = await signInWithEmailAndPassword(firebaseAuth, userEmail, userPassword!);
 
   const { uid, email, displayName } = userCredential.user;
 
   return { uid, email, displayName };
 });
 
-
 const emptyUserState = { 
   userId: "empty", 
+  userName: "empty", 
   userEmail: "empty", 
+  userAddress: "empty",
   status: "",
-} as AuthUser;
-
+  stored: ""
+} as User;
 
 const userSlice = createSlice({
   name: 'user',
   initialState: emptyUserState,
   reducers: {
-    login: (state: AuthUser, { payload }): AuthUser => {
+    login: (state: User, { payload }): User => {
       return {
         ...state,
         userId: payload.uid,
         userEmail: payload.email,
-      };
+      }
     },
-    logout: (state) => {
-      localStorage.removeItem('user');
+    setUser: (state: User, { payload }): User => {
+      return {
+        ...state,
+      userName: payload.userName,
+      userAddress: payload.userAddress
+    }
+  },
+    logout: () => {
       signOut(firebaseAuth);
       return emptyUserState;
     },
@@ -63,15 +77,13 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signUp.pending, (state) => {
-        state.status = 'loading';
+        state.stored = 'loading';
       })
       .addCase(signUp.fulfilled as any, (state, { payload }) => {
-        state.userId = payload.uid;
-        state.userEmail = payload.email;
-        state.status = 'success';
+        state.stored = 'user added';
       })
       .addCase(signUp.rejected, (state) => {
-        state.status = 'failed';
+        state.stored = 'failed';
       })
       .addCase(signIn.pending, (state) => {
         state.status = 'loading';
@@ -79,14 +91,23 @@ const userSlice = createSlice({
       .addCase(signIn.fulfilled as any, (state, { payload }) => {
         state.userId = payload.uid;
         state.userEmail = payload.email;
-        state.status = 'success';
+        state.status = 'logged-in';
       })
       .addCase(signIn.rejected, (state) => {
+        state.status = 'failed';
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateUser.fulfilled as any, (state, { payload }) => {
+        state.status = 'updated';
+      })
+      .addCase(updateUser.rejected, (state) => {
         state.status = 'failed';
       });
   },
 });
  
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, setUser } = userSlice.actions;
 export default userSlice.reducer;

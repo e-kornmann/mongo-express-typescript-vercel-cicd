@@ -5,13 +5,14 @@ import Header from '../Header/Header';
 import { useDispatch } from 'react-redux';
 import "./auth.scss";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../types';
 
 
 const Signin = () =>  {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState(''); 
-
+    const navigate = useNavigate();
     const dispatch = useDispatch<any>();
   
     const onEmailChange = (event: React.ChangeEvent<HTMLInputElement>): void  => {
@@ -28,7 +29,8 @@ const Signin = () =>  {
         dispatch(signIn({
           userEmail: email,
           userPassword: password,
-        }) as unknown as AuthUser);
+        }) as unknown as AuthUser)
+        .then(()=> navigate('/'));
       } catch (error) {
         console.error(error);
       };

@@ -7,12 +7,9 @@ import { useDispatch } from 'react-redux';
 import "./auth.scss";
 import { Link } from 'react-router-dom';
 
-
-
 const Signup = () =>  {
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
-    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -53,9 +50,10 @@ const Signup = () =>  {
       };
       try {
         await dispatch(signUp({
+          userName: name,
+          userAddress: address,
           userEmail: email,
           userPassword: password,
-          userAddress: address,
         }));
         console.log('User created successfully!');
         navigate('/login');

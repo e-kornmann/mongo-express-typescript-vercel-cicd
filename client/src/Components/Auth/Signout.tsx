@@ -1,15 +1,17 @@
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../../firebase";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/slices/authSlice";
+import { clear } from "../../store/slices/bookingSlice";
+
 import "./auth.scss";
-import { logout } from '../../store/slices/authSlice';
-import { clear } from '../../store/slices/bookingSlice';
-import { useDispatch } from 'react-redux';
+
 
 
 export default function Signout() {
+const dispatch = useDispatch()
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const userSignOut = () => {
         signOut(firebaseAuth)
           .then(() => {
@@ -18,6 +20,7 @@ export default function Signout() {
             dispatch(clear())
             navigate("/")
           })
+          
           .catch((error) => console.log(error));
       };
     

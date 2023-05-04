@@ -1,44 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import api from '../../Api/api';
+import React, { useState } from 'react';
 import Header from '../Header/Header';
 import './profile.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import AuthDetails from '../AuthDetails';
 import { User } from '../../types';
+import { updateUser } from '../../store/slices/authSlice'
 
 
 export default function Profile() {
-  const signedInUser = useSelector((state: any)=> state.user)
-  const { userId } = signedInUser as User;
-    const [user, setUser] = useState<User>({ userId: "", userName: "", userEmail: "", userAddress: "" });
-    const { userName, userEmail, userAddress } = user;
+  const dispatch = useDispatch<any>();
+  const user: User = useSelector((state: any) => state.user);
+  const { userId, userName, userEmail, userAddress } = user;
+  const [newName, setNewName] = useState(userName)
+  const [newAddress, setNewAddress] = useState(userAddress);
 
-    const getUserInfo = async (id: string) => {
-        try {
-          const response = await api.get(`/api/users/${id}`)
-          setUser(response.data)
-          } catch (error) {
-          console.error(error);
-        }
-      }
+  const onAddressChange = (event: React.ChangeEvent<HTMLInputElement>): void  => {
+    setNewAddress(event.target.value);
+  };
 
-      useEffect(() => {
-        const fetchData = async () => {
-          await getUserInfo(userId);
-        };
-        fetchData();
-      });
+  const onNameChange = (event: React.ChangeEvent<HTMLInputElement>): void  => {
+    setNewName(event.target.value);
+  };
+
+
+  const handleUpdate = (event: React.FormEvent) => {
+    event.preventDefault();
+   
+    dispatch(
+      updateUser({
+        userId: userId,
+        userName: newName,
+        userAddress: newAddress,
+        userEmail: userEmail,
+      }),
+    );
+  };
 
   return (
     <>
-    <AuthDetails />
-    <Header/>
-    <h1 className='user-profile'>My Profile</h1>
-    <div>
-        <h1 className='user-profile__details'>Name: {userName}</h1>
+      <AuthDetails />
+      <Header />
+      <h1 className='user-profile'>My Profile</h1>
+      <div>
+        <h1 className='user-profile__details'>Id: {userId}</h1>
+        <form onSubmit={handleUpdate}>
+          <input type='text' value={newName} onChange={onNameChange} placeholder={newName} />
+          <input type='text' value={newAddress} onChange={onAddressChange} placeholder={newAddress} />
+          <button type='submit'>Update</button>
+        </form>
         <h1 className='user-profile__details'>Email: {userEmail}</h1>
-        <h1 className='user-profile__details'>Address: {userAddress}</h1>
-    </div>
+      </div>
     </>
-  )
-  }
+  );
+}

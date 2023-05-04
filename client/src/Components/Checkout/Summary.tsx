@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../Header/Header';
 import Checkout from './Checkout';
-import { AuthUser, SitterType, InsertedBooking } from '../../types';
+import { User, SitterType, InsertedBooking } from '../../types';
 import AuthDetails from '../AuthDetails';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { setPrice } from '../../store/slices/bookingSlice';
@@ -13,7 +13,7 @@ const Summary: React.FC = (props) => {
   const navigate = useNavigate();
   const propsData: SitterType = location.state;
 
-  const user: AuthUser = useSelector((state: any) => state.user);
+  const user: User = useSelector((state: any) => state.user);
   const { userEmail } = user;
   const summaryInfo: InsertedBooking = useSelector((state: any) => state.booking);
   const { sitterName, dateOfBooking, dayNameOfBooking, startTime, endTime } = summaryInfo;
