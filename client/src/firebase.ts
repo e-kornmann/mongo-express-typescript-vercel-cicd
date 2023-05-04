@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 
 const firebaseConfig = {
@@ -12,6 +13,8 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+const firebaseAuth = getAuth(firebaseApp);
 
-export const firebaseAuth = getAuth(app);
+export {db, firebaseAuth};

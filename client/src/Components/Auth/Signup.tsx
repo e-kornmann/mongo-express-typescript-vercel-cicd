@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import { useDispatch } from 'react-redux';
 import "./auth.scss";
 import { Link } from 'react-router-dom';
-import { AuthUser } from '../../types';
+
 
 
 const Signup = () =>  {
@@ -36,11 +36,9 @@ const Signup = () =>  {
       setPassword(event.target.value);
     };
   
-    
     const onConfirmPasswordChange = (event: React.ChangeEvent<HTMLInputElement>): void  => {
       setConfirmPassword(event.target.value);
     };
-
 
     const submitUserData = async (event: React.FormEvent) => {
       event.preventDefault();
@@ -48,17 +46,19 @@ const Signup = () =>  {
         console.log('Please fill out all fields.');
         return;
       };
-  
+    
       if (password !== confirmPassword) {
         console.log('Passwords do not match.');
         return;
       };
       try {
-        dispatch(signUp({
-            userEmail: email,
-            userPassword: password,
-          }) as unknown as AuthUser)
-          .then(()=> navigate("/login"));
+        await dispatch(signUp({
+          userEmail: email,
+          userPassword: password,
+          userAddress: address,
+        }));
+        console.log('User created successfully!');
+        navigate('/login');
       } catch (error) {
         console.error(error);
       };

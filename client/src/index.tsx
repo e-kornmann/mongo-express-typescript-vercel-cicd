@@ -14,10 +14,10 @@ import Signin from './Components/Auth/Signin';
 import Checkout from './Components/Checkout/Checkout';
 import SuccessPage from './Components/SuccessPage/SuccessPage';
 import { Provider } from 'react-redux';
-import { store } from './store/store';
 import Profile from './Components/Profile/Profile';
 import MyBookings from './Components/MyBookings/MyBookings';
-
+import { persistor, store } from '../src/store/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -27,6 +27,7 @@ root.render(
   // <React.StrictMode>
      <BrowserRouter>
      <Provider store={store}>
+     <PersistGate loading={null} persistor={persistor}>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Signin />} />
@@ -41,6 +42,7 @@ root.render(
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/profile" element={<Profile />} />
        </Routes>
+       </PersistGate>
       </Provider>
     </BrowserRouter>
   // </React.StrictMode>
