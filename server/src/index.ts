@@ -4,7 +4,6 @@ import cors from 'cors';
 import mailer from './routes/mailjet'
 import sitters from './routes/sitters'
 import bookings from './routes/bookings';
-import users from './routes/users';
 
 dotenv.config();
 
@@ -22,7 +21,6 @@ app.use(cors({
 app.use('/api/sitters', sitters);
 app.use('/api/send-email', mailer);
 app.use('/api/bookings', bookings);
-app.use('/api/users', users);
 
 app.get('/', (_req: Request, res: Response) => {
 	return res.send('API is running')

@@ -47,7 +47,7 @@ const emptyUserState = {
   userName: "empty", 
   userEmail: "empty", 
   userAddress: "empty",
-  status: "",
+  status: "logged-out",
   stored: ""
 } as User;
 
@@ -97,13 +97,13 @@ const userSlice = createSlice({
         state.status = 'failed';
       })
       .addCase(updateUser.pending, (state) => {
-        state.status = 'loading';
+        state.stored = 'loading';
       })
       .addCase(updateUser.fulfilled as any, (state, { payload }) => {
-        state.status = 'updated';
+        state.stored = 'user updated';
       })
       .addCase(updateUser.rejected, (state) => {
-        state.status = 'failed';
+        state.stored = 'failed';
       });
   },
 });
