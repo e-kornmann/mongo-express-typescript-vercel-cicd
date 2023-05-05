@@ -5,7 +5,7 @@ import { db, firebaseAuth } from "../firebase";
 import { doc, getDoc } from 'firebase/firestore';
 import Signout from "./Auth/Signout";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from '../store/slices/authSlice'
+import { logout, setUser } from '../store/slices/authSlice'
 import { User } from "../types";
 
 
@@ -16,22 +16,22 @@ const AuthDetails = () => {
 
   useEffect(() => {
     const listen = onAuthStateChanged(firebaseAuth, async (user: any) => {
-      if (user) { 
-        console.log("user is logged in");
+      if (user && userId !== 'empty') { 
+        console.log("user is logged in"); 
           const docRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          console.log(data);
           dispatch(
             setUser({
-              userId: user.uid,
+              userId: user?.uid,
               userEmail: user.email,
               userName: data?.userName,
               userAddress: data?.userAddress,
             })
           );
         } else {
+          dispatch(logout())
           console.log("No such document!");
         }
       }
@@ -39,7 +39,7 @@ const AuthDetails = () => {
     return () => {
       listen();
     };
-  }, [dispatch]); 
+  }, [dispatch, userId]); 
   
 
 

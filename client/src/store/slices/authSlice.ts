@@ -99,7 +99,7 @@ const userSlice = createSlice({
       .addCase(updateUser.pending, (state) => {
         state.stored = 'loading';
       })
-      .addCase(updateUser.fulfilled as any, (state, { payload }) => {
+      .addCase(updateUser.fulfilled, (state) => {
         state.stored = 'user updated';
       })
       .addCase(updateUser.rejected, (state) => {
