@@ -37,11 +37,22 @@ const Sitters: React.FC = () => {
   return (
     <>
         <AuthDetails />
-        <div className="islandaquabg" style={{ backgroundImage: `url(${background})` }}>
+        <div className="islandaquabg" style={ { backgroundImage: `url(${background})` } }>
           <Header />
         <div className="timeribbon">
-        <h1>{dayNameOfBooking} {dateOfBooking}</h1>
-        <h2>from { startTime } till { endTime }</h2>
+       
+        <div className="timeribbon__container">
+        <Link to="/calendar">
+          <div className="timeribbon__container__backbutton-wrapper">
+            <div className="timeribbon__container__backbutton-wrapper__backbutton"></div>
+          </div>
+        </Link>
+          
+          
+           <h1>{dayNameOfBooking} {dateOfBooking}</h1>
+           <h2>from { startTime } till { endTime }</h2>
+          
+          </div>
         </div>
         <div className="availablesitters">
          {sitters.map((sitter: SitterType) => (

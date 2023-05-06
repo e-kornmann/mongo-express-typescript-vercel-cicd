@@ -10,25 +10,34 @@ import { doc, setDoc, updateDoc } from 'firebase/firestore';
 
 
 export const signUp = createAsyncThunk('user/signUp', async (data: User) => {
-  const { userName, userEmail, userPassword, userAddress } = data;
+  const { firstName, userEmail, userPassword, street, houseNumber, parent } = data;
   const userCredential = await createUserWithEmailAndPassword(firebaseAuth, userEmail, userPassword!);
   const { uid } = userCredential.user;
   try {
    await setDoc(doc(db, 'users', uid), {
-    userName: userName,
-    userAddress: userAddress
+    firstName: firstName,
+    lastName: firstName,
+    parent: parent,
+    street: street,
+    houseNumber: houseNumber,
   })
   } catch (error) {
   console.log(error);
 }
 });
 
-export const updateUser = createAsyncThunk('user/updateUser', async ({ userId, userName, userAddress }: User) => {
+export const updateUser = createAsyncThunk('user/updateUser', async ({ userId, firstName, street, houseNumber, parent }: User) => {
   if (!userId) {
     throw new Error('Invalid userId');
   }
   const docRef = doc(db, 'users', userId);
-  updateDoc(docRef, {userName: userName, userAddress: userAddress})
+  updateDoc(docRef, { 
+    firstName: firstName,
+    lastName: firstName,
+    parent: parent,
+    street: street,
+    houseNumber: houseNumber,
+  })
   .then(docRef => { console.log("Document updated") });
 });
 
@@ -44,9 +53,11 @@ export const signIn = createAsyncThunk('user/signIn', async (data: AuthUser) => 
 
 const emptyUserState = { 
   userId: "empty", 
-  userName: "empty", 
+  firstName: "empty",
+  lastName: "empty", 
   userEmail: "empty", 
-  userAddress: "empty",
+  street: "empty",
+  houseNumber: "empty",
   status: "logged-out",
   stored: ""
 } as User;
@@ -65,8 +76,11 @@ const userSlice = createSlice({
     setUser: (state: User, { payload }): User => {
       return {
         ...state,
-      userName: payload.userName,
-      userAddress: payload.userAddress
+      firstName: payload.firstName,
+      lastName: payload.lastName,
+      parent: payload.parent,
+      street: payload.userStreet,
+      houseNumber: payload.houseNumber,
     }
   },
     logout: () => {

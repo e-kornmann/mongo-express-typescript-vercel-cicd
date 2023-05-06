@@ -8,7 +8,39 @@
   padding-top: 0;
 }
 
-.timeribbon > h2 {
+
+.timeribbon__container {
+  position: relative;
+  margin: 0 auto;
+  top: -50px;
+  max-width: 500px  ;
+  margin: 0 auto;
+  }
+
+  .timeribbon__container__backbutton-wrapper {
+    position: relative;
+    top: 83px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    z-index: 30;
+  }
+
+
+.timeribbon__container__backbutton-wrapper__backbutton {
+  margin: auto auto;
+  border-color: app.$purple;
+  border-style: solid;
+  border-width: 3px 3px 0 0;
+  height: 12px;
+  width: 12px;
+  transform: rotate(225deg);
+}
+
+
+.timeribbon__container > h2 {
   position: relative;
   bottom: 6px;
 }

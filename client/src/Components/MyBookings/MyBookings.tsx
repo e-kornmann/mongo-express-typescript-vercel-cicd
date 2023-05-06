@@ -14,7 +14,7 @@ const MyBookings: React.FC = () => {
     const getBookings = async (userId: InsertedBooking) => {
       try { 
         const response = await api.get(`api/bookings/${userId}`);
-        console.log("response.data:",response.data);
+        console.log("response.data:", response.data);
         if (response.data.length > 0) {
           setBookings(response.data);
         }

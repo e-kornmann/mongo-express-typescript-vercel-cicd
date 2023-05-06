@@ -22,14 +22,20 @@ const AuthDetails = () => {
           const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          dispatch(
-            setUser({
+          try {
+            await dispatch(setUser({
               userId: user?.uid,
               userEmail: user.email,
-              userName: data?.userName,
-              userAddress: data?.userAddress,
-            })
-          );
+              firstName: data?.firstName,
+              lastName: data?.lastName,
+              street: data?.street,
+              houseNumber: data?.houseNumber,
+              parent: data?.parent,
+            } as User));
+            console.log('User info loaded succesfully');
+        } catch (error) {
+          console.error(error);
+        };
         } else {
           dispatch(logout())
           console.log("No such document!");
