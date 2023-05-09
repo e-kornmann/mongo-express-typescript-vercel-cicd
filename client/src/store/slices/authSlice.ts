@@ -10,16 +10,22 @@ import { doc, setDoc, updateDoc } from 'firebase/firestore';
 
 
 export const signUp = createAsyncThunk('user/signUp', async (data: User) => {
-  const { firstName, userEmail, userPassword, street, houseNumber, parent } = data;
+  const { userEmail, userPassword, firstName, lastName, parent, street, houseNumber, zipCode, city, telephoneNumber, kids} = data;
   const userCredential = await createUserWithEmailAndPassword(firebaseAuth, userEmail, userPassword!);
   const { uid } = userCredential.user;
   try {
    await setDoc(doc(db, 'users', uid), {
-    firstName: firstName,
-    lastName: firstName,
-    parent: parent,
-    street: street,
-    houseNumber: houseNumber,
+      firstName: firstName,
+      lastName: lastName,
+      parent: parent,
+      street: street,
+      houseNumber: houseNumber,
+      zipCode: zipCode,
+      userEmail: userEmail,
+      city: city,
+      telephoneNumber: telephoneNumber,
+      kids: [kids],
+      notes: '',
   })
   } catch (error) {
   console.log(error);

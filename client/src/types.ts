@@ -10,6 +10,7 @@ export type SitterType = {
 
 export type Kid = {
   name: string;
+  // index: number;
   dateOfBirth: string,
   gender: string,
 }
@@ -21,17 +22,17 @@ export type AuthUser = {
   confirmPassword?: string,
 };
 export interface User extends AuthUser {
-  firstName: string;
-  lastName: string;
-  parent: string;
-  street:string;
-  zipCode: string;
-  city: string;
+  firstName: string,
+  lastName: string,
+  parent: string,
+  street: string,
+  zipCode: string,
+  city: string,
   telephoneNumber: string,
-  houseNumber: string;
+  houseNumber: string,
   status?: string,
   stored?: string,
-  kids: Kid[],
+  kids: string,
   notes: string,
 }
 

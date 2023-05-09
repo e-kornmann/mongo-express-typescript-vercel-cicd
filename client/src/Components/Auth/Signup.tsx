@@ -8,112 +8,122 @@ import './customradiobuttons.scss';
 import { Link } from 'react-router-dom';
 import AuthDetails from '../AuthDetails';
 import { User, Kid } from '../../types';
+import { 
+  validateFirstName, 
+  validateLastName, 
+  validateParent, 
+  validateStreet,
+  validateHouseNumber,
+  validateZipCode,
+  validateCity,
+  validateTelephoneNumber,
+  validateKids
+ } from './formValidation';
 
 const Signup = () => {
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
 
-  const [kid1Data, setKid1Data] = useState<Kid>({
-    name: '',
-    dateOfBirth: '',
-    gender: ''
-  });
-    
-  const [userData, setUserData] = useState<User>({
-    firstName: '',
-    lastName: '',
-    parent: '',
-    street: '',
-    houseNumber: '',
-    zipCode: '',
-    userEmail: '',
-    userPassword: '',
-    confirmPassword: '',
-    city: '',
-    telephoneNumber: '',
-    kids: [],
-    notes: '',
-  });
+    const [userData, setUserData] = useState<User>({
+      firstName: '',
+      lastName: '',
+      parent: '',
+      street: '',
+      houseNumber: '',
+      zipCode: '',
+      userEmail: '',
+      userPassword: '',
+      confirmPassword: '',
+      city: '',
+      telephoneNumber: '',
+      kids: '',
+      notes: '',
+    });
 
-  const onKid1Change = (event: React.ChangeEvent<HTMLInputElement>): void  => {
-    setKid1Data({ ...kid1Data, [event.target.name]: event.target.value  });
+    const [kids, setKids] = useState<Kid[]>([{name: '', dateOfBirth: '', gender:''}]);
+
+    const addKid = () => {
+      setKids([ ...kids, {name: '', dateOfBirth: '', gender:''} ])
+    }
+  
+    const handleKidFieldsChange = (
+      event: React.ChangeEvent<HTMLInputElement>,
+      i: number,
+      key: keyof Kid
+    ) => {
+      const { value } = event.target;
+      const updatedKids = [...kids];
+      updatedKids[i][key] = value;
+      setKids(updatedKids);
+    };
+  const handleKidFieldDelete=(i:number)=>{
+      const deleteVal = [...kids]
+      deleteVal.splice(i,1)
+      setKids(deleteVal)
   }
-
+  
   const [errors, setErrors] = useState({});
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
-  const submitUserData = async (event: React.FormEvent) => {
+  const submitForm = async (event: React.FormEvent) => {
     event.preventDefault();
 
+    const validationErrors: { [key: string]: string | undefined } = {};
 
-    const consoleUser = {
-      ...userData,
-      kids: [kid1Data]
-    };
-    console.log(consoleUser);
-    const validationErrors: { [key: string]: string } = {};
+    validationErrors.firstName = validateFirstName(userData.firstName);
+    validationErrors.lastName = validateLastName(userData.lastName);
+    validationErrors.parent = validateParent(userData.parent);
+    validationErrors.street = validateStreet(userData.street);
+    validationErrors.houseNumber = validateHouseNumber(userData.houseNumber);
+    validationErrors.zipCode = validateZipCode(userData.zipCode);
+    validationErrors.city = validateCity(userData.city);
+    validationErrors.telephoneNumber = validateTelephoneNumber(userData.telephoneNumber);
+    validationErrors.kids = validateKids(kids);
 
-    if (!userData.firstName) {
-      validationErrors.firstName = 'Please enter your first name';
-    }
-
-    if (!userData.lastName) {
-      validationErrors.lastName = 'Please enter your last name';
-    }
-    
-    if (!userData.parent) {
-      validationErrors.parent = 'Please indicate your parental status';
-    }
-    
-    if (!userData.zipCode) {
-      validationErrors.zipCode = 'Please enter your postal code';
-    }
-
-    if (!userData.houseNumber) {
-      validationErrors.houseNumber = 'Please enter your house number';
-    }
-
-    if (!userData.telephoneNumber.trim()) {
-      validationErrors.telephoneNumber = 'Please enter your telephone number';
-  
     if (!userData.userEmail) {
       validationErrors.userEmail = 'Please enter your email';
     } else if (!/\S+@\S+\.\S+/.test(userData.userEmail)) {
       validationErrors.userEmail = 'Please enter a valid email';
     }
-
+  
+  
     if (!userData.userPassword) {
       validationErrors.userPassword = 'Please enter your password';
     } else if (userData.userPassword.length < 6) {
       validationErrors.userPassword = 'Password must be at least 6 characters long';
     }
-
+  
     if (!userData.confirmPassword) {
       validationErrors.confirmPassword = 'Please confirm your password';
     } else if (userData.confirmPassword !== userData.userPassword) {
       validationErrors.confirmPassword = 'Passwords do not match';
     }
 
+
+    
+
     setErrors(validationErrors);
 
-    if (Object.keys(validationErrors).length === 0) {
+    const filteredValidationErrors = Object.fromEntries(
+      Object.entries(errors).filter(([key, value]) => value !== undefined)
+    );
+ 
+    if (Object.keys(filteredValidationErrors).length === 0)
       try {
-        const newUser = {
-          ...userData,
-          kids: [kid1Data]
-        };
-        await dispatch(signUp(newUser));
+        const userDataWithKids = { ...userData, kids: JSON.stringify(kids) };
+        console.log(userDataWithKids);
+        await dispatch(signUp(userDataWithKids));
         console.log('User created successfully!');
         navigate('/login');
       } catch (error) {
         console.error(error);
       }
     }
-    }
-  }
+    
+   
 
  
   return (
@@ -122,7 +132,7 @@ const Signup = () => {
     <AuthDetails />
     <Header />
         <h2>Create account</h2>
-      <form onSubmit={submitUserData} className="form__container">
+      <form onSubmit={submitForm} className="form__container">
       <fieldset>
       <legend>Personal details</legend>
       <input className="form__container-input stretch" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
@@ -158,51 +168,61 @@ const Signup = () => {
       
       </fieldset>
       <hr />
-      <fieldset>
+     
       <legend>Your little one(s)</legend>
-      <input className="form__container-input stretch" type="text" name="name" value={kid1Data.name} onChange={onKid1Change} placeholder="name" />
-      <div className="custom_radio">
-      <input type="radio" id="boy" value="boy" checked={kid1Data.gender === 'boy'} onChange={onKid1Change} name="gender" />
-       <label htmlFor="boy">Boy</label>
-      </div>
-      <div className="custom_radio">
-      <input type="radio" id="girl" value="girl" checked={kid1Data.gender === 'girl'} onChange={onKid1Change} name="gender" />
-       <label htmlFor="girl">Girl</label>
-      </div>
-      
-    
- 
+
+  
+      {
+        kids.map((val,i) =>
+        <fieldset key={i}>
+            <input className="form__container-input stretch" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')}  placeholder="Name" />
+            <input className="form__container-input halfleft" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
+            <div className="radio-button-wrapper foursix">
+              <div className="custom_radio">
+                <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
+                <label htmlFor={`boy${i + 1}`}>Boy</label>
+              </div>
+              <div className="custom_radio">
+                <input type="radio" id={`girl${i + 1}`} value="girl" checked={val.gender === 'girl'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
+                <label htmlFor={`girl${i + 1}`}>Girl</label>
+              </div>
+            </div>
+          <button className="seveneight" onClick={()=>handleKidFieldDelete(i)}>Delete</button>               
+        </fieldset>
+        )
+      }
+          <button className="seveneight" type="button" onClick={addKid}>Add</button>
+           
 
 
-
-
- {Object.keys(errors).length > 0 && (
+{Object.keys(errors).length > 0 && (
   <div className="stretch">
-    
-      {Object.values(errors).map((error: unknown) => (
-        <div className="form__container__error__container stretch" key={typeof error === 'string' ? error : undefined}>
-        {typeof error === 'string' && error}
-      </div>
-      ))}
-    
+    {Object.values<string | undefined>(errors).map((error, index) => {
+      if (typeof error === 'string') {
+        return (
+          <div className="form__container__error__container stretch" key={index}>
+            {error}
+          </div>
+        );
+      }
+      return null;
+    })}
   </div>
 )}
+
      
-
-
-
     <button type="submit" className="btn stretch">Submit</button>
     <h4 className="stretch">Already have an account? <Link to='/login' className="form__container-redirect">Please login</Link></h4>
-    </fieldset>
+
   </form>
   </div>
   </>
-  )
+  );
+      
+
 }
-
-
 
 export default Signup;
 
 
-
+  
