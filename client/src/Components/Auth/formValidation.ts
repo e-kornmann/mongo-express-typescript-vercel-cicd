@@ -43,15 +43,26 @@ export const validateKids = (kids: Kid[] | undefined): string | undefined => {
     if (!kids) {
       return undefined;
     }
+    
+    const invalidKidName = kids.find((kid) => !kid.name);
+    const invalidKidGender = kids.find((kid) => !kid.gender);
+    const invalidKidDateOfBirth = kids.find((kid) => !kid.dateOfBirth);
   
-    const invalidKid = kids.find((kid) => !kid.name || !kid.gender);
-  
-    if (invalidKid) {
-      return 'Please fill in your kids name and gender';
+    if (invalidKidName) {
+      return 'Please fill in your kids name';
     }
-  
+    
+    if (invalidKidGender) {
+        return 'Please specify your kids gender';
+      }
+      
+    if (invalidKidDateOfBirth) {
+        return 'Please fill in your kids date of birth';
+      }
     return undefined;
   };
 
 
  
+
+  

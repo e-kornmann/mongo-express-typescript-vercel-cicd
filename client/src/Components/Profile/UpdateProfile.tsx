@@ -1,79 +1,75 @@
 import React, { useState } from 'react';
-import AddIcon from '../SvgComponents/AddIcon';
-import DeleteIcon from '../SvgComponents/DeleteIcon';
-import { useNavigate } from 'react-router-dom';
-import { setUser, signUp } from '../../store/slices/authSlice';
 import Header from '../Header/Header';
-import { useDispatch } from 'react-redux';
-import './auth.scss';
-import './customradiobuttons.scss';
-import { Link } from 'react-router-dom';
+import './profile.scss';
+import { useSelector, useDispatch } from 'react-redux';
 import AuthDetails from '../AuthDetails';
-import { User, Kid } from '../../types';
-import { 
-  validateFirstName, 
-  validateLastName, 
-  validateParent, 
-  validateStreet,
-  validateHouseNumber,
-  validateZipCode,
-  validateCity,
-  validateTelephoneNumber,
-  validateKids
- } from './formValidation';
+import { Kid, User } from '../../types';
+import { setUser, updateUser } from '../../store/slices/authSlice'
+import { validateFirstName,
+   validateLastName,
+   validateParent, validateStreet, validateHouseNumber, validateZipCode, validateCity, validateTelephoneNumber, validateKids } from '../Auth/formValidation';
+import { useNavigate } from 'react-router-dom';
+import AddIcon from '../SvgComponents/AddIcon';
 
 
-const Signup = () => {
+const UpdateProfile = () => {
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
-
-    const [userData, setUserData] = useState<User>({
-      firstName: '',
-      lastName: '',
-      parent: '',
-      street: '',
-      houseNumber: '',
-      zipCode: '',
-      userEmail: '',
-      userPassword: '',
-      confirmPassword: '',
-      city: '',
-      telephoneNumber: '',
-      kids: [],
-      notes: '',
-    });
-
-    const [kids, setKids] = useState<Kid[]>([{name: '', dateOfBirth: '', gender:''}]);
-
-    const addKid = () => {
-      setKids([ ...kids, {name: '', dateOfBirth: '', gender:''} ])
-    }
+  const user: User = useSelector((state: any) => state.user);
+  const { userId, userEmail, firstName, lastName, parent, street, houseNumber, zipCode, city, telephoneNumber, kids, notes } = user;
   
-    const handleKidFieldsChange = (
-      event: React.ChangeEvent<HTMLInputElement>,
-      i: number,
-      key: keyof Kid
-    ) => {
-      const { value } = event.target;
-      const updatedKids = [...kids];
-      updatedKids[i][key] = value;
-      setKids(updatedKids);
-    };
-  const handleKidFieldDelete=(i:number)=>{
-      const deleteVal = [...kids]
-      deleteVal.splice(i,1)
-      setKids(deleteVal)
+  const [newKids, setNewKids] = useState<Kid[]>(kids);
+
+  const [userData, setUserData] = useState<User>({
+    userId: userId,
+    firstName: firstName,
+    lastName: lastName,
+    parent: parent,
+    street: street,
+    houseNumber: houseNumber,
+    zipCode: zipCode,
+    city: city,
+    telephoneNumber: telephoneNumber,
+    kids: newKids,
+    notes: notes,
+  });
+
+
+  const addKid = () => {
+    setNewKids([ ...newKids, {name: '', dateOfBirth: '', gender:''} ])
+    setUserData({ ...userData, kids: newKids });
   }
-  
-  const [errors, setErrors] = useState({});
 
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserData({ ...userData, [event.target.name]: event.target.value });
+  const handleKidFieldsChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    i: number,
+    key: keyof Kid
+  ) => {
+    const { value } = event.target;
+    const updatedKids = [...newKids];
+    updatedKids[i] = {
+      ...updatedKids[i],
+      [key]: value,
+    };
+    setNewKids(updatedKids);
+    setUserData({ ...userData, kids: updatedKids });
   };
+const handleKidFieldDelete=(i:number)=>{
+    const deleteVal = [...newKids]
+    deleteVal.splice(i,1)
+    setNewKids(deleteVal)
+    setUserData({ ...userData, kids: deleteVal });
+}
 
-  const submitForm = async (event: React.FormEvent) => {
+const [errors, setErrors] = useState({});
+
+const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  setUserData({ ...userData, [event.target.name]: event.target.value });
+};
+
+  const handleUpdate =  async (event: React.FormEvent)  => {
     event.preventDefault();
-
+   
     const validationErrors: { [key: string]: string | undefined } = {};
 
     validationErrors.firstName = validateFirstName(userData.firstName);
@@ -84,58 +80,43 @@ const Signup = () => {
     validationErrors.zipCode = validateZipCode(userData.zipCode);
     validationErrors.city = validateCity(userData.city);
     validationErrors.telephoneNumber = validateTelephoneNumber(userData.telephoneNumber);
-    validationErrors.kids = validateKids(kids);
+    validationErrors.kids = validateKids(newKids);
 
-    if (!userData.userEmail) {
-      validationErrors.userEmail = 'Please enter your email';
-    } else if (!/\S+@\S+\.\S+/.test(userData.userEmail)) {
-      validationErrors.userEmail = 'Please enter a valid email';
-    }
-  
-  
-    if (!userData.userPassword) {
-      validationErrors.userPassword = 'Please enter your password';
-    } else if (userData.userPassword.length < 6) {
-      validationErrors.userPassword = 'Password must be at least 6 characters long';
-    }
-  
-    if (!userData.confirmPassword) {
-      validationErrors.confirmPassword = 'Please confirm your password';
-    } else if (userData.confirmPassword !== userData.userPassword) {
-      validationErrors.confirmPassword = 'Passwords do not match';
-    }
-
-
-    
 
     setErrors(validationErrors);
 
     const filteredValidationErrors = Object.fromEntries(
       Object.entries(validationErrors).filter(([key, value]) => value !== undefined)
     );
+
+    
  
     if (Object.keys(filteredValidationErrors).length === 0) {
       try {
-        setUserData({ ...userData,  kids: kids });
-        await dispatch(signUp(userData));
+        console.log(`This supposed to be dispatched ${userData}`);
+        await dispatch(updateUser(userData));
         dispatch(setUser(userData));
-        console.log('User created successfully!');
-        navigate('/login');
+        console.log('User updated!');
+        // navigate('/');
       } catch (error) {
         console.error(error);
       }
     }
-    
   }
 
+
+
+  console.log(userData)
  
+
   return (
     <>
     <div className="graybg">
     <AuthDetails />
     <Header />
-        <h2>Create account</h2>
-      <form onSubmit={submitForm} className="form__container">
+      <h2>Update Prfile</h2>
+      <h3>{userId}, { userEmail }</h3>
+      <form onSubmit={handleUpdate} className="form__container">
       <fieldset>
       <legend>Personal details</legend>
       <input className="form__container-input stretch" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
@@ -164,22 +145,17 @@ const Signup = () => {
       <input className="form__container-input stretch" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
       </fieldset>
 
-      <fieldset>
-      <input className="form__container-input stretch" type="text" name="userEmail" value={userData.userEmail} onChange={onInputChange} placeholder="Email" />
-      <input className="form__container-input stretch" type="password" name="userPassword" value={userData.userPassword} onChange={onInputChange} placeholder="Password" />
-      <input className="form__container-input stretch" type="password" name="confirmPassword" value={userData.confirmPassword} onChange={onInputChange} placeholder="Confirm Password" />
-      
-      </fieldset>
+  
       <hr />
-     
+
       <h4>Your little one(s)</h4>
 
   
       {
-        kids.map((val,i) =>
+        newKids.map((val,i) =>
         <fieldset key={i}>
-            <input key={`kidname${i + 1}`} autoComplete='none' className="form__container-input stretch" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')}  placeholder="Name" />
-            <input autoComplete='none' className="form__container-input halfleft" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
+            <input className="form__container-input stretch" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} />
+            <input className="form__container-input halfleft" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
             <div className="radio-button-wrapper foursix">
               <div className="custom_radio">
                 <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
@@ -190,17 +166,17 @@ const Signup = () => {
                 <label htmlFor={`girl${i + 1}`}>Girl</label>
               </div>
             </div>
-            {i === kids.length - 1 ? (
-        <button className="sixseven" onClick={() => handleKidFieldDelete(i)}><DeleteIcon /></button>
+            {i === newKids.length - 1 ? (
+        <button className="sixseven" onClick={() => handleKidFieldDelete(i)}>Delete</button>
       ) : (
-        <button className="seveneight" onClick={() => handleKidFieldDelete(i)}><DeleteIcon /></button>
+        <button className="seveneight" onClick={() => handleKidFieldDelete(i)}>Delete</button>
       )}
         </fieldset>
         )
       }
           <button className="seveneight" type="button" onClick={addKid}><AddIcon /></button>
-          
-
+           
+        
 
           <input className="form__container-textfieldinput stretch" type="textfield" name="notes" value={userData.notes} onChange={onInputChange} />
 
@@ -220,20 +196,15 @@ const Signup = () => {
   </div>
 )}
 
-     
-    <button type="submit" className="btn stretch">Submit</button>
-    <h4 className="stretch">Already have an account? <Link to='/login' className="form__container-redirect">Please login</Link></h4>
+<button type="submit" className="btn stretch">Submit</button>
+
 
   </form>
   </div>
   </>
   );
       
-
-}
-
-
-export default Signup;
+  }
 
 
-  
+  export default UpdateProfile;

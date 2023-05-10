@@ -17,7 +17,7 @@ export type Kid = {
 
 export type AuthUser = {
   userId?: string,
-  userEmail: string,
+  userEmail?: string,
   userPassword?: string,
   confirmPassword?: string,
 };
@@ -32,8 +32,8 @@ export interface User extends AuthUser {
   houseNumber: string,
   status?: string,
   stored?: string,
-  kids: string,
-  notes: string,
+  kids: Kid[],
+  notes?: string,
 }
 
 export type Reservation = {

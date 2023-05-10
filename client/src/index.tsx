@@ -13,8 +13,9 @@ import Signup from './Components/Auth/Signup';
 import Signin from './Components/Auth/Signin';
 import Checkout from './Components/Checkout/Checkout';
 import SuccessPage from './Components/SuccessPage/SuccessPage';
+import UpdateProfile from './Components/Profile/UpdateProfile';
 import { Provider } from 'react-redux';
-import Profile from './Components/Profile/Profile';
+
 import MyBookings from './Components/MyBookings/MyBookings';
 import { persistor, store } from '../src/store/store';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -32,15 +33,15 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Signin />} />
         <Route path="/register" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<UpdateProfile />} />
         <Route path="/mybookings" element={<MyBookings />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/sitters" element={<Sitters />} />
         <Route path="/selectedsitter" element={<SelectedSitter />} />
-]       <Route path="/summary" element={<Summary />} />
+        <Route path="/summary" element={<Summary />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/success" element={<SuccessPage />} />
-        <Route path="/profile" element={<Profile />} />
+  
        </Routes>
        </PersistGate>
       </Provider>

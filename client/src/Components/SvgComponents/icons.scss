@@ -1,0 +1,18 @@
+@use '../../app.scss';
+
+.icon {
+    max-width: 30px;
+    cursor: pointer;
+}
+
+.icon__addicon {
+    width: 100%;
+    fill: app.$grapefruitred;
+    cursor: pointer;
+}
+
+
+.icon__deleteicon {
+    fill: app.$grapefruitred;
+    cursor: pointer;
+}

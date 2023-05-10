@@ -6,13 +6,14 @@ import {
 } from '../../firebase';
 
 import { AuthUser, User } from '../../types';
-import { doc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 
 
 export const signUp = createAsyncThunk('user/signUp', async (data: User) => {
-  const { userEmail, userPassword, firstName, lastName, parent, street, houseNumber, zipCode, city, telephoneNumber, kids} = data;
-  const userCredential = await createUserWithEmailAndPassword(firebaseAuth, userEmail, userPassword!);
+  const { userEmail, userPassword, firstName, lastName, parent, street, houseNumber, zipCode, city, telephoneNumber, kids, notes} = data;
+  const userCredential = await createUserWithEmailAndPassword(firebaseAuth, userEmail!, userPassword!);
   const { uid } = userCredential.user;
+  const stringifiedkids = JSON.stringify(kids)
   try {
    await setDoc(doc(db, 'users', uid), {
       firstName: firstName,
@@ -24,33 +25,43 @@ export const signUp = createAsyncThunk('user/signUp', async (data: User) => {
       userEmail: userEmail,
       city: city,
       telephoneNumber: telephoneNumber,
-      kids: [kids],
-      notes: '',
+      kids: stringifiedkids,
+      notes: notes,
   })
   } catch (error) {
   console.log(error);
 }
 });
 
-export const updateUser = createAsyncThunk('user/updateUser', async ({ userId, firstName, street, houseNumber, parent }: User) => {
-  if (!userId) {
+export const updateUser = createAsyncThunk('user/updateUser', async (data: User) => {
+  if (!data.userId) {
     throw new Error('Invalid userId');
   }
-  const docRef = doc(db, 'users', userId);
-  updateDoc(docRef, { 
-    firstName: firstName,
-    lastName: firstName,
-    parent: parent,
-    street: street,
-    houseNumber: houseNumber,
-  })
+  const docRef = doc(db, 'users', data.userId);
+  const stringifiedkids = JSON.stringify(data.kids)
+  try {
+    await setDoc(docRef, { 
+    firstName: data.firstName,
+    lastName: data.lastName,
+    parent: data.parent,
+    street: data.street,
+    houseNumber: data.houseNumber,
+    zipCode: data.zipCode,
+    city: data.city,
+    telephoneNumber: data.telephoneNumber,
+    kids: stringifiedkids,
+    notes: data.notes,
+  }, { merge: true })
   .then(docRef => { console.log("Document updated") });
+  } catch (error) {
+    console.log(error); 
+  }
 });
 
 
 export const signIn = createAsyncThunk('user/signIn', async (data: AuthUser) => {
   const { userEmail, userPassword } = data;
-  const userCredential = await signInWithEmailAndPassword(firebaseAuth, userEmail, userPassword!);
+  const userCredential = await signInWithEmailAndPassword(firebaseAuth, userEmail!, userPassword!);
 
   const { uid, email, displayName } = userCredential.user;
 
@@ -85,8 +96,13 @@ const userSlice = createSlice({
       firstName: payload.firstName,
       lastName: payload.lastName,
       parent: payload.parent,
-      street: payload.userStreet,
+      street: payload.street,
       houseNumber: payload.houseNumber,
+      zipCode: payload.zipCode,
+      city: payload.city,
+      telephoneNumber: payload.telephoneNumber,
+      kids: payload.kids,
+      notes: payload.notes,
     }
   },
     logout: () => {
@@ -100,7 +116,17 @@ const userSlice = createSlice({
         state.stored = 'loading';
       })
       .addCase(signUp.fulfilled as any, (state, { payload }) => {
-        state.stored = 'user added';
+        state.stored = 'user updated';
+        state.firstName = payload.firstName;
+        state.lastName = payload.lastName;
+        state.parent = payload.parent;
+        state.street = payload.street;
+        state.houseNumber = payload.houseNumber;
+        state.zipCode = payload.zipCode;
+        state.city = payload.city;
+        state.telephoneNumber = payload.telephoneNumber;
+        state.kids = payload.kids;
+        state.notes = payload.notes;
       })
       .addCase(signUp.rejected, (state) => {
         state.stored = 'failed';

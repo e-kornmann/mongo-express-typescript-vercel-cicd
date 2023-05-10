@@ -22,16 +22,22 @@ const AuthDetails = () => {
           const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
+          const parsedkids = JSON.parse(data.kids)
           try {
             await dispatch(setUser({
               userId: user?.uid,
               userEmail: user.email,
               firstName: data?.firstName,
               lastName: data?.lastName,
+              parent: data?.parent,
               street: data?.street,
               houseNumber: data?.houseNumber,
-              parent: data?.parent,
-            } as User));
+              zipCode: data?.zipCode,
+              city: data?.city,
+              telephoneNumber: data?.telephoneNumber,
+              kids: parsedkids,
+              notes: data?.notes,
+              } as User));
             console.log('User info loaded succesfully');
         } catch (error) {
           console.error(error);

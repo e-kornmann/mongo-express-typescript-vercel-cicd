@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from './tinysitters_logo.svg';
+import logo from '../../Assets/tinysitters_logo.svg';
 import "./header.scss";
 import { Link } from 'react-router-dom';
 
