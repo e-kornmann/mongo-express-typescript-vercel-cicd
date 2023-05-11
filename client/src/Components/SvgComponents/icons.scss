@@ -3,16 +3,19 @@
 .icon {
     max-width: 30px;
     cursor: pointer;
-}
+    align-self: end;
+      }
 
 .icon__addicon {
-    width: 100%;
+ 
     fill: app.$grapefruitred;
-    cursor: pointer;
-}
+    cursor: pointer;  
 
+}
 
 .icon__deleteicon {
     fill: app.$grapefruitred;
     cursor: pointer;
 }
+
+

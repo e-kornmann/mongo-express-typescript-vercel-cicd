@@ -1,23 +1,30 @@
 @use '../../app.scss';
 
 fieldset {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 20px;
   border: none;
-  padding: 20px 0 5px;
+  padding: 0 0 20px;
+  margin-bottom: 0;
+  padding: 5px 0 5px;
+}
+
+.formgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 25px 25px;
+  column-gap: 16px;
+  border: none;
+  padding: 2px 0 2px;
 }
 
 .stretch {
-  grid-column: 1 / 8;
+  grid-column: 1 / 10;
 }
 
 .longleft {
-  grid-column: 1 / 6;
+  grid-column: 1 / 7;
 }
 
 .shortright {  
-  grid-column: 6 / 8;
+  grid-column: 7 / 10;
 }
 
 .shortleft {
@@ -25,7 +32,7 @@ fieldset {
 }
 
 .longright {  
-  grid-column: 3 / 8;
+  grid-column: 3 / 10;
 }
 
 .halfleft {
@@ -33,15 +40,16 @@ fieldset {
 }
 
 .foursix {
-  grid-column: 4 / 6;
+  grid-column: 4 / 8;
 }
 
 .sixseven {
-  grid-column: 6 / 7;
+  grid-column: 8 / 9;
 }
 
 .seveneight {
-  grid-column: 7 / 8;
+  grid-column: 9 / 10;
+  flex-direction: column;
 }
 
 
@@ -50,13 +58,12 @@ legend {
   font-weight: bold;
   color: app.$purple;
   margin-left: 4px;
-  padding-bottom: 5px;
-  
+  padding-bottom: 0px;
+  padding-top: 20px;
 }
 
-
-.form__container-input, .form__container-input:focus { 
-  margin-top: 15px;
+.form__container-input, .form__container-input:focus, .form__container-textfieldinput { 
+  margin-top: 10px;
   color: app.$purple;
   font-size: 20px;
   font-weight: 600;
@@ -65,11 +72,18 @@ legend {
   padding: 0 10px;
   width: 100%; 
   max-width: 100%;
-  height: 43px;
+  height: 40px;
 }
 
+.form__container-textfieldinput {
+  height: 250px;
+  resize: none;
+  padding: 10px;
+  font-weight: 300;
+  color: app.$asphalt;
+}
 
-.form__container-input:focus {
+.form__container-input:focus, .form__container-textfieldinput:focus {
   border-color: app.$grapefruitred;
   outline: none;
   box-shadow: 0 0 0 2px app.$grapefruitred inset;
@@ -77,17 +91,18 @@ legend {
 
 
 .form__container-input::placeholder {
-  color: app.$purple;
+  color: app.$light-purple;
   font-weight: 300;
+  font-size: 16px;
 }
 
 .form__container-redirect {
-  color: app.$purple;
+  color: app.$light-purple;
   padding: 10px;
   position: relative;
   font-weight: 300;
+  font-size: 10px;
 }
-
 
 .form__container__error__container {
   list-style-type: none;
@@ -98,12 +113,7 @@ legend {
   border-radius: 3px;
   margin: 12px auto;
   font-size: 16px;
-
-  
 }
-
-
-
 
 .signout{
   cursor: pointer;

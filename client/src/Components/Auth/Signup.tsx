@@ -43,10 +43,10 @@ const Signup = () => {
       notes: '',
     });
 
-    const [kids, setKids] = useState<Kid[]>([{name: '', dateOfBirth: '', gender:''}]);
+    const [kids, setKids] = useState<Kid[]>([{ name: '', dateOfBirth: '', gender:'' }]);
 
     const addKid = () => {
-      setKids([ ...kids, {name: '', dateOfBirth: '', gender:''} ])
+      setKids([ ...kids, { name: '', dateOfBirth: '', gender:'' } ])
     }
   
     const handleKidFieldsChange = (
@@ -61,13 +61,13 @@ const Signup = () => {
     };
   const handleKidFieldDelete=(i:number)=>{
       const deleteVal = [...kids]
-      deleteVal.splice(i,1)
+      deleteVal.splice(i, 1)
       setKids(deleteVal)
   }
   
   const [errors, setErrors] = useState({});
 
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });
   };
 
@@ -92,7 +92,6 @@ const Signup = () => {
       validationErrors.userEmail = 'Please enter a valid email';
     }
   
-  
     if (!userData.userPassword) {
       validationErrors.userPassword = 'Please enter your password';
     } else if (userData.userPassword.length < 6) {
@@ -104,9 +103,6 @@ const Signup = () => {
     } else if (userData.confirmPassword !== userData.userPassword) {
       validationErrors.confirmPassword = 'Passwords do not match';
     }
-
-
-    
 
     setErrors(validationErrors);
 
@@ -128,7 +124,6 @@ const Signup = () => {
     
   }
 
- 
   return (
     <>
     <div className="graybg">
@@ -136,7 +131,7 @@ const Signup = () => {
     <Header />
         <h2>Create account</h2>
       <form onSubmit={submitForm} className="form__container">
-      <fieldset>
+      <fieldset className="formgrid">
       <legend>Personal details</legend>
       <input className="form__container-input stretch" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
       <input className="form__container-input stretch" type="text" name="lastName" value={userData.lastName} onChange={onInputChange} placeholder="Last name" />
@@ -154,9 +149,9 @@ const Signup = () => {
        <label htmlFor="other">Other</label>
       </div>
       </div>
+      <hr className="stretch"/>
       </fieldset>
-      <hr />
-      <fieldset>
+      <fieldset className="formgrid">
       <input className="form__container-input longleft" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
       <input className="form__container-input shortright" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
       <input className="form__container-input shortleft" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
@@ -164,59 +159,72 @@ const Signup = () => {
       <input className="form__container-input stretch" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
       </fieldset>
 
-      <fieldset>
+      <fieldset className="formgrid">
       <input className="form__container-input stretch" type="text" name="userEmail" value={userData.userEmail} onChange={onInputChange} placeholder="Email" />
       <input className="form__container-input stretch" type="password" name="userPassword" value={userData.userPassword} onChange={onInputChange} placeholder="Password" />
       <input className="form__container-input stretch" type="password" name="confirmPassword" value={userData.confirmPassword} onChange={onInputChange} placeholder="Confirm Password" />
-      
+      <hr className="stretch"/>
       </fieldset>
-      <hr />
-     
-      <h4>Your little one(s)</h4>
 
+      <fieldset>
+      <legend>Your little one(s)</legend>
   
       {
         kids.map((val,i) =>
-        <fieldset key={i}>
-            <input key={`kidname${i + 1}`} autoComplete='none' className="form__container-input stretch" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')}  placeholder="Name" />
-            <input autoComplete='none' className="form__container-input halfleft" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
-            <div className="radio-button-wrapper foursix">
-              <div className="custom_radio">
-                <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
-                <label htmlFor={`boy${i + 1}`}>Boy</label>
-              </div>
-              <div className="custom_radio">
-                <input type="radio" id={`girl${i + 1}`} value="girl" checked={val.gender === 'girl'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
-                <label htmlFor={`girl${i + 1}`}>Girl</label>
-              </div>
+        <div className="formgrid" key={i}>
+          <input key={`kidname${i + 1}`} autoComplete='none' className="form__container-input stretch" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')}  placeholder="Name" />
+          <input autoComplete='none' className="form__container-input halfleft" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
+          <div className="radio-button-wrapper foursix">
+            <div className="custom_radio">
+              <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
+              <label htmlFor={`boy${i + 1}`}>Boy</label>
             </div>
-            {i === kids.length - 1 ? (
-        <button className="sixseven" onClick={() => handleKidFieldDelete(i)}><DeleteIcon /></button>
-      ) : (
-        <button className="seveneight" onClick={() => handleKidFieldDelete(i)}><DeleteIcon /></button>
-      )}
-        </fieldset>
+            <div className="custom_radio">
+              <input type="radio" id={`girl${i + 1}`} value="girl" checked={val.gender === 'girl'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
+              <label htmlFor={`girl${i + 1}`}>Girl</label>
+            </div>
+          </div>
+
+          { i === kids.length - 1 && kids.length > 1 ? (
+        <div className="icon sixseven" onClick={() => handleKidFieldDelete(i)}>
+          <DeleteIcon />
+        </div>
+      ) : i !== kids.length - 1 ? (
+        <div className="icon seveneight" onClick={() => handleKidFieldDelete(i)}>
+      
+          <DeleteIcon />
+        </div>
+      ) : null }
+      { i === kids.length - 1 ? (
+       <div className="icon seveneight" onClick={addKid}><AddIcon /></div>
+      
+      ) : null }
+       <hr className='stretch'/>
+    </div>
+
+        
         )
       }
-          <button className="seveneight" type="button" onClick={addKid}><AddIcon /></button>
-          
+      </fieldset>
+      <fieldset>
+      <legend>Notes:</legend>
+   
+      <textarea className="form__container-textfieldinput stretch" name="notes" value={userData.notes} onChange={onInputChange} />
+      </fieldset>
 
-
-          <input className="form__container-textfieldinput stretch" type="textfield" name="notes" value={userData.notes} onChange={onInputChange} />
-
-
-{Object.keys(errors).length > 0 && (
-  <div className="stretch">
-    {Object.values<string | undefined>(errors).map((error, index) => {
-      if (typeof error === 'string') {
-        return (
-          <div className="form__container__error__container stretch" key={index}>
+      
+        {Object.keys(errors).length > 0 && (
+          <div className="stretch">
+            {Object.values<string | undefined>(errors).map((error, index) => {
+            if (typeof error === 'string') {
+            return (
+            <div className="form__container__error__container stretch" key={index}>
             {error}
-          </div>
+            </div>
         );
       }
       return null;
-    })}
+      })}
   </div>
 )}
 
@@ -228,12 +236,6 @@ const Signup = () => {
   </div>
   </>
   );
-      
-
 }
 
-
 export default Signup;
-
-
-  
