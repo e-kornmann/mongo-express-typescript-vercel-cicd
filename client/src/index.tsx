@@ -13,7 +13,7 @@ import Signup from './Components/Auth/Signup';
 import Signin from './Components/Auth/Signin';
 import Checkout from './Components/Checkout/Checkout';
 import SuccessPage from './Components/SuccessPage/SuccessPage';
-import UpdateProfile from './Components/Profile/UpdateProfile';
+import UpdateProfile from './Components/Auth/UpdateProfile';
 import { Provider } from 'react-redux';
 
 import MyBookings from './Components/MyBookings/MyBookings';

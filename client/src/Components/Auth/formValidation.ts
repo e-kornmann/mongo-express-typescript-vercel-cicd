@@ -4,9 +4,8 @@ export const validateFirstName = (value:  string) => {
   if (!value) { return 'Please enter your first name';} 
   };
   
-export const validateLastName = (value:  string | undefined) => { 
+export const validateLastName = (value:  string) => { 
   if (!value) { return 'Please enter your last name';}
-    return undefined;
 };
 
 export const validateParent = (value:  string | undefined) => {

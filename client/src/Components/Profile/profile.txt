@@ -111,9 +111,9 @@ const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       <form onSubmit={handleUpdate} className="form__container">
       <fieldset>
       <legend>Personal details</legend>
-      <input className="form__container-input stretch" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
-      <input className="form__container-input stretch" type="text" name="lastName" value={userData.lastName} onChange={onInputChange} placeholder="Last name" />
-      <div className="radio-button-wrapper stretch">
+      <input className="form__container-input oneeleven" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
+      <input className="form__container-input oneeleven" type="text" name="lastName" value={userData.lastName} onChange={onInputChange} placeholder="Last name" />
+      <div className="radio-button-wrapper oneeleven">
       <div className="custom_radio">
       <input type="radio" id="father" value="father" checked={userData.parent === 'father'} onChange={onInputChange} name="parent" />
        <label htmlFor="father">Father</label>
@@ -130,11 +130,11 @@ const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       </fieldset>
       <hr />
       <fieldset>
-      <input className="form__container-input longleft" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
-      <input className="form__container-input shortright" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
-      <input className="form__container-input shortleft" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
-      <input className="form__container-input longright" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
-      <input className="form__container-input stretch" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
+      <input className="form__container-input oneseven" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
+      <input className="form__container-input seveneleven" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
+      <input className="form__container-input onethree" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
+      <input className="form__container-input threeeleven" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
+      <input className="form__container-input oneeleven" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
       </fieldset>
 
   
@@ -146,9 +146,9 @@ const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       {
         newKids.map((val,i) =>
         <fieldset key={i}>
-            <input className="form__container-input stretch" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} />
-            <input className="form__container-input halfleft" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
-            <div className="radio-button-wrapper foursix">
+            <input className="form__container-input oneeleven" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} />
+            <input className="form__container-input onefour" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
+            <div className="radio-button-wrapper foureight">
               <div className="custom_radio">
                 <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
                 <label htmlFor={`boy${i + 1}`}>Boy</label>
@@ -159,26 +159,26 @@ const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
               </div>
             </div>
             {i === newKids.length - 1 ? (
-        <button className="sixseven" onClick={() => handleKidFieldDelete(i)}>Delete</button>
+        <button className="eightnine" onClick={() => handleKidFieldDelete(i)}>Delete</button>
       ) : (
-        <button className="seveneight" onClick={() => handleKidFieldDelete(i)}>Delete</button>
+        <button className="nineten" onClick={() => handleKidFieldDelete(i)}>Delete</button>
       )}
         </fieldset>
         )
       }
-          <button className="seveneight" type="button" onClick={addKid}><AddIcon /></button>
+          <button className="nineten" type="button" onClick={addKid}><AddIcon /></button>
            
         
 
-          <input className="form__container-textfieldinput stretch" type="textfield" name="notes" value={userData.notes} onChange={onInputChange} />
+          <input className="form__container-textfieldinput oneeleven" type="textfield" name="notes" value={userData.notes} onChange={onInputChange} />
 
 
 {Object.keys(errors).length > 0 && (
-  <div className="stretch">
+  <div className="oneeleven">
     {Object.values<string | undefined>(errors).map((error, index) => {
       if (typeof error === 'string') {
         return (
-          <div className="form__container__error__container stretch" key={index}>
+          <div className="form__container__error__container oneeleven" key={index}>
             {error}
           </div>
         );
@@ -188,7 +188,7 @@ const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   </div>
 )}
 
-<button type="submit" className="btn stretch">Submit</button>
+<button type="submit" className="btn oneeleven">Submit</button>
 
 
   </form>
