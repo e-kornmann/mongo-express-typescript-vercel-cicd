@@ -7,6 +7,7 @@ import "./auth.scss";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../types';
+import AuthDetails from '../AuthDetails';
 
 
 const Signin = () =>  {
@@ -30,7 +31,7 @@ const Signin = () =>  {
           userEmail: email,
           userPassword: password,
         }) as unknown as AuthUser)
-        .then(()=> navigate('/'));
+        .then(()=> navigate('/summary'));
       } catch (error) {
         console.error(error);
       };
@@ -38,6 +39,7 @@ const Signin = () =>  {
 
   return (
     <>
+    <AuthDetails />
     <div className="islandaquabg" style={{ backgroundImage: `url(${ background })` }}>
     <Header />
     <h2>Log In to your Account</h2>

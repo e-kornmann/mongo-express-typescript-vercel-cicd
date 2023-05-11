@@ -7,13 +7,10 @@ import api from '../../Api/api';
 import { clear } from '../../store/slices/bookingSlice';
 import { AuthUser, InsertedBooking } from '../../types';
 
-const SuccessPage: React.FC = () => {
-  
-
+const SuccessBooking: React.FC = () => {
   const booking: InsertedBooking = useSelector((state: any) => state.booking);
   const user: AuthUser = useSelector((state: any) => state.user);
   const { userId, userEmail } = user;
-
 
   const dispatch = useDispatch(); 
   const navigate = useNavigate();
@@ -23,8 +20,6 @@ const SuccessPage: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const bookingId = `${currentYear}${small_id}`;
 
-
-
   const completedBooking: InsertedBooking = {
     ...booking, 
     bookingId: bookingId,
@@ -32,21 +27,17 @@ const SuccessPage: React.FC = () => {
     userEmail: userEmail,
   }
 
-    
   const sendEmailFunction = useCallback(async () => {
     await api
       .post('api/sitters/send-email', { email: userEmail, bookingId: bookingId })
       .then((response) => {
         console.log('Response:', response.data);
-        setTimeout(() => navigate('/'), 10000); // add timeout here
       })
       .catch((error) => {
         console.error('Error:', error);
       });
-  }, [userEmail, bookingId, navigate]);
+  }, [userEmail, bookingId]);
 
- 
-  
   useEffect(() => {
     api
       .post('api/bookings', completedBooking)
@@ -61,9 +52,7 @@ const SuccessPage: React.FC = () => {
    // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
   
-
-console.log(3)
-  return (
+return (
     <>
       <h1>Payment Successful</h1>
       <div className="success-checkmark">
@@ -82,4 +71,4 @@ console.log(3)
   )
 }
 
-export default SuccessPage;
+export default SuccessBooking;

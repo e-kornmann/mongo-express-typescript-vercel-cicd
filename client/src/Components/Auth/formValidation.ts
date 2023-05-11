@@ -1,42 +1,13 @@
 import { Kid } from "../../types";
 
-export const validateFirstName = (value:  string) => { 
-  if (!value) { return 'Please enter your first name';} 
-  };
-  
-export const validateLastName = (value:  string) => { 
-  if (!value) { return 'Please enter your last name';}
-};
-
-export const validateParent = (value:  string | undefined) => {
-  if (!value) { return 'Please indicate your parental status';} 
-   return undefined;
-};
-
-export const validateStreet = (value: string | undefined) => {
-  if (!value) { return 'Please enter your street name';} 
-    return undefined;
- };
-
-export const validateHouseNumber = (value:  string | undefined) => { 
-  if (!value) { return 'Please enter your house number';} 
-    return undefined;
-};
-
-export const validateZipCode = (value:  string | undefined) => { 
-  if (!value) { return 'Please enter your postal code';} 
-    return undefined;
-};
-
-export const validateCity = (value:  string | undefined) => { 
-  if (!value) { return 'Please specify your city';} 
-    return undefined;
-};
-
-export const validateTelephoneNumber = (value:  string | undefined) => { 
-  if (!value) { return 'Please enter your telephone number';} 
-    return undefined;
-};
+export const validateFirstName = (value:  string) =>  !value ? 'Please enter your first name' : undefined; 
+export const validateLastName = (value:  string) => !value ? 'Please enter your last name' : undefined;
+export const validateParent = (value:  string) => !value ? 'Please indicate your parental status' : undefined;
+export const validateStreet = (value: string) => !value ? 'Please enter your street name' : undefined;
+export const validateHouseNumber = (value:  string) => !value ? 'Please enter your house number' : undefined;
+export const validateZipCode = (value:  string) => !value ? 'Please enter your postal code' : undefined;
+export const validateCity = (value:  string) => !value ? 'Please specify your city'  : undefined;
+export const validateTelephoneNumber = (value:  string) => !value ? 'Please enter your telephone number' : undefined;
 
 export const validateKids = (kids: Kid[] | undefined): string | undefined => {
     if (!kids) {

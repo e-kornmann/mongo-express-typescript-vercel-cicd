@@ -12,7 +12,8 @@ import Summary from './Components/Checkout/Summary';
 import Signup from './Components/Auth/Signup';
 import Signin from './Components/Auth/Signin';
 import Checkout from './Components/Checkout/Checkout';
-import SuccessPage from './Components/SuccessPage/SuccessPage';
+import SuccessBooking from './Components/SuccessPage/SuccessBooking';
+import SuccessUpdateProfile from './Components/SuccessPage/SuccessUpdateProfile';
 import UpdateProfile from './Components/Auth/UpdateProfile';
 import { Provider } from 'react-redux';
 
@@ -40,7 +41,9 @@ root.render(
         <Route path="/selectedsitter" element={<SelectedSitter />} />
         <Route path="/summary" element={<Summary />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/success" element={<SuccessPage />} />
+        <Route path="/success/booking" element={<SuccessBooking />} />
+        <Route path="/success/update" element={<SuccessUpdateProfile />} />
+        SuccessUpdateProfile
   
        </Routes>
        </PersistGate>
@@ -53,3 +56,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
+

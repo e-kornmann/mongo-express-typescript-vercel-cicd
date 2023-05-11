@@ -44,7 +44,7 @@ const Checkout = React.memo(() => {
     const navigate = useNavigate();
         setTimeout(() => (500))
         if (success) {
-            navigate("/success");
+            navigate("/success/booking");
         }
 
     

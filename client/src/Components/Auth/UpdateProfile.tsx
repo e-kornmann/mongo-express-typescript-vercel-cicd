@@ -99,7 +99,7 @@ const UpdateProfile = () => {
         await dispatch(updateUser(userData));
         dispatch(setUser(userData));
         console.log('User updated!');
-        navigate('/');
+        navigate('/success/update');
       } catch (error) {
         console.error(error);
       }
@@ -209,7 +209,7 @@ const UpdateProfile = () => {
             </div>
           )}
 
-          <button type="submit" className="btn oneeleven">Submit</button>
+          <button type="submit" className="btn oneeleven">Update profile</button>
 
 
         </form>

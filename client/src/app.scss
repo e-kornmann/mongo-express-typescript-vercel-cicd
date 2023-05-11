@@ -121,26 +121,27 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
   bottom: 70px;
   width: 100%;
+  margin-top: 90px;
 }
 
 .main__link, .pick__date {
+  display: flex;
   font-weight: 600;
   text-decoration: none;
-  border: 3px solid white;
+  border: 4px solid white;
   border-radius: 3px;
   width: 80%;
   max-width: 630px;
-  padding: 13px;
   text-align: center;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
   font-size: 25px;
   color: white;
-}
+  height: 56px;
+  }
 
 .pick__date {
   background-color: white;
@@ -153,7 +154,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   display: flex;
   flex-direction: column;
   width: 90%;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0px auto 130px;
 }
 
@@ -167,7 +168,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 0px 20px 160px;
 }
