@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userReducer from './slices/authSlice';
 import bookingReducer from './slices/bookingSlice';
+import sitterReducer from './slices/sitterSlice';
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
@@ -11,7 +12,7 @@ const persistConfig = {
     storage,
 }
 
-const rootReducer = combineReducers({user: userReducer, booking: bookingReducer})
+const rootReducer = combineReducers({user: userReducer, booking: bookingReducer, sitter: sitterReducer})
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

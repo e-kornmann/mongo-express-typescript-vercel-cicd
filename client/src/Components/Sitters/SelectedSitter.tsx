@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import background from "../../Assets/bg-twirls.svg";
 import Header from "../Header/Header";
 import '../Auth/auth.scss';
@@ -8,16 +8,20 @@ import { SitterType } from "../../types";
 import './sitters.scss';
 import './selectedSitter.scss';
 import AuthDetails from '../AuthDetails';
+import { useSelector } from 'react-redux';
 
 
 
 
-const SelectedSitter: React.FC = (props) => {
-  const location = useLocation();
-  const propsData = location.state;
-  const { name, description, dateOfBirth, image, gender, availability } = propsData.sitter as SitterType;
+
+const SelectedSitter: React.FC = () => {
+  const sitterInfo: SitterType  = useSelector((state: any) => state.sitter);
+  const { name, image, dateOfBirth, gender, description, availability } = sitterInfo;
+  
+   
   const dob = moment(dateOfBirth, 'DD/MM/YYYY');
   const age = moment().diff(dob, 'years');
+ 
   
 
   return (
@@ -44,7 +48,7 @@ const SelectedSitter: React.FC = (props) => {
 
       <div className="main__container--button__container">
         <Link to='/sitters' className="btn--back" style={{textDecoration: 'none'}}>Back</Link>
-        <Link to='/summary' className="btn" state= { propsData }>Next</Link>
+        <Link to='/summary' className="btn">Next</Link>
       </div>
       </div>
     </>

@@ -7,7 +7,8 @@ import './sitters.scss';
 import Header from "../Header/Header";
 import AuthDetails from '../AuthDetails';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSitter } from '../../store/slices/bookingSlice';
+import { setSitterForBooking } from '../../store/slices/bookingSlice';
+import { setSitter } from '../../store/slices/sitterSlice';
 
 const Sitters: React.FC = () => {
   const dispatch = useDispatch();
@@ -58,11 +59,12 @@ const Sitters: React.FC = () => {
          {sitters.map((sitter: SitterType) => (
         <div key={sitter.id}>
         <Link to='/selectedsitter' onClick={() => {
-          dispatch(setSitter({
+          dispatch(setSitterForBooking({
             sitterId: sitter.id,
             sitterName: sitter.name 
-            } as InsertedBooking))
-            }} state={{sitter: sitter}} 
+            } as InsertedBooking));
+          dispatch(setSitter(sitter));
+                }}  
             style={{textDecoration: 'none'}}>
         <div className="availablesitters__card">
         <img className="availablessitters__card__sitterimg" src={sitter.image} width="100" alt="" /><br />

@@ -18,7 +18,7 @@
 }
 
 .payment {
-    position: absolute;
+    
     top: 350px;
     left: 60px;
     width: 80%;
@@ -115,9 +115,6 @@
   font-weight: 700;
   }
   
-.buttons-container {
-    grid-column: 1 / 4;
-}
 
 .included, .excluded {
   font-weight: 400;

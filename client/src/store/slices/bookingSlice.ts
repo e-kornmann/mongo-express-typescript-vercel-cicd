@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { InsertedBooking } from '../../types';
 
+
 const emptybookingState = {
     sitterId: "empty", 
     sitterName: "empty", 
@@ -9,6 +10,7 @@ const emptybookingState = {
     dayNameOfBooking: "empty", 
     startTime: "empty", 
     endTime: "empty", 
+    includedKids: [],
     price: 0, 
   } as InsertedBooking;
   
@@ -16,7 +18,7 @@ const bookingSlice = createSlice({
     name: 'booking',
     initialState: emptybookingState,
     reducers: {
-      setSitter: (state: InsertedBooking, action: PayloadAction<InsertedBooking>): InsertedBooking => {
+      setSitterForBooking: (state: InsertedBooking, action: PayloadAction<InsertedBooking>): InsertedBooking => {
         return {
           ...state,
           sitterId: action.payload.sitterId,
@@ -35,15 +37,16 @@ const bookingSlice = createSlice({
       setPrice: (state: InsertedBooking, action: PayloadAction<InsertedBooking>): InsertedBooking => {
         return {
           ...state,
+          includedKids: action.payload.includedKids,
           price: action.payload.price,
       };
     },
-      clear: (state) => {
-        localStorage.removeItem('booking');
+
+      clear: () => {
         return emptybookingState;
       },
     }, 
   });
   
-  export const { setSitter, setBookingData, setPrice, clear } = bookingSlice.actions;
+  export const { setSitterForBooking, setBookingData, setPrice, clear } = bookingSlice.actions;
   export default bookingSlice.reducer;

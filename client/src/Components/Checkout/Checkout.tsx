@@ -45,22 +45,23 @@ const Checkout = React.memo(() => {
         setTimeout(() => (500))
         if (success) {
             navigate("/success/booking");
-        }
+         }
 
     
     return (
         <PayPalScriptProvider options={{ "client-id": `${CLIENT_ID}`, currency: "EUR" }}>
         <>
-          <div className="btn" onClick={() => setShow(true)}>Confirm</div>
-            <div className="payment">
-              {show ? (
-                <PayPalButtons 
-                  className='paypal-btn'
-                  style={{ layout: "vertical" }}
-                  createOrder={createOrder}
-                  onApprove={onApprove}/>
-                  ) : null}
-             </div>
+          <div className="btn" onClick={() => setShow(true)}>Checkout</div>
+          <div className="payment">
+          {show && (
+            <PayPalButtons
+              className="paypal-btn"
+              style={{ layout: "vertical" }}
+              createOrder={createOrder}
+              onApprove={onApprove}
+            />
+          )}
+        </div>
         </>
         </PayPalScriptProvider>
         )

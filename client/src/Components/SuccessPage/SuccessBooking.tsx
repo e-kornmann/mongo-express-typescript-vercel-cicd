@@ -6,11 +6,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import api from '../../Api/api';
 import { clear } from '../../store/slices/bookingSlice';
 import { AuthUser, InsertedBooking } from '../../types';
+import { clearSelectedSitter } from '../../store/slices/sitterSlice';
 
 const SuccessBooking: React.FC = () => {
   const booking: InsertedBooking = useSelector((state: any) => state.booking);
   const user: AuthUser = useSelector((state: any) => state.user);
   const { userId, userEmail } = user;
+  
 
   const dispatch = useDispatch(); 
   const navigate = useNavigate();
@@ -44,6 +46,7 @@ const SuccessBooking: React.FC = () => {
       .then(() => sendEmailFunction())
       .then(() => {
       dispatch(clear())
+      dispatch(clearSelectedSitter())
       setTimeout(() => navigate("/"), 4000);
       })
       .catch((error) => {

@@ -75,10 +75,8 @@ fieldset {
 }
 
 .asphalt {
-
   color: app.$asphalt;
   font-size: 12px;
-  
 }
 
 .light-purple {
@@ -103,7 +101,7 @@ legend {
 .form__container-input, .form__container-input:focus, .form__container-textfieldinput { 
   margin-top: 10px;
   color: app.$purple;
-  font-size: 20px;
+  font-size: 1.0em;
   font-weight: 600;
   border: 1px solid app.$light-purple;
   border-radius: 3px;

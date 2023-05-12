@@ -170,7 +170,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  padding: 0px 20px 160px;
+  padding: 0px 0px 160px;
 }
 
 .btn--back, .btn {
@@ -178,14 +178,16 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   color: white;
   border: $purple;
   font-weight: 600;
-  font-size: 24px;
-  padding: 3px 0 4px;
+  font-size: 20px;
+  padding: 10px;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
   margin-top: 30px;
   border: 3px solid white;
   border-radius: 3px;
+  z-index: 10;
+  max-height: 40px;
 } 
 
 .btn:hover {
@@ -201,4 +203,23 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   width: 100%;
 } 
 
+.backbutton, .next-btn {
+  margin-top: 10px;
+  color: $purple;
+  font-size: 25px;
+  border: 3px solid white;
+  border-radius: 3px;
+  padding: 10px;
+}
 
+.next-btn {
+  background-color: $purple;
+  color: white;
+  border: $purple;
+  padding: 10px;
+  text-align: center;
+  width: 70%;
+  margin-top: 80px;
+  margin-bottom: 150px;
+  text-decoration: none;
+}

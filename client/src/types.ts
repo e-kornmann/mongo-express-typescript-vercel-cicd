@@ -47,6 +47,7 @@ export type Reservation = {
 
 export type InsertBooking = Reservation & AuthUser;
 export interface InsertedBooking extends InsertBooking {
-  bookingId: string;
+  bookingId?: string;
+  includedKids: Kid[],
   price: number;
 }
