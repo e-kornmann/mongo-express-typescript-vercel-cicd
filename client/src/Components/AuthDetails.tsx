@@ -7,11 +7,17 @@ import Signout from "./Auth/Signout";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, setUser } from '../store/slices/authSlice'
 import { User } from "../types";
+import SummaryIconComponent from "./SvgComponents/SummaryIcon";
 
 
 const AuthDetails = () => {
   const dispatch = useDispatch<any>();
   const user: User = useSelector((state: any) => state.user);
+  const summaryInfo = useSelector((state: any) => state.booking.sitterId);
+  const { sitterId, dateOfBooking } = summaryInfo;
+
+
+
   const { userId, userEmail } = user;
 
   useEffect(() => {
@@ -73,6 +79,11 @@ const AuthDetails = () => {
         </>
       )}
       </nav>
+
+      { ((sitterId !== "empty" && dateOfBooking !== "empty") && userId !== 'empty') &&  <SummaryIconComponent />}
+
+
+      
     </>
   );
 };

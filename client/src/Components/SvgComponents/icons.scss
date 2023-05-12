@@ -7,15 +7,12 @@
       }
 
 .purple--icon {
- fill: aqua;
-}
+ fill: app.$grapefruitred;
+}      
       
-      
-.icon__addicon {
- 
+.icon__addicon { 
     fill: app.$grapefruitred;
     cursor: pointer;  
-
 }
 
 .icon__deleteicon {
@@ -23,4 +20,16 @@
     cursor: pointer;
 }
 
+.summaryicon-container {   
+    width: 30px;
+    position: fixed;
+    cursor: pointer;
+    z-index: 15;
+    top: 20px;
+    right: 30px;
 
+}
+
+.icon__summaryicon {
+    width: 30px;
+}

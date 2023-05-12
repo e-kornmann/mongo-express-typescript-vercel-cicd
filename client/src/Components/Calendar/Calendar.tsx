@@ -93,7 +93,7 @@ return (
             startTime: selectedDate.startTime,
             endTime: selectedDate.endTime,
           } as InsertedBooking))
-        }} className='next-btn'>Next</Link>       
+        }} className='lonely-next-btn'>Next</Link>       
        </div>
       </div>
     </>

@@ -14,8 +14,13 @@ const Summary: React.FC = () => {
   const navigate = useNavigate();
   const user: User = useSelector((state: any) => state.user);
   const summaryInfo: InsertedBooking = useSelector((state: any) => state.booking);
-  const { userEmail, kids } = user;
+  const { userEmail, kids = [] } = user; // Provide a default empty array for kids
   const { sitterName, dateOfBooking, dayNameOfBooking, startTime, endTime } = summaryInfo;
+
+
+  
+  
+  
 
   const [includedKids, setIncludedKids] = useState<Kid[]>(kids);
   const [newKidArray, setNewKidArray] = useState<Kid[]>(includedKids);
@@ -71,6 +76,23 @@ const Summary: React.FC = () => {
 
   const exPrice = startRate + durationPrice + kidAmountPrice(includedKids);
   const incPrice = (exPrice / 100) * 121;
+
+     
+if (userEmail === "empty") {
+navigate('/login');
+} 
+useEffect(() => {
+if (dateOfBooking === "empty") {
+  navigate('/calendar');
+}
+if (sitterName === "empty" && dateOfBooking !== "empty")
+  navigate('/sitters')
+}, [navigate, dateOfBooking, sitterName]);
+
+
+
+
+
   const formatHalfHour = (duration: number) => {
     // Check if the decimal part is exactly 0.5
     if (duration % 1 === 0.5) {
@@ -156,7 +178,7 @@ const Summary: React.FC = () => {
       <div className="main__container__summarytable">
         <div className='main__container__summarytable--span extra--tariff'>If you have more than two children, there will be a small additional charge of € {extraKidRate.toFixed(2)} per hour for each extra child.</div>
         </div>
-        <div className="main__container__summarytable">
+        <div className="main__container__summarytable" style={{ paddingBottom: '30px' }}>
         <div className="main__container__summarytable--calcprice">Amount excl. Btw</div>
         <div className="main__container__summarytable--calcprice-out">€ {exPrice.toFixed(2)}</div>
         <div className="main__container__summarytable--onethree topspace">Total amount inc. 21% Btw</div>
@@ -169,7 +191,7 @@ const Summary: React.FC = () => {
         <div onClick={() => dispatch(setPrice(
           { 
             includedKids: includedKids,
-            price: incPrice,
+            price: parseFloat(incPrice.toFixed(2)),
           } as InsertedBooking))}><Checkout />
         </div>
       </div>

@@ -2,36 +2,33 @@
 
 .paypal-btn{
     margin-top: 40px;
+
 }
 
 .tariff {
   color: app.$light-purple;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .extra--tariff {
   position: relative;
   color: app.$grapefruitred;
-  font-size: 13px;
+  font-size: 14px;
   top: -6px;
   padding-right: 100px;
 }
 
 .payment {
-    
-    top: 350px;
-    left: 60px;
-    width: 80%;
-    padding-bottom: 200px;
-    overflow-y: auto;
-    overscroll-behavior-y: contain;
+  grid-column: 1 / 3;
+  width: 100%;
+
 }
 
 .main__container__summarytable, .main__container__summarytable--small, .main__container__summarytable--extrasmall {
     display: grid;
     grid-template-columns: 40% 40% 20%;
     grid-auto-rows: 40px;
-    font-size: 16px;
+    font-size: 17px;
     color: app.$purple;
     font-weight: 500;
     padding: 5px;
@@ -118,9 +115,10 @@
 
 .included, .excluded {
   font-weight: 400;
-  font-size: 13px;
+  font-size: 14px;
   position: relative;
   left: 15px;
+  cursor: pointer;
 }
 
 .included::before, .excluded::before  {

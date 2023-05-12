@@ -1,4 +1,4 @@
-
+@use '../../app.scss';
 
 
 .maincontainer__sitterinfo {
@@ -6,7 +6,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 120px 110px;
   grid-template-rows: 400px 40px auto;
   font-size: 34px;
-  color: white;
+  color: app.$purple;
   font-weight: 600;
   padding: 20px;
 }  
@@ -37,7 +37,7 @@
 .maincontainer__sitterinfo--description {
     grid-column: 1 / 7;
     grid-row: 3 / 4;
-    font-size: 23px;
+    font-size: 17px;
     letter-spacing: 0.025em;
     line-height: 1.35em;
     padding-top: 30px;

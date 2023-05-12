@@ -27,7 +27,7 @@ const SelectedSitter: React.FC = () => {
   return (
     <>
       <AuthDetails />
-      <div className="islandaquabg" style={{ backgroundImage: `url(${background})` }}>
+      <div className='graybg'>
         <Header />
        <br />
        

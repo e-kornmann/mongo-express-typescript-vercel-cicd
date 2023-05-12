@@ -9,13 +9,15 @@ import AuthDetails from '../AuthDetails';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSitterForBooking } from '../../store/slices/bookingSlice';
 import { setSitter } from '../../store/slices/sitterSlice';
+import LoadingSpinner from './Loading';
 
 const Sitters: React.FC = () => {
   const dispatch = useDispatch();
   const dateAndTimeslot: InsertedBooking = useSelector((state: any) => state.booking);
   const { dateOfBooking, startTime, endTime, dayNameOfBooking } = dateAndTimeslot;
   const [sitters, setSitters] = useState<SitterType[]>([]);
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const getAvailableSitters = async () => {
       try {
@@ -28,12 +30,18 @@ const Sitters: React.FC = () => {
           },
         });
         setSitters(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
-    }
-    getAvailableSitters()
-  }, [dateOfBooking, startTime, endTime, dayNameOfBooking])
+    };
+
+    // Preload sitters on component mount
+    getAvailableSitters();
+  }, [dateOfBooking, startTime, endTime, dayNameOfBooking]);
+
+  // Show loading indicator while sitters are being fetched
+
 
   return (
     <>
@@ -55,8 +63,18 @@ const Sitters: React.FC = () => {
           
           </div>
         </div>
+        <div className="maincontainer">
         <div className="availablesitters">
-         {sitters.map((sitter: SitterType) => (
+
+        { isLoading?  (
+            <LoadingSpinner />
+          ) : (
+                      
+        
+
+
+                       
+         sitters.map((sitter: SitterType) => (
         <div key={sitter.id}>
         <Link to='/selectedsitter' onClick={() => {
           dispatch(setSitterForBooking({
@@ -72,8 +90,12 @@ const Sitters: React.FC = () => {
         </div>
         </Link>
         </div>
-      ))}
+      ))
+    )}
+      
     </div>
+     </div>
+   
     </div>
   </>
   )

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&display=swap');
     
 $main-bg-color:  #FFB3C1;
-$light-purple:#7f7391; 
+$light-purple:#a096b0; 
 $purple:#37008a; 
-$dark-purple:#4402a5; 
+$dark-purple:#29065e; 
 $islandaqua: #00C9B8;
 $gray: #E2E0E5;
 $grapefruitred: #FF5E54;
@@ -51,7 +51,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   text-underline-offset: 2px;
 }
 
-.mainpage, .islandaquabg, .graybg {
+.mainpage, .islandaquabg, .graybg, .lightpurplebg {
   position: fixed;
   background-color: $main-bg-color;
   background-repeat: repeat;
@@ -69,6 +69,10 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
 
 .graybg {
   background-color: $gray;
+}
+
+.lightpurplebg {  
+  background-color: $light-purple;
 }
   
 .main__title {
@@ -173,13 +177,15 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   padding: 0px 0px 160px;
 }
 
-.btn--back, .btn {
+.btn--back, .btn, .lonely-next-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   color: white;
-  border: $purple;
   font-weight: 600;
   font-size: 20px;
-  padding: 10px;
+  padding: 6px;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
@@ -187,39 +193,49 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   border: 3px solid white;
   border-radius: 3px;
   z-index: 10;
-  max-height: 40px;
+  max-height: 40px;  
 } 
 
-.btn:hover {
-  background-color: $dark-purple;
-}
 
 
-.btn {
+.btn, .lonely-next-btn  {
   background-color: $purple;
-  text-align: center;
-  text-decoration: none;
   border: 3px solid $purple;
   width: 100%;
 } 
 
-.backbutton, .next-btn {
-  margin-top: 10px;
-  color: $purple;
-  font-size: 25px;
-  border: 3px solid white;
-  border-radius: 3px;
-  padding: 10px;
+
+
+
+.btn:hover, .lonely-next-btn:hover {
+  background-color: transparent;
+  color: $grapefruitred;
+  border: 3px solid $grapefruitred;
 }
 
-.next-btn {
-  background-color: $purple;
-  color: white;
-  border: $purple;
-  padding: 10px;
-  text-align: center;
+
+.btn--back {
+  background-color: transparent;
+  color: $purple;
+  border: 3px solid $purple;
+}
+
+.btn--back:hover {
+  color: $grapefruitred;
+  border: 3px solid $grapefruitred;
+}
+
+
+.backbutton {
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  color: $purple;
+  font-size: 22px;
+  border: 3px solid white;
+  border-radius: 3px;
+}
+
+.lonely-next-btn {
   width: 70%;
-  margin-top: 80px;
-  margin-bottom: 150px;
-  text-decoration: none;
 }

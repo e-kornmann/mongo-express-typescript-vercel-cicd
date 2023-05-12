@@ -31,7 +31,7 @@ const App = () => {
             <div className='main__btns'>
               <Link className='pick__date' to='/calendar'>Pick Date</Link>
             </div>
-          )};
+          )}
       </div>
       </div>
 
