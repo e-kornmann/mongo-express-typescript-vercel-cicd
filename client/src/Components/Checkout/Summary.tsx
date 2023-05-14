@@ -4,13 +4,13 @@ import Checkout from './Checkout';
 import { User, InsertedBooking, Kid } from '../../types';
 import AuthDetails from '../AuthDetails';
 import { Link, useNavigate } from 'react-router-dom';
-import { setPrice } from '../../store/slices/bookingSlice';
+import { setKidsToSit, setPrice } from '../../store/slices/bookingSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import '../SvgComponents/icons.scss';
 
 const Summary: React.FC = () => {
-  
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const user: User = useSelector((state: any) => state.user);
   const summaryInfo: InsertedBooking = useSelector((state: any) => state.booking);
@@ -19,11 +19,12 @@ const Summary: React.FC = () => {
 
 
   
-  
-  
-
   const [includedKids, setIncludedKids] = useState<Kid[]>(kids);
   const [newKidArray, setNewKidArray] = useState<Kid[]>(includedKids);
+
+  useEffect(() => {
+  dispatch(setKidsToSit({ includedKids } as InsertedBooking ));
+}, [dispatch, includedKids]);
 
   const handleClickEvent = (kid: Kid) => {
     if (includedKids.includes(kid)) {
@@ -43,13 +44,7 @@ const Summary: React.FC = () => {
     }
   };
 
-
-
-
-
-
-  const dispatch = useDispatch();
-
+  
   const hourRate = 6;
   const startRate = 15;
   const extraKidRate = 3;
@@ -190,7 +185,6 @@ if (sitterName === "empty" && dateOfBooking !== "empty")
         </Link>
         <div onClick={() => dispatch(setPrice(
           { 
-            includedKids: includedKids,
             price: parseFloat(incPrice.toFixed(2)),
           } as InsertedBooking))}><Checkout />
         </div>

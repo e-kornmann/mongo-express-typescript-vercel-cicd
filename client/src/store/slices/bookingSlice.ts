@@ -37,10 +37,15 @@ const bookingSlice = createSlice({
       setPrice: (state: InsertedBooking, action: PayloadAction<InsertedBooking>): InsertedBooking => {
         return {
           ...state,
-          includedKids: action.payload.includedKids,
           price: action.payload.price,
       };
     },
+    setKidsToSit: (state: InsertedBooking, action: PayloadAction<InsertedBooking>): InsertedBooking => {
+      return {
+        ...state,
+        includedKids: action.payload.includedKids,
+    };
+  },
 
       clear: () => {
         return emptybookingState;
@@ -48,5 +53,5 @@ const bookingSlice = createSlice({
     }, 
   });
   
-  export const { setSitterForBooking, setBookingData, setPrice, clear } = bookingSlice.actions;
+  export const { setSitterForBooking, setBookingData, setPrice, setKidsToSit, clear } = bookingSlice.actions;
   export default bookingSlice.reducer;

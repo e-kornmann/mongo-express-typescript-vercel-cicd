@@ -141,7 +141,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin: 10px 0 0 0;
   font-size: 25px;
   color: white;
   height: 56px;
@@ -161,6 +161,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   max-width: 500px;
   margin: 0px auto 130px;
 }
+
 
 .form__container hr {
   border: 1px solid white;
@@ -207,10 +208,17 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
 
 
 
-.btn:hover, .lonely-next-btn:hover {
+.btn:hover {
   background-color: transparent;
   color: $grapefruitred;
   border: 3px solid $grapefruitred;
+}
+
+
+.lonely-next-btn:hover {
+  background-color: transparent;
+  color: white;
+  border: 3px solid white;
 }
 
 
