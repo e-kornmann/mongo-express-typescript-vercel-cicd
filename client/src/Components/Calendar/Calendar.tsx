@@ -35,9 +35,7 @@ export default function Calendar() {
     .subtract(30, 'minutes')
     .format();
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const [startTime, setStartTime] = useState(pickupTimeEarliest);
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const [endTime, setEndTime] = useState(pickupTimeLatest);
 const start = (event: { startTime: SetStateAction<string>; }) => setStartTime(event.startTime);
 const end = (event: { endTime: SetStateAction<string>; }) => setEndTime(event.endTime);

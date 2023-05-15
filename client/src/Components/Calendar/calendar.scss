@@ -72,10 +72,10 @@
   font-size: 16px;
   text-align: center;
   background-color: white;
-  width: 43px;
-  height: 44px;
-  margin: 3px 6px 3px 0;
-  padding: 8px 0;
+  width: 39px;
+  height: 37px;
+  margin: 4px 8px 4px 2px;
+  padding: 5px 0 8px; 
   font-weight: 600;
 }
 
@@ -119,15 +119,18 @@
 }
 
 .react-datepicker__navigation-icon {
-  margin-bottom: 9px;
+  
+  position: relative;
+  top: 5px;
+
  }
  
 .react-datepicker__navigation-icon--next {
-  margin-left: 2px;
+  left: 1px;
  }
  
  .react-datepicker__navigation-icon--previous {
-  margin-right: 2px;
+  right: 2px;
  }
 
  .react-datepicker__time-container {
