@@ -7,15 +7,11 @@ const TimeRangeSlider = ({ onTimeChange }: { onTimeChange: (startTime: string, e
     const [minValue2, setMinValue2] = useState<number>(0);
     const [maxValue2, setMaxValue2] = useState<number>(0);
 
-
-
     function convertToTime(minutes: number): string {
         const hours = Math.floor(minutes / 60).toString().padStart(2, "0");
         const mins = (minutes % 60).toString().padStart(2, "0");
         return `${hours}:${mins}`;
       }
-      
-
 
     return (
         <div className="multi-range-slider-container">
@@ -34,7 +30,6 @@ const TimeRangeSlider = ({ onTimeChange }: { onTimeChange: (startTime: string, e
                 const minMinutes = e.minValue % 60;
                 const maxHours = Math.floor(e.maxValue / 60);
                 const maxMinutes = e.maxValue % 60;
-
                 setMinValue(minHours * 60 + minMinutes);
                 setMaxValue(maxHours * 60 + maxMinutes);
               }}
@@ -48,8 +43,6 @@ const TimeRangeSlider = ({ onTimeChange }: { onTimeChange: (startTime: string, e
                 setMaxValue2(maxHours * 60 + maxMinutes);
               }}
             />
-
-
                 
         <div className="divOutput">
               
@@ -61,12 +54,7 @@ const TimeRangeSlider = ({ onTimeChange }: { onTimeChange: (startTime: string, e
                 {convertToTime(maxValue)}
               </div>
             </div>
-          </div>
-
-        
-
-
-     
+          </div>     
       );
     };
     
