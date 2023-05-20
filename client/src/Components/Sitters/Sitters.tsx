@@ -11,11 +11,14 @@ import { setSitterForBooking } from '../../store/slices/bookingSlice';
 import { setSitter } from '../../store/slices/sitterSlice';
 import LoadingSpinner from './Loading';
 
+
 const Sitters: React.FC = () => {
   const dispatch = useDispatch();
   const dateAndTimeslot: InsertedBooking = useSelector((state: any) => state.booking);
   const { dateOfBooking, startTime, endTime, dayNameOfBooking } = dateAndTimeslot;
   const [sitters, setSitters] = useState<SitterType[]>([]);
+  
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,16 +35,12 @@ const Sitters: React.FC = () => {
         setSitters(response.data);
         setIsLoading(false);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching available sitters:', error);
       }
     };
 
-    // Preload sitters on component mount
     getAvailableSitters();
   }, [dateOfBooking, startTime, endTime, dayNameOfBooking]);
-
-  // Show loading indicator while sitters are being fetched
-
 
   return (
     <>
@@ -70,23 +69,36 @@ const Sitters: React.FC = () => {
             <LoadingSpinner />
           ) : (
                       
-        
-
-
-                       
-         sitters.map((sitter: SitterType) => (
+                             
+        sitters.map((sitter: SitterType) => (
         <div key={sitter.id}>
         <Link to='/selectedsitter' onClick={() => {
           dispatch(setSitterForBooking({
             sitterId: sitter.id,
             sitterName: sitter.name 
             } as InsertedBooking));
-          dispatch(setSitter(sitter));
+          dispatch(setSitter({
+            id: sitter.id,
+            name: sitter.name,
+            gender: sitter.gender,
+            dateOfBirth: sitter.dateOfBirth,
+            description: sitter.description,
+            availability: sitter.availability,
+            image: `data:${sitter.avatar!.contentType};base64,${sitter.avatar!.data}`,
+          }));
                 }}  
             style={{textDecoration: 'none'}}>
         <div className="availablesitters__card">
-        <img className="availablessitters__card__sitterimg" src={sitter.image} width="100" alt="" /><br />
+
+        {sitter && sitter.avatar && (
+        <img className="availablessitters__card__sitterimg" src={`data:${sitter.avatar.contentType};base64,${sitter.avatar.data}`} alt="Sitter" />
+      )}
+        
+          <div>
+
+      
           {sitter.name}
+          </div>
         </div>
         </Link>
         </div>

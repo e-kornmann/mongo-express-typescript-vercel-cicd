@@ -1,12 +1,22 @@
+import { Binary } from "mongodb";
+
+
+interface ImageType {
+  data: Binary;
+  contentType: string; 
+}
+
 export type SitterType = {
-  id: string;
+  id: string,
   name: string,
   gender: string;
   dateOfBirth: string,
   description: string,
   availability: string[],
-  image: string
+  avatar?: ImageType,
+  image: string,
 };
+
 
 export type Kid = {
   name: string;

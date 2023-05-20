@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import { SitterType } from '../../types';
+
 
 const emptySitterState = {
     id: "",
@@ -10,9 +10,8 @@ const emptySitterState = {
     description: "",
     availability: [],
     image: ""
+  
   } as SitterType;
-
-
 
   const sitterSlice = createSlice({
     name: 'sitter',
@@ -29,9 +28,11 @@ const emptySitterState = {
           availability: action.payload.availability,
           image: action.payload.image,
       };
+      
     },
-     clearSelectedSitter: () => {
-        return emptySitterState;
+
+    clearSelectedSitter: () => {
+      return emptySitterState;
       },
     }, 
   });

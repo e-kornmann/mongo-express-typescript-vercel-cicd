@@ -1,13 +1,6 @@
 import * as mongoDB from 'mongodb';
-import Moment from 'moment';
-import {extendMoment} from 'moment-range';
-
 import { InsertedBooking } from '../types/types';
 import client from '../db/client';
-
-
-const moment = extendMoment(Moment as any);
-
 
 const getAvailableSitters = async (dOfB: string, sT: string, eT: string, dNOfB: string) => {
   await client.connect();
@@ -36,7 +29,6 @@ const getAvailableSitters = async (dOfB: string, sT: string, eT: string, dNOfB: 
 
   return availableSitters;
 };
-
 
 const getAllSitters = async () => {
   await client.connect();
@@ -70,7 +62,6 @@ const getUserBookings = async (id: string) => {
   const allBookings = await col.find(({ userId: id }) as InsertedBooking).toArray();
   return allBookings;
 };
-
 
 
 export {

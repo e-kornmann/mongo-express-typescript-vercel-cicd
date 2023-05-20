@@ -31,7 +31,7 @@ const SuccessBooking: React.FC = () => {
 
   const sendEmailFunction = useCallback(async () => {
     await api
-      .post('api/sitters/send-email', { email: userEmail, bookingId: bookingId })
+      .post('api/send-email', { email: userEmail, bookingId: bookingId })
       .then((response) => {
         console.log('Response:', response.data);
       })

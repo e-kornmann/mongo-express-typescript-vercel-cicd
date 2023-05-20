@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import dotenv from 'dotenv';
 import cors from 'cors';
-import mailer from './routes/mailjet'
+import nodegmailmailer from './routes/nodemailer'
 import sitters from './routes/sitters'
 import bookings from './routes/bookings';
 
@@ -16,10 +16,8 @@ app.use(cors({
   })
 );
 
-
-
 app.use('/api/sitters', sitters);
-app.use('/api/send-email', mailer);
+app.use('/api/send-email', nodegmailmailer);
 app.use('/api/bookings', bookings);
 
 app.get('/', (_req: Request, res: Response) => {

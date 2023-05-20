@@ -31,10 +31,12 @@ const SelectedSitter: React.FC = () => {
         <br />
 
         <div className="main__container">
-          <div className="maincontainer__sitterinfo">
+ 
             <div className="maincontainer__sitterinfo--image">
-              <img className="availablessitters__card__sitterimg--large" src={image} alt={name} />
+            <img className="availablessitters__card__sitterimg--large" src={image} alt={name} />
+              
             </div>
+            <div className="maincontainer__sitterinfo">
             <div className="maincontainer__sitterinfo--name">{name}</div>
                         <div className="maincontainer__sitterinfo--gender">Age: {age}<br />{gender}</div>
             <div className="maincontainer__sitterinfo--description">{description}</div>
