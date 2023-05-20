@@ -14,12 +14,9 @@ const nodegmailmailer = Router();
         }
       });
   
-nodegmailmailer.post('/', async (req, res) => {
-      
+nodegmailmailer.post('/', (req, res) => {
     const { email, bookingId } = req.body;
-
-
-    if (!email || !bookingId) {
+      if (!email || !bookingId) {
       return res.status(400).json({ error: 'Email is required' });
     }
   
