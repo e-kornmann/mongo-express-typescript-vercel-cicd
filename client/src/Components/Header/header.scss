@@ -1,6 +1,18 @@
-.salt__header--logo{
-height: 23px;
-margin-top: 60px;
+@use '../../app.scss';
 
-width: 100%;
+.salt__header--logo{
+    display: block;
+    position: relative;
+    top: -30px;
+    height: 23px;
+    width: 100%;
+    z-index: 9000;
+    }
+
+
+    @media screen and (min-width: app.$triggerpoint) {
+        
+.salt__header--logo {
+    display: none;
 }
+    }

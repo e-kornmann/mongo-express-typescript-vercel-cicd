@@ -5,9 +5,14 @@ import { Link } from 'react-router-dom';
 
 const SummaryIconComponent = () => {
   return (
-    <Link to="/summary" className="summaryicon-container">
-      <SummaryIcon className="icon__summary" />
-    </Link>
+    
+    <div className="summaryicon-container">
+      <div className="summaryicon-container__summaryicon-bubble">
+    <Link to="/summary">
+      <SummaryIcon className="summaryicon-container__summaryicon-bubble--icon" />
+       </Link>
+    </div>
+    </div>
   );
 };
 

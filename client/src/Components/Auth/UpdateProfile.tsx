@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../Header/Header';
 import { useSelector, useDispatch } from 'react-redux';
-import AuthDetails from '../AuthDetails';
+
 import { Kid, User } from '../../types';
 import { setUser, updateUser } from '../../store/slices/authSlice'
 import {
@@ -109,10 +109,10 @@ const UpdateProfile = () => {
   return (
     <>
       <div className="graybg">
-        <AuthDetails />
+        
         <Header />
-        <h2>Update Profile</h2>
-        <form onSubmit={handleUpdate} className="form__container">
+          <form onSubmit={handleUpdate} className="form__container">
+          <h2 className="main__container--titles">Update Profile</h2>
           <fieldset className="formgrid">
             <legend>Personal details</legend>
             <div className="onefour light-purple">UserId<br /><span className="asphalt">{userId}</span></div>

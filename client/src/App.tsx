@@ -1,7 +1,6 @@
 import Header from './Components/Header/Header';
 import { Link } from 'react-router-dom';
 import background from './Assets/bg.svg';
-import AuthDetails from './Components/AuthDetails';
 import { useSelector } from 'react-redux';
 import { User } from './types';
 
@@ -12,7 +11,8 @@ const App = () => {
 
   return (
     <>
-      <AuthDetails />
+
+
       <div className='mainpage' style={{ backgroundImage: `url(${background})` }}>
         <Header />
 

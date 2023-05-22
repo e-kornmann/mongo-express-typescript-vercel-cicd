@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import Checkout from './Checkout';
 import { User, InsertedBooking, Kid } from '../../types';
-import AuthDetails from '../AuthDetails';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { setKidsToSit, setPrice } from '../../store/slices/bookingSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -83,7 +83,9 @@ if (dateOfBooking === "empty") {
 if (sitterName === "empty" && dateOfBooking !== "empty")
   navigate('/sitters')
 }, [navigate, dateOfBooking, sitterName]);
-
+if (includedKids.length === 0) {
+  navigate('/selectedsitter');
+}
 
 
 
@@ -111,7 +113,7 @@ if (sitterName === "empty" && dateOfBooking !== "empty")
 
   return (
     <>
-      <AuthDetails />
+      
       <div className="graybg">
         <Header />
         <div className="main__container">

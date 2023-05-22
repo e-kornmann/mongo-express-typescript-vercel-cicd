@@ -7,7 +7,7 @@ import "./auth.scss";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { AuthUser } from '../../types';
-import AuthDetails from '../AuthDetails';
+
 
 
 const Signin = () =>  {
@@ -39,7 +39,7 @@ const Signin = () =>  {
 
   return (
     <>
-    <AuthDetails />
+    
     <div className="islandaquabg" style={{ backgroundImage: `url(${ background })` }}>
     <Header />
     <h2>Log In to your Account</h2>

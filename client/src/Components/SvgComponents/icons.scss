@@ -18,18 +18,61 @@
 .icon__deleteicon {
     fill: app.$grapefruitred;
     cursor: pointer;
+    z-index: 9000;
 }
 
 .summaryicon-container {   
-    width: 30px;
     position: fixed;
-    cursor: pointer;
+    width: 100%;
+    top: -110px;
+    right: 40px;
     z-index: 15;
-    top: 20px;
-    right: 30px;
+    height: 30px;
+}
+
+.summaryicon-container__summaryicon-bubble {
+    display:flex;
+    justify-content: end;
+    width: app.$triggerpoint;
+    max-width: 1100px;
+    z-index: 15;
+    border: 1px solid black;
+    margin: 0 auto;
+    height: 30px;
+}
+
+
+
+.summaryicon-container__summaryicon-bubble--icon {
+    position: relative;
+    width: 25px;    
+    height: 25px; 
+    cursor: pointer;
+    top: 118px;
+}
+
+
+@media screen and (max-width: app.$triggerpoint) {
+
+    
+.summaryicon-container {   
+    position: relative;
 
 }
 
-.icon__summaryicon {
-    width: 30px;
+
+    .summaryicon-container__summaryicon-bubble {
+        width: 100%;
+    }
+
+    .summaryicon-container__summaryicon-bubble--icon {
+        position: relative;
+        width: 34px;    
+        right: -20px;
+        height: 34px; 
+        cursor: pointer;
+        top: 130px;
+    }
+
+
 }

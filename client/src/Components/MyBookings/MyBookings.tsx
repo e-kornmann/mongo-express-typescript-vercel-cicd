@@ -1,5 +1,5 @@
 import Header from '../Header/Header';
-import AuthDetails from '../AuthDetails';
+
 import './mybookings.scss';
 import { useSelector } from 'react-redux';
 import { InsertedBooking } from '../../types';
@@ -31,7 +31,7 @@ const MyBookings: React.FC = () => {
 
  return (
     <>
-      <AuthDetails />
+      
       <div className="graybg">
         <Header />
         <h2>My Bookings</h2>

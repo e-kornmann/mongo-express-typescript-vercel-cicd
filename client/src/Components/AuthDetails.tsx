@@ -9,17 +9,17 @@ import { logout, setUser } from '../store/slices/authSlice'
 import { InsertedBooking, User } from "../types";
 import SummaryIconComponent from "./SvgComponents/SummaryIcon";
 
-
 const AuthDetails = () => {
   const dispatch = useDispatch<any>();
   const user: User = useSelector((state: any) => state.user);
+  const { userId, userEmail } = user;
+  
   const summaryInfo: InsertedBooking = useSelector((state: any) => state.booking);
-  const { includedKids, dateOfBooking } = summaryInfo;
+  const { includedKids, dateOfBooking, sitterId } = summaryInfo;
 
 
  
 
-  const { userId, userEmail } = user;
 
   useEffect(() => {
     const listen = onAuthStateChanged(firebaseAuth, async (user: any) => {
@@ -64,6 +64,8 @@ const AuthDetails = () => {
 
   return (
     <>
+
+    
     <nav className="navigation">
     <Link to="/">Home</Link> 
     <p>About us</p>
@@ -81,7 +83,7 @@ const AuthDetails = () => {
       )}
       </nav>
 
-      { (includedKids.length !== 0 && dateOfBooking !== "empty" && userId !== 'empty') && <SummaryIconComponent /> }
+      { (includedKids.length !== 0 && dateOfBooking !== "empty" && userId !== 'empty' && sitterId !== 'empty' ) && <SummaryIconComponent /> }
 
 
 

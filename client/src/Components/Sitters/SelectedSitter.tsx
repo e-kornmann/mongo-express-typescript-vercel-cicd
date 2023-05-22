@@ -6,36 +6,34 @@ import moment from 'moment';
 import { SitterType } from "../../types";
 import './sitters.scss';
 import './selectedSitter.scss';
-import AuthDetails from '../AuthDetails';
+
 import { useSelector } from 'react-redux';
-
-
-
-
 
 const SelectedSitter: React.FC = () => {
   const sitterInfo: SitterType = useSelector((state: any) => state.sitter);
   const { name, image, dateOfBirth, gender, description, availability } = sitterInfo;
 
-
   const dob = moment(dateOfBirth, 'DD/MM/YYYY');
   const age = moment().diff(dob, 'years');
 
-
-
   return (
     <>
-      <AuthDetails />
+      
       <div className='graybg'>
         <Header />
         <br />
 
+        <div className="moving-name-container"> 
+          <p className="moving-name-container__moving-name">{ name }</p>
+        </div>       
         <div className="main__container">
  
             <div className="maincontainer__sitterinfo--image">
+      
             <img className="availablessitters__card__sitterimg--large" src={image} alt={name} />
               
             </div>
+     
             <div className="maincontainer__sitterinfo">
             <div className="maincontainer__sitterinfo--name">{name}</div>
                         <div className="maincontainer__sitterinfo--gender">Age: {age}<br />{gender}</div>

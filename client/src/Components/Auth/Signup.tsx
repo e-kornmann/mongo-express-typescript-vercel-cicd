@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import './auth.scss';
 import './customradiobuttons.scss';
 import { Link } from 'react-router-dom';
-import AuthDetails from '../AuthDetails';
+
 import { User, Kid } from '../../types';
 import {
   validateFirstName,
@@ -127,7 +127,7 @@ const Signup = () => {
   return (
     <>
       <div className="graybg">
-        <AuthDetails />
+        
         <Header />
         <h2>Create account</h2>
         <form onSubmit={submitForm} className="form__container">

@@ -11,11 +11,9 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
-main {
-  display: block;
-}
 
 hr {
   box-sizing: content-box; /* 1 */

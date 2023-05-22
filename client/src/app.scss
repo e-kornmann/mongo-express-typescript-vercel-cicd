@@ -8,6 +8,8 @@ $islandaqua: #00C9B8;
 $gray: #E2E0E5;
 $grapefruitred: #FF5E54;
 $asphalt: #1c1c1c;
+$triggerpoint: 960px;
+
 
 * {
  font-family: 'Blinker', sans-serif;
@@ -60,7 +62,8 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   height: 100%;
   width: 100%;
   letter-spacing: 0.00em;
-  overflow-y: auto;
+  z-index: 1004;
+  overflow-y: scroll;
 }
 
 
@@ -88,6 +91,12 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   font-weight: 800;
 }
 
+.main__container--titles {
+  padding: 10px 50px 30px !important;
+  border-bottom: 2px solid $purple;
+  margin-bottom: 30px;
+}
+
 .navigation {
   position: fixed;
   background-color: transparent;
@@ -111,10 +120,18 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
     }
 }
 
+
+@media only screen and (max-width: 500px) {
+  .main__container--titles {
+  padding: 10px 5px 30px !important;
+}
+}
+
 @media only screen and (min-width: 600px) {
   .main__title {
       font-size: 4.2em;
     }
+
 }
 
 @media only screen and (min-width: 801px) {
@@ -122,6 +139,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
       font-size: 4.8em;
     }
 }
+
 
 .main__btns { 
   display: flex;
@@ -156,7 +174,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
 
 .form__container, .picker, .main__container {
   position: relative;
-  top: 6%;
+  top: 7%;
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -195,7 +213,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   margin-top: 30px;
   border: 3px solid white;
   border-radius: 3px;
-  z-index: 10;
+  z-index: 9;
   max-height: 40px;  
 } 
 
@@ -249,3 +267,4 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
 .lonely-next-btn {
   width: 70%;
 }
+

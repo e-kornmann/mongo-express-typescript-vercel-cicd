@@ -5,7 +5,7 @@ import { InsertedBooking, SitterType } from "../../types";
 import background from "../../Assets/bg-green.svg";
 import './sitters.scss';
 import Header from "../Header/Header";
-import AuthDetails from '../AuthDetails';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { setSitterForBooking } from '../../store/slices/bookingSlice';
 import { setSitter } from '../../store/slices/sitterSlice';
@@ -44,7 +44,7 @@ const Sitters: React.FC = () => {
 
   return (
     <>
-        <AuthDetails />
+        
         <div className="islandaquabg" style={ { backgroundImage: `url(${background})` } }>
           <Header />
         <div className="timeribbon">

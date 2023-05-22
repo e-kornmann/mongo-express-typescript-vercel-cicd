@@ -10,7 +10,7 @@ import setMinutes from 'date-fns/setMinutes'
 import { subDays, addMonths } from 'date-fns';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import AuthDetails from '../AuthDetails';
+
 import { InsertedBooking } from '../../types';
 import { useDispatch } from 'react-redux';
 import { setBookingData } from '../../store/slices/bookingSlice';
@@ -25,8 +25,8 @@ export default function Calendar() {
 
 
   
-const [startTime, setStartTime] = useState("08:00");
-const [endTime, setEndTime] = useState("18:00");
+const [startTime, setStartTime] = useState("10:00");
+const [endTime, setEndTime] = useState("22:00");
   
   function handleChange(value: Date | null) {
     if (value) {
@@ -45,11 +45,14 @@ const [endTime, setEndTime] = useState("18:00");
 
   return (
     <>  
-      <AuthDetails />
+      
       <div className='mainpage' style={{ backgroundImage: `url(${background})` }}>
         
         <Header />
-        <h2>Handpick a date and select your time-range for your plans.</h2>
+
+        <div className="main__container">
+        <h2 className="main__container--titles">Select a date and specify your preferred time range for your arrangements.</h2>
+ 
         <div className='picker'>
        
           <DatePicker
@@ -78,6 +81,7 @@ const [endTime, setEndTime] = useState("18:00");
           }} className='lonely-next-btn'>Next</Link>       
            
         </div>
+      </div>
       </div>
     </>
   );

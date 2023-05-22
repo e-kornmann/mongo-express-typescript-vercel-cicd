@@ -4,7 +4,9 @@ import './icons.scss';
 
 const DeleteIcon = () => {
   return (
+    <>
       <Delete className="icon__deleteicon" />
+      </>
   );
 };
 
