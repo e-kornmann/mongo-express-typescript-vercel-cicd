@@ -18,6 +18,10 @@
   width: 100%;
 }
 
+.pointer {
+  display: none;
+}
+
 .navbar-container {
   display: flex;
   height: 140px;
@@ -36,7 +40,7 @@
 
 .navbar-logo {
   fill: #fff;
-  justify-self: start;
+  justify-self: flex-start;
   cursor: pointer;
   text-decoration: none;
   display: flex;
@@ -65,7 +69,7 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   list-style: none;
   margin: auto;
 }
@@ -122,11 +126,14 @@
 
 @media screen and (max-width: app.$triggerpoint) {
 
-
+  .pointer {
+    display: block;
+    cursor: pointer;
+  }
   .navbar {
     background: transparent;
     font-size: 1.12rem;
-
+    z-index: 59;
   }
 
 
@@ -192,7 +199,7 @@
     width: 215px;
     border-bottom-right-radius: 40px;
     color: white;
-    z-index: 8000;
+    z-index: 999;
   }
 
   .nav-links, .nav-nonlink {
@@ -255,3 +262,20 @@
     z-index: 8500;
   }
 }
+
+
+.salt__header--logo{
+  position: absolute;
+  top: 130px;
+  height: 23px;
+  width: 100%;
+  z-index: 12;
+}
+
+
+  @media screen and (min-width: app.$triggerpoint) {
+      
+.salt__header--logo {
+  display: none;
+}
+  }

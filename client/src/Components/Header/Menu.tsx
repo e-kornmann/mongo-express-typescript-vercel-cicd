@@ -46,7 +46,7 @@ const Navbar = () => {
 		height: '100%',
 		backgroundColor: click ? 'rgba(34, 26, 34, 0.316)' : 'transparent',
 		transition: 'background-color 0.2s ease-in-out',
-		zIndex: click ? '10' : '-100',
+		zIndex: click ? '51' : '-100',
 		pointerEvents: click ? 'auto' : 'none'
 	};
 
@@ -56,8 +56,8 @@ const Navbar = () => {
 		top: 0,
 		height: 40,
 		backgroundColor: isAtLocation ? '#00C9B8' : '#FF5E54',
-	  zIndex: 10
-		}
+	    zIndex: 10,
+	}
 
 
 	useEffect(() => {
@@ -103,14 +103,16 @@ const Navbar = () => {
 
 	return (
 		<>
-			<div>
-				<div style={overlayStyle} className="gray" onClick={closeMobileMenu}>&nbsp;</div>
-			</div>
+
+		
+		
 
 			<div style={navbarBackground} className="navbar-background"> 
 			<nav className="navbar">
 				<div className="navbar-container container">
-	
+				<div>
+				<div style={overlayStyle} className="gray" onClick={closeMobileMenu}>&nbsp;</div>
+			</div>
 					<div className="menu-icon" onClick={handleClick}>
 						{click ? <div className="cross"><img src={cross} alt="hide button" /></div> : <div className="burger"><img src={burger} alt="show menu button" /></div>}
 					</div>

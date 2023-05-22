@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setUser, signUp } from '../../store/slices/authSlice';
+import { signUp, setUser } from '../../store/slices/authSlice';
 import Header from '../Header/Header';
 import { useDispatch } from 'react-redux';
 import './auth.scss';
 import './customradiobuttons.scss';
 import { Link } from 'react-router-dom';
-
 import { User, Kid } from '../../types';
 import {
   validateFirstName,
@@ -26,6 +25,9 @@ import DeleteIcon from '../SvgComponents/DeleteIcon';
 const Signup = () => {
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
+  
+  const [kids, setKids] = useState<Kid[]>([{ name: '', dateOfBirth: '', gender: '' }]);
+
 
   const [userData, setUserData] = useState<User>({
     firstName: '',
@@ -43,12 +45,9 @@ const Signup = () => {
     notes: '',
   });
 
-  const [kids, setKids] = useState<Kid[]>([{ name: '', dateOfBirth: '', gender: '' }]);
-
   const addKid = () => {
     setKids([...kids, { name: '', dateOfBirth: '', gender: '' }])
   }
-
   const handleKidFieldsChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     i: number,
@@ -56,15 +55,19 @@ const Signup = () => {
   ) => {
     const { value } = event.target;
     const updatedKids = [...kids];
-    updatedKids[i][key] = value;
+    updatedKids[i] = { ...updatedKids[i], [key]: value }; // Update the specific kid object
     setKids(updatedKids);
+    setUserData({ ...userData, kids: updatedKids });
   };
+
   const handleKidFieldDelete = (i: number) => {
     const deleteVal = [...kids]
     deleteVal.splice(i, 1)
     setKids(deleteVal)
+    setUserData({ ...userData, kids: deleteVal });
   }
 
+  
   const [errors, setErrors] = useState({});
 
   const onInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -112,7 +115,6 @@ const Signup = () => {
 
     if (Object.keys(filteredValidationErrors).length === 0) {
       try {
-        setUserData({ ...userData, kids: kids });
         await dispatch(signUp(userData));
         dispatch(setUser(userData));
         console.log('User created successfully!');
@@ -121,16 +123,14 @@ const Signup = () => {
         console.error(error);
       }
     }
-
-  }
+  };
 
   return (
     <>
       <div className="graybg">
-        
         <Header />
-        <h2>Create account</h2>
         <form onSubmit={submitForm} className="form__container">
+        <h2 className="main__container--titles">Create account</h2>
           <fieldset className="formgrid">
             <legend>Personal details</legend>
             <input className="form__container-input oneeleven" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
@@ -152,10 +152,10 @@ const Signup = () => {
             <hr className="oneeleven" />
           </fieldset>
           <fieldset className="formgrid">
-            <input className="form__container-input oneseven" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
-            <input className="form__container-input seveneleven" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
-            <input className="form__container-input onethree" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
-            <input className="form__container-input threeeleven" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
+            <input className="form__container-input street" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
+            <input className="form__container-input housenumber" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
+            <input className="form__container-input zipcode" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
+            <input className="form__container-input place" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
             <input className="form__container-input oneeleven" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
           </fieldset>
 
@@ -173,8 +173,8 @@ const Signup = () => {
               kids.map((val, i) =>
                 <div className="formgrid" key={i}>
                   <input key={`kidname${i + 1}`} autoComplete='none' className="form__container-input oneeleven" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} placeholder="Name" />
-                  <input autoComplete='none' className="form__container-input onefour" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
-                  <div className="radio-button-wrapper foureight">
+                  <input autoComplete='none' className="form__container-input dateofbirth" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
+                  <div className="radio-button-wrapper">
                     <div className="custom_radio">
                       <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
                       <label htmlFor={`boy${i + 1}`}>Boy</label>

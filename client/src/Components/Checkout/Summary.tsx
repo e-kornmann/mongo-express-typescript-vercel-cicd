@@ -73,19 +73,22 @@ const Summary: React.FC = () => {
   const incPrice = (exPrice / 100) * 121;
 
      
-if (userEmail === "empty") {
-navigate('/login');
-} 
-useEffect(() => {
-if (dateOfBooking === "empty") {
-  navigate('/calendar');
-}
-if (sitterName === "empty" && dateOfBooking !== "empty")
-  navigate('/sitters')
-}, [navigate, dateOfBooking, sitterName]);
-if (includedKids.length === 0) {
-  navigate('/selectedsitter');
-}
+
+ useEffect(() => {
+    if (userEmail === "empty") {
+      navigate('/login');
+    } 
+    if (dateOfBooking === "empty") {
+      navigate('/calendar');
+    }
+    if (sitterName === "empty" && dateOfBooking !== "empty") {
+      navigate('/sitters');
+    }
+    if (includedKids.length === 0) {
+      navigate('/selectedsitter');
+    }
+  }, [userEmail, dateOfBooking, sitterName, includedKids]);
+
 
 
 
@@ -117,7 +120,7 @@ if (includedKids.length === 0) {
       <div className="graybg">
         <Header />
         <div className="main__container">
-
+        <h2 className="main__container--titles">Proforma receipt</h2>
           <div className="main__container__summarytable">
             <div className="main__container__summarytable--name">{sitterName}</div>
             <div className="main__container__summarytable--date">

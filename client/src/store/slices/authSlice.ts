@@ -83,13 +83,6 @@ const userSlice = createSlice({
   name: 'user',
   initialState: emptyUserState,
   reducers: {
-    login: (state: User, { payload }): User => {
-      return {
-        ...state,
-        userId: payload.uid,
-        userEmail: payload.email,
-      }
-    },
     setUser: (state: User, { payload }): User => {
       return {
         ...state,
@@ -115,18 +108,8 @@ const userSlice = createSlice({
       .addCase(signUp.pending, (state) => {
         state.stored = 'loading';
       })
-      .addCase(signUp.fulfilled as any, (state, { payload }) => {
-        state.stored = 'user updated';
-        state.firstName = payload.firstName;
-        state.lastName = payload.lastName;
-        state.parent = payload.parent;
-        state.street = payload.street;
-        state.houseNumber = payload.houseNumber;
-        state.zipCode = payload.zipCode;
-        state.city = payload.city;
-        state.telephoneNumber = payload.telephoneNumber;
-        state.kids = payload.kids;
-        state.notes = payload.notes;
+      .addCase(signUp.fulfilled, (state) => {
+        state.stored = 'user subscribed';
       })
       .addCase(signUp.rejected, (state) => {
         state.stored = 'failed';
@@ -155,5 +138,5 @@ const userSlice = createSlice({
 });
  
 
-export const { login, logout, setUser } = userSlice.actions;
+export const { logout, setUser } = userSlice.actions;
 export default userSlice.reducer;

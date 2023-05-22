@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/slices/authSlice";
 import { clear } from "../../store/slices/bookingSlice";
+import { clearSelectedSitter } from "../../store/slices/sitterSlice";
 
 import "./auth.scss";
 
@@ -18,6 +19,7 @@ const dispatch = useDispatch()
             console.log("sign out successful");
             dispatch(logout());
             dispatch(clear())
+            dispatch(clearSelectedSitter());
             navigate("/")
           })
           

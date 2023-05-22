@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 75%  25%;
   grid-auto-rows: 35px;
-  font-size: 18px;
+  font-size: 13px;
   color: app.$purple;
   font-weight: 500;
   padding: 34px 0;
@@ -13,7 +13,6 @@
 
 .main__container__mybookingstable--name {
   grid-column: 1 / 2;
-  border-bottom: 1px solid app.$purple;
   font-weight: 700;
   padding-bottom: 13px;
 }
@@ -32,14 +31,13 @@
 
 .main__container__mybookingstable--calcprice {
   grid-column: 1 / 2;
-  border-bottom: 1px solid app.$purple;
   padding-bottom: 13px;
 }
 
 .main__container__mybookingstable--id {
   grid-column: 2 / 3;
-  border-bottom: 1px solid app.$purple;
   padding-bottom: 13px;
+  font-size: 11px;
 }
 
 .main__container__mybookingstable--totalprice {

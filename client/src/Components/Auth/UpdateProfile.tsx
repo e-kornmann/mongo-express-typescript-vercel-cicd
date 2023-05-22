@@ -49,8 +49,7 @@ const UpdateProfile = () => {
   ) => {
     const { value } = event.target;
     const updatedKids = [...newKids];
-    updatedKids[i] = {
-      ...updatedKids[i],
+    updatedKids[i] = { ...updatedKids[i],
       [key]: value,
     };
     setNewKids(updatedKids);
@@ -115,8 +114,8 @@ const UpdateProfile = () => {
           <h2 className="main__container--titles">Update Profile</h2>
           <fieldset className="formgrid">
             <legend>Personal details</legend>
-            <div className="onefour light-purple">UserId<br /><span className="asphalt">{userId}</span></div>
-            <div className="fiveeleven light-purple">Email:<br /><span className="asphalt">{userEmail}</span></div>
+            <div className="userid light-purple">UserId<br /><span className="asphalt">{userId}</span></div>
+            <div className="email light-purple">Email:<br /><span className="asphalt">{userEmail}</span></div>
             <hr className="oneeleven" />
 
             <input className="form__container-input oneeleven" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
@@ -138,10 +137,10 @@ const UpdateProfile = () => {
             <hr className="oneeleven" />
           </fieldset>
           <fieldset className="formgrid">
-            <input className="form__container-input oneseven" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
-            <input className="form__container-input seveneleven" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
-            <input className="form__container-input onethree" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
-            <input className="form__container-input threeeleven" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
+            <input className="form__container-input street" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
+            <input className="form__container-input housenumber" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
+            <input className="form__container-input zipcode" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
+            <input className="form__container-input place" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
             <input className="form__container-input oneeleven" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
             <hr className="oneeleven" />
           </fieldset>
@@ -154,8 +153,8 @@ const UpdateProfile = () => {
               newKids.map((val, i) =>
                 <div className="formgrid" key={i}>
                   <input key={`kidname${i + 1}`} autoComplete='none' className="form__container-input oneeleven" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} placeholder="Name" />
-                  <input autoComplete='none' className="form__container-input onefour" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
-                  <div className="radio-button-wrapper foureight">
+                  <input autoComplete='none' className="form__container-input dateofbirth" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} placeholder="Date of birth" />
+                  <div className="radio-button-wrapper">
                     <div className="custom_radio">
                       <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
                       <label htmlFor={`boy${i + 1}`}>Boy</label>
