@@ -263,19 +263,3 @@
   }
 }
 
-
-.salt__header--logo{
-  position: absolute;
-  top: 130px;
-  height: 23px;
-  width: 100%;
-  z-index: 12;
-}
-
-
-  @media screen and (min-width: app.$triggerpoint) {
-      
-.salt__header--logo {
-  display: none;
-}
-  }

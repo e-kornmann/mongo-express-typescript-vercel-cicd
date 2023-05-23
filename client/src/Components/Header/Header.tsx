@@ -2,7 +2,7 @@ import React from 'react'
 import logo from '../../Assets/tinysitters_logo.svg';
 import Navbar from './Menu';
 import "./header.scss";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import SummaryIconComponent from "../SvgComponents/SummaryIcon";
 import { InsertedBooking, User } from "../../types";

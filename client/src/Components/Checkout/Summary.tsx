@@ -22,6 +22,23 @@ const Summary: React.FC = () => {
   const [includedKids, setIncludedKids] = useState<Kid[]>(kids);
   const [newKidArray, setNewKidArray] = useState<Kid[]>(includedKids);
 
+
+  useEffect(() => {
+    if (userEmail === "empty") {
+      navigate('/login');
+    } 
+    if (dateOfBooking === "empty") {
+      navigate('/calendar');
+    }
+    if (sitterName === "empty" && dateOfBooking !== "empty") {
+      navigate('/sitters');
+    }
+    if (includedKids.length === 0) {
+      navigate('/selectedsitter');
+    }
+  }, [userEmail, dateOfBooking, sitterName, includedKids, navigate]);
+
+
   useEffect(() => {
   dispatch(setKidsToSit({ includedKids } as InsertedBooking ));
 }, [dispatch, includedKids]);
@@ -74,20 +91,6 @@ const Summary: React.FC = () => {
 
      
 
- useEffect(() => {
-    if (userEmail === "empty") {
-      navigate('/login');
-    } 
-    if (dateOfBooking === "empty") {
-      navigate('/calendar');
-    }
-    if (sitterName === "empty" && dateOfBooking !== "empty") {
-      navigate('/sitters');
-    }
-    if (includedKids.length === 0) {
-      navigate('/selectedsitter');
-    }
-  }, [userEmail, dateOfBooking, sitterName, includedKids]);
 
 
 

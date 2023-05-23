@@ -3,8 +3,8 @@
 .timeribbon {
   width: 100%;
   background-color: app.$grapefruitred;
-  margin-top: 20px;
-  height: 120px;
+  margin-top: 50px;
+  height: 100px;
   padding-top: 0;
 }
 
@@ -12,7 +12,7 @@
 .timeribbon__container {
   position: relative;
   margin: 0 auto;
-  top: -50px;
+  top: -54px;
   max-width: 500px  ;
   margin: 0 auto;
   }
@@ -22,7 +22,7 @@
       position: sticky;
       top: 30px;
       margin-top: 40px;
-      height: 120px;
+      height: 100px;
     }
   }
   
@@ -30,7 +30,7 @@
 
   .timeribbon__container__backbutton-wrapper {
     position: relative;
-    top: 83px;
+    top: 86px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -42,6 +42,8 @@
 
 .timeribbon__container__backbutton-wrapper__backbutton {
   margin: auto auto;
+  position: relative;
+  top: -8px;
   border-color: app.$purple;
   border-style: solid;
   border-width: 3px 3px 0 0;
@@ -50,10 +52,15 @@
   transform: rotate(225deg);
 }
 
+.timeribbon__container > h1 {
+  font-size: 1.5em;
+}
+
 
 .timeribbon__container > h2 {
   position: relative;
   bottom: 6px;
+  font-size: 1.4em;
 }
 
 .availablesitters {

@@ -45,20 +45,30 @@ const MyBookings: React.FC = () => {
   ) : bookings.length === 0 ? (
     <h3>You haven't made any bookings yet</h3>
   ) : (
-    bookings.map((b: InsertedBooking) => {
-          const { bookingId, dateOfBooking, dayNameOfBooking, startTime, endTime, sitterName, price } = b;
+    bookings.reverse().map((b: InsertedBooking) => {
+          const { bookingId, dateOfBooking, dayNameOfBooking, startTime, endTime, sitterName, price, includedKids } = b;
     
           return (
           <div key={ bookingId } className="main__container__mybookingstable">
+     
+        
+            
+             
             <div key={`${bookingId}-name`} className="main__container__mybookingstable--name">{ sitterName }</div>
-            <div key={`${bookingId}-id`} className="main__container__mybookingstable--id">Booking id: {bookingId}</div>
+       
+            <div key={`${bookingId}-kids`} className="main__container__mybookingstable--kids">{includedKids.map((k)=> <span key={k.name}> / {k.name}</span>)}</div>
+            <div key={`${bookingId}-id`} className="main__container__mybookingstable--id">Booking id: <br />{bookingId}</div>
             <div key={`${bookingId}-date`} className="main__container__mybookingstable--date">
-              { dayNameOfBooking }, { dateOfBooking }, { startTime } till { endTime } h
+              { dayNameOfBooking }, { dateOfBooking } from { startTime } till { endTime } h
             </div>
-            <div key={`${dateOfBooking}-price`} className="main__container__mybookingstable--price">€ { price }</div>
+            
+           
+            <div key={`${bookingId}-price`} className="main__container__mybookingstable--price">€ { price }</div>
           </div>
           );
-        }))}
+        }
+        )
+        )}
        </div>
       </div>
     </>
