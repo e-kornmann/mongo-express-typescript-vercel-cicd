@@ -1,47 +1,69 @@
 @use '../../app.scss';
 
-.main__container__mybookingstable {
+.main-container__mybookingstable {
   display: grid;
   grid-template-columns: 70%  20%;
   column-gap: 10%;
-  grid-auto-rows: 23px;
-  font-size: 0.7em;
+  font-size: 1.0em;
   color: app.$purple;
+  line-height: 1.15em;
   font-weight: 500;
   padding: 34px 0;
   align-items: end; 
   border-bottom: 1px dotted app.$purple;
 }  
 
-.main__container__mybookingstable--name {
-  grid-column: 1 / 3;
-  font-weight: 700;
-  font-size: 1.5em;
-  position: relative;
-  top: -10px;
-}
 
-.main__container__mybookingstable--date {
-  grid-column: 1 / 2;
-}
-
-
-
-.main__container__mybookingstable--id {
-  grid-column: 2 / 3;
-  
-}
-
-.main__container__mybookingstable--kids {
+.main-container__mybookingstable--left {
   grid-column: 1 / 2; 
-
 }
 
-.main__container__mybookingstable--price {
+
+.main-container__mybookingstable--right {
   grid-column: 2 / 3;
-
 }
+
+.main-container__mybookingstable--name {
+  font-weight: 700;
+  font-size: 1.1em;
+  position:  relative;
+  top: -5px;
+}
+
+.main-container__mybookingstable--date, .main-container__mybookingstable--price {
+  position:  relative;
+  top: 10px;
+}
+
   
 .buttons-container {
   grid-column: 1/3;
+}
+
+
+@media only screen and (min-width: 250px) and (max-width: 400px) {
+  .main-container__mybookingstable {
+    grid-template-columns: 74%  21%;
+    column-gap: 5%;
+    font-size: 0.75em;
+  }  
+}
+
+
+@media only screen and (min-width: 401px) and (max-width: 600px) {
+  .main-container__mybookingstable {
+    grid-template-columns: 74%  21%;
+    column-gap: 5%;
+    font-size: 0.8em;
+  }  
+}
+
+@media only screen and (min-width: 601px) and (max-width: 800px) {
+  .main-container__mybookingstable {
+    grid-template-columns: 70%  20%;
+    column-gap: 10%;
+    font-size: 1.0em;
+
+  }  
+  
 }

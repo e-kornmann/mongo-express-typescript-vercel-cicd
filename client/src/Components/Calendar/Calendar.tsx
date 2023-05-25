@@ -10,7 +10,6 @@ import setMinutes from 'date-fns/setMinutes'
 import { subDays, addMonths } from 'date-fns';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-
 import { InsertedBooking } from '../../types';
 import { useDispatch } from 'react-redux';
 import { setBookingData } from '../../store/slices/bookingSlice';
@@ -50,8 +49,8 @@ const [endTime, setEndTime] = useState("22:00");
         
         <Header />
 
-        <div className="main__container">
-        <h2 className="main__container--titles">Select a date and specify your preferred time range for your arrangements.</h2>
+        <div className="main-container">
+        <h2 className="main-container--titles calendar">Select a date and specify your preferred time range for your arrangements.</h2>
  
         <div className='picker'>
        
@@ -78,7 +77,7 @@ const [endTime, setEndTime] = useState("22:00");
               startTime: startTime,
               endTime: endTime,
             } as InsertedBooking));
-          }} className='lonely-next-btn'>Next</Link>       
+          }} className='lonely-next-btn' style={{ width : "70%"}}>Next</Link>       
            
         </div>
       </div>

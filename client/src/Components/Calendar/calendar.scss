@@ -1,11 +1,11 @@
 @use '../../app.scss';
 
 .picker {
-  max-width: 400px;
   align-items: center;
   margin-top: 0px;
   padding-top: 0px;
-}
+  width: 420px;
+};
 
 .sub-caption {
   display: flex;
@@ -18,14 +18,14 @@
 };
 
 .react-datepicker {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   background-color: transparent;
   color: app.$purple;
   border: 0px;
   display: block;
   position: relative;
-  width: 350px;
-  height: 350px;
+  width: 420px;
+  height: 400px;
   border-radius: 0;
   border-bottom: 0px solid white;
   margin-bottom: 40px;
@@ -38,8 +38,8 @@
 }
 
 .react-datepicker__header {
-    background-color: transparent;
-  }
+  background-color: transparent;
+}
 
 .react-datepicker__header {
   border: 0px;
@@ -51,7 +51,6 @@
   display: flex;
   align-items: center;
   border-radius: 30px;
-
  }
 
 .react-datepicker__navigation-icon::before {
@@ -68,6 +67,7 @@
 .react-datepicker__month-container {
   width: 100%;
   margin: 0px auto;
+  font-size: 1.0em;
 }
 
 .react-datepicker__current-month {
@@ -84,13 +84,12 @@
 .react-datepicker__day, .react-datepicker__day-name {
   border-radius: 0.3rem;
   color: app.$purple;
-  font-size: 1.35em;
-  text-align: center;
+  font-size: 1.40em;
   background-color: white;
-  width: 42px;
-  height: 39px;
+  width: 48px;
+  height: 47px;
   margin: 2px 2px 2px 2px;
-  padding: 5px 0 8px; 
+  padding: 0.5em 0 0;
   font-weight: 600;
 }
 
@@ -98,7 +97,7 @@
   background-color: transparent;
   font-size: 1.2em;
   position: relative;
-  top: -5px;
+  top: 5px;
   padding: 19px 4px 4px 6px;
   font-weight: 700;
 }
@@ -110,12 +109,12 @@
 
 .react-datepicker__day--disabled {
     background-color: #ffffff;
-    color: app.$main-bg-color;
+    color: app.$light-purple;
 }
 
 .react-datepicker__day--disabled:hover {
   background-color: #ffffff !important;
-  color: app.$main-bg-color !important;
+  color: app.$light-purple !important;
 }
 
 .react-datepicker__day--outside-month {
@@ -136,7 +135,11 @@
 
 .react-datepicker__day--today {
   background-color: #ffffff;
-  color: app.$main-bg-color;
+  color: app.$gray;
+}
+
+.react-datepicker__day--today:hover {
+  color: app.$gray !important;
 }
 
 .react-datepicker__day--selected {
@@ -157,101 +160,173 @@
  }
  
 .react-datepicker__navigation-icon--next {
-  left: 1px;
+  left: -2px;
  }
  
  .react-datepicker__navigation-icon--previous {
-  right: 1px;
+  right: -4px;
  }
 
- .react-datepicker__time-container {
-  width: 100%;
-  margin: auto;
-  background-color: app.$purple;
-  border: 0px;
-  background-color: transparent;
-}
 
-.react-datepicker__time {
-  background-color: transparent;
-  border: 6px;
-}
-
-.react-datepicker__time-box {
-  background-color: transparent;
-  border: 0px;
-}
-
-.react-datepicker__time-list {
-  background-color: transparent;
-  border: 0px;
-}
-
-.react-datepicker__time-list-item {
-  background-color: transparent;
-  border: 0px;
-}
-
-#react-time-range {
-  width: 280px;
-  margin: auto;
-  padding-top: 0px;
-}
-
-#react-time-range > error {
-  min-width: 400px;
-  padding-top: 30px;
-}
-
-.component {
-  width: 200px;
-  color: app.$purple;
-  margin: 20px auto;
-}
-
-#select-start, #select-end { 
-  font-size: 20px;
-  color: app.$purple;
-  height: 40px;
-  width: 67px;
-  margin-left: 30px;
-  text-align: center;
-  border-radius: 0.3em;
-}
-
-#start-component:after {
-  content: " till";
-  position: relative;
-  left: 14px;
-  font-size: 17px;
-}
-
-#end-component {
-  padding: 30px;
-  width: 60px;
-}
-
-option {
-  font-family: 'Blinker', sans-serif;
-  letter-spacing: 0.02em;
-  color: app.$purple;
-  font-size: 10px;
+.multi-range-slider-container {
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto 0 !important;
+  padding: 10px auto 0 !important;
 }
 
 
 
-@media only screen and (max-width: 400px) {
-  
-  .react-datepicker__day, .react-datepicker__day-name {
-    font-size: 1.25em;
-    width: 36px;
-    height: 36px;
-    margin: 2px 2px 2px 2px;
+
+
+
+
+@media only screen and (min-width: 250px) and (max-width: 325px) {
+
+  .calendar {
+    font-size: 1.45em;
   }
+  .react-datepicker {
+  width: 270px;
+  height: 270px;
+  }
+
+  
+.react-datepicker__current-month { 
+  width: 50%;
+  font-size: 1.1em;
+}
+  .react-datepicker__day, .react-datepicker__day-name {
+    width: 27px;
+    height: 27px;
+    margin: 0.15em;
+    font-size: 0.98em;
+    padding-top: 0.05em;
+  }  
+
+  .multi-range-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto 0 !important;
+    padding: 10px auto 0 !important;
+    font-size: 0.85em;
+  }
+
+  .divOutput--time {
+    width: 56px;
+    height: 40px;
+    font-size: 1.1em;
+}
+
+.lonely-next-btn {
+  width: 100% !important;
+  font-size: 1.2em !important;
+}
+}
+
+
+
+@media only screen and (min-width: 326px) and (max-width: 375px) {
+
+  .calendar {
+    font-size: 1.45em;
+  }
+  .react-datepicker {
+  width: 320px;
+  height: 300px;
+  }
+  .react-datepicker__day, .react-datepicker__day-name {
+    width: 35px;
+    height: 32px;
+    font-size: 1.0em;
+    padding-top: 0.2em;
+  }  
+
+  .multi-range-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto 0 !important;
+    padding: 10px auto 0 !important;
+    font-size: 0.85em;
+  }
+
+  .divOutput--time {
+    width: 67px;
+    height: 50px;
+    font-size: 1.2em;
+}
+
+.lonely-next-btn {
+  width: 100% !important;
+  font-size: 1.2em !important;
+}
+}
+
+
+
+@media only screen and (min-width: 376px) and (max-width: 450px) {
+
+  .calendar {
+    font-size: 1.6em;
+    padding-top: 0;
+  }
+  .react-datepicker {
+  width: 360px;
+  height: 360px;
+  }
+  .react-datepicker__day, .react-datepicker__day-name {
+    width: 40px;
+    height: 39px;
+    font-size: 1.1em;
+    padding-top: 0.3em;
+  }  
+
+  .multi-range-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto 0 !important;
+    padding: 10px auto 0 !important;
+  }
+
+  .divOutput--time {
+    width: 70px;
+    height: 55px;
+    font-size: 1.2em;
+}
+
+.lonely-next-btn {
+  width: 100% !important;
+}
+}
+
+
+
+@media only screen and (min-width: 451px) and (max-width: 650px) {
+
 
   .react-datepicker {
-
-    width: 300px;
-    height: 300px;
+  width: 420px;
+  height: 380px;
   }
+  .lonely-next-btn {
+    width: 100% !important;
+    max-width: 410px;
+  }
+  
+}
+
+
+@media only screen and (min-width: 651px) and (max-width: 800px) {
+
+
+  .react-datepicker {
+  width: 380px;
+  height: 360px;
+  }
+
+
+
 }

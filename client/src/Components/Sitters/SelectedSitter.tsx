@@ -26,7 +26,7 @@ const SelectedSitter: React.FC = () => {
         <div className="moving-name-container"> 
           <p className="moving-name-container__moving-name">{ name }</p>
         </div>       
-        <div className="main__container">
+        <div className="main-container">
  
             <div className="maincontainer__sitterinfo--image">
       
@@ -54,7 +54,7 @@ const SelectedSitter: React.FC = () => {
    
 
         
-          <div className="main__container--button__container" style={{ paddingTop: '20px' }}>
+          <div className="main-container--button-container" style={{ paddingTop: '20px' }}>
             <Link to='/sitters' className="btn--back" style={{ textDecoration: 'none' }}>Back</Link>
             <Link to='/summary' className="btn">Next</Link>
           </div>

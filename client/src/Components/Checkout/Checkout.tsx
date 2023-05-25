@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 import { InsertedBooking } from '../../types';
 
 const Checkout = React.memo(() => {
+    const navigate = useNavigate();
     const [show, setShow] = useState(false);
-    const [success, setSuccess] = useState(false);
     const price: InsertedBooking = useSelector((state: any) => state.booking.price);
 
     const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID;
@@ -24,24 +24,18 @@ const Checkout = React.memo(() => {
                 },
             ],
         }).then((orderID: boolean) => {
-            setSuccess(true);
+            
             return orderID;
         });
     };
 
-    const navigate = useNavigate();
-
     const onApprove =  (data: any, actions: any) => {
         return actions.order.capture().then(function (details: any) {
-            setSuccess(true);
+            navigate("/success/booking");
         });
     };
 
-    setTimeout(() => {
-        if (success) {
-            navigate("/success/booking");
-        }
-    }, 500);
+
 
     return (
         <PayPalScriptProvider options={{ "client-id": `${CLIENT_ID}`, currency: "EUR" }}>

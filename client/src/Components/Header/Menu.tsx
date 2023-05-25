@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from "react-router-dom";
+import {  NavLink, useLocation, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { db, firebaseAuth } from "../../firebase";
 import { doc, getDoc } from 'firebase/firestore';
@@ -15,23 +15,25 @@ import './menu.scss';
 
 
 
-
 const Navbar = () => {
-
+  const navigate = useNavigate();
 	const dispatch = useDispatch<any>();
 	const user: User = useSelector((state: any) => state.user);
 	const { userId, firstName, lastName } = user;
 	const location = useLocation();
-  const [isAtLocation, setIsAtLocation] = useState(false);
+	const [isAtLocation, setIsAtLocation] = useState(false);
 
-  useEffect(() => {
-    if (location.pathname === '/sitters') {
-      setIsAtLocation(true);
-    } else {
-      setIsAtLocation(false);
-    }
-  }, [location]);
+	useEffect(() => {
+		if (location.pathname === '/sitters') {
+			setIsAtLocation(true);
+		} else {
+			setIsAtLocation(false);
+		}
+	}, [location]);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    navigate('/');  
+  };
 
 	const [click, setClick] = useState(false);
 
@@ -44,7 +46,7 @@ const Navbar = () => {
 		left: 0,
 		width: '100%',
 		height: '100%',
-		backgroundColor: click ? 'rgba(34, 26, 34, 0.316)' : 'transparent',
+		backgroundColor: click ? 'rgba(34, 26, 34, 0.516)' : 'transparent',
 		transition: 'background-color 0.2s ease-in-out',
 		zIndex: click ? '51' : '-100',
 		pointerEvents: click ? 'auto' : 'none'
@@ -54,9 +56,9 @@ const Navbar = () => {
 	const navbarBackground: React.CSSProperties = {
 		position: 'sticky',
 		top: 0,
-		height: 40,
+		height: 45,
 		backgroundColor: isAtLocation ? '#00C9B8' : '#FF5E54',
-	    zIndex: 10,
+		zIndex: 10,
 	}
 
 
@@ -104,89 +106,90 @@ const Navbar = () => {
 	return (
 		<>
 
-		
-		
 
-			<div style={navbarBackground} className="navbar-background"> 
-			<nav className="navbar">
-				<div className="navbar-container container">
-				<div>
-				<div style={overlayStyle} className="gray" onClick={closeMobileMenu}>&nbsp;</div>
-			</div>
-					<div className="menu-icon" onClick={handleClick}>
-						{click ? <div className="cross"><img src={cross} alt="hide button" /></div> : <div className="burger"><img src={burger} alt="show menu button" /></div>}
-					</div>
-					<ul className={click ? "nav-menu active" : "nav-menu"}>
 
-					<Link to='/'>
-    <Logo className="navbar-logo" />
-    </Link>
-						{userId !== 'empty' ? (
-							<>
-								<div className="nav-nonlink">Signed in as:<br />{firstName} {lastName}</div>
+
+			<div style={navbarBackground} className="navbar-background">
+				<nav className="navbar">
+					<div className="navbar-container container">
+						<div>
+							<div style={overlayStyle} className="gray" onClick={closeMobileMenu}>&nbsp;</div>
+						</div>
+						<div className="menu-icon" onClick={handleClick}>
+							{click ? <div className="cross"><img src={cross} alt="hide button" /></div> : <div className="burger"><img src={burger} alt="show menu button" /></div>}
+						</div>
+						<ul className={click ? "nav-menu active" : "nav-menu"}>
+
+
+								<Logo onClick={handleLogoClick} className="navbar-logo" />
+             
+							
+							{userId !== 'empty' ? (
+								<>
+									<div className="nav-nonlink">Signed in as:<br />{firstName} {lastName}</div>
+									<li className="nav-item">
+										<NavLink
+											to="/mybookings"
+											className={({ isActive }) =>
+												"nav-links" + (isActive ? " activated" : "")
+											}
+											onClick={closeMobileMenu}
+										>
+											My Bookings
+										</NavLink>
+									</li>
+									<li className="nav-item">
+										<NavLink
+											to="/profile"
+											className={({ isActive }) =>
+												"nav-links" + (isActive ? " activated" : "")
+											}
+											onClick={closeMobileMenu}
+										>
+											My Profile
+										</NavLink>
+									</li>
+
+
+								</>
+
+							) : (
+
 								<li className="nav-item">
 									<NavLink
-										to="/mybookings"
+										to="/login"
 										className={({ isActive }) =>
 											"nav-links" + (isActive ? " activated" : "")
 										}
 										onClick={closeMobileMenu}
 									>
-										My Bookings
+										Login
 									</NavLink>
 								</li>
-								<li className="nav-item">
-									<NavLink
-										to="/profile"
-										className={({ isActive }) =>
-											"nav-links" + (isActive ? " activated" : "")
-										}
-										onClick={closeMobileMenu}
-									>
-										My Profile
-									</NavLink>
-								</li>
-
-								
-							</>
-
-						) : (
-
+							)}
 							<li className="nav-item">
 								<NavLink
-									to="/login"
+									to="/calendar"
 									className={({ isActive }) =>
 										"nav-links" + (isActive ? " activated" : "")
 									}
 									onClick={closeMobileMenu}
 								>
-									Login
+									Pick date
 								</NavLink>
 							</li>
-						)}
-						<li className="nav-item">
-							<NavLink
-								to="/calendar"
-								className={({ isActive }) =>
-									"nav-links" + (isActive ? " activated" : "")
-								}
-								onClick={closeMobileMenu}
-							>
-								Pick date
-							</NavLink>
-						</li>
-								
-						{userId !== 'empty' ? (
-  <li className="nav-item">
-    <div className="nav-links" onClick={closeMobileMenu}>
-      <Signout />
-    </div>
-  </li>
-) : null}
-					
-					</ul>
-				</div>
-			</nav>
+
+							{userId !== 'empty' ? (
+								<li className="nav-item">
+									<div className="nav-links" onClick={closeMobileMenu}>
+										<Signout />
+									</div>
+								</li>
+							) : null}
+
+						</ul>
+					</div>
+				</nav>
 			</div>
 		</>
 	)

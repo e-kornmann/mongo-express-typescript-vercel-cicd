@@ -47,18 +47,19 @@ const Signin = () => {
     <>
       <div className="islandaquabg" style={{ backgroundImage: `url(${background})` }}>
         <Header />
-        <h2>Log In to your Account</h2>
+ 
     
-        <form onSubmit={submitUserData} className="form__container">
+        <form onSubmit={submitUserData} className="form-container login">
+        <h2 className="main-container--titles">Log In to your Account</h2>
           <input
-            className="form__container-input"
+            className="form-container-input"
             type="email"
             value={email}
             onChange={onEmailChange}
             placeholder="Enter your email"
           />
           <input
-            className="form__container-input"
+            className="form-container-input"
             type="password"
             value={password}
             onChange={onPasswordChange}
@@ -66,7 +67,7 @@ const Signin = () => {
           />
            {error && <p className="error-message">{error}</p>}
           <button type="submit" className="btn">Log in</button>
-          <h4>No account yet? <Link to='/register' className="form__container-redirect">Create Account</Link></h4>
+          <h4>No account yet? <Link to='/register' className="form-container-redirect">Create Account</Link></h4>
         </form>
       </div>
     </>

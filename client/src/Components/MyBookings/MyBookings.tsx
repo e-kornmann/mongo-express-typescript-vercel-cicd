@@ -37,8 +37,8 @@ const MyBookings: React.FC = () => {
       <div className="graybg">
         <Header />
     
-        <div className="main__container">
-        <h2 className="main__container--titles">My Bookings</h2>
+        <div className="main-container">
+        <h2 className="main-container--titles">My Bookings</h2>
  
         {isLoading ? (
     <LoadingSpinner />
@@ -49,21 +49,25 @@ const MyBookings: React.FC = () => {
           const { bookingId, dateOfBooking, dayNameOfBooking, startTime, endTime, sitterName, price, includedKids } = b;
     
           return (
-          <div key={ bookingId } className="main__container__mybookingstable">
+          <div key={ bookingId } className="main-container__mybookingstable">
      
         
             
              
-            <div key={`${bookingId}-name`} className="main__container__mybookingstable--name">{ sitterName }</div>
-       
-            <div key={`${bookingId}-kids`} className="main__container__mybookingstable--kids">{includedKids.map((k)=> <span key={k.name}> / {k.name}</span>)}</div>
-            <div key={`${bookingId}-id`} className="main__container__mybookingstable--id">Booking id: <br />{bookingId}</div>
-            <div key={`${bookingId}-date`} className="main__container__mybookingstable--date">
-              { dayNameOfBooking }, { dateOfBooking } from { startTime } till { endTime } h
+            <div key={`${bookingId}-name`} className="main-container__mybookingstable--left">
+            <span className="main-container__mybookingstable--name">{ sitterName }</span><br />
+             {includedKids.map((k)=> <span key={k.name}>  —  {k.name}</span>)}<br/>
+             <span className="main-container__mybookingstable--date"> { dayNameOfBooking }, { dateOfBooking } from { startTime } till { endTime } h</span>
+            </div>
+
+            <div key={`${bookingId}-id`} className="main-container__mybookingstable--right">
+            <span>Booking id: <br />{bookingId}</span><br />
+            <span className="main-container__mybookingstable--price">€ { price }</span>
+             
             </div>
             
            
-            <div key={`${bookingId}-price`} className="main__container__mybookingstable--price">€ { price }</div>
+            
           </div>
           );
         }

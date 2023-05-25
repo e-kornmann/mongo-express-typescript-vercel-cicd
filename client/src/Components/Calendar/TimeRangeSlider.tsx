@@ -49,8 +49,8 @@ const TimeRangeSlider = ({ onTimeChange }: { onTimeChange: (startTime: string, e
               <div className='divOutput--time'>
                 {convertToTime(minValue)}
               </div>
-              till
-              <div className='divOutput--time'>
+              —
+              <div className='divOutput--time'> 
                 {convertToTime(maxValue)}
               </div>
             </div>

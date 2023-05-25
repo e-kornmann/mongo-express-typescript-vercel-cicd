@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 0.9em;
   position: fixed;
   top: 0;
   z-index: 999;
@@ -24,47 +24,29 @@
 
 .navbar-container {
   display: flex;
-  height: 140px;
-  width: 100%;
+  height: 100px;
+  width: 1000px;
 }
 
 .container {
   z-index: 1;
-  width: 100%;
-  max-width: 1600px;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 50px;
-  padding-left: 0px;
+  padding-top: 2px;
 }
 
 .navbar-logo {
-  fill: #fff;
-  justify-self: flex-start;
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 21px;
-  margin-top: 2px;
-  margin-right: 50px;
-  margin-left: 0;
   position: relative;
-  right: 30px;
-}
-
-
-.white--logo {
-  fill: app.$purple;
-  padding: 0;
-  margin: 0;
+  cursor: pointer;
+  width: 125px;
+  height: 21px;
+  top: 2px;
+  left: -39px;
 }
 
 .navbar-icon {
   margin-right: 0.5rem;
 }
-
 
 .nav-menu {
   display: flex;
@@ -72,23 +54,21 @@
   justify-content: flex-start;
   list-style: none;
   margin: auto;
+  width: 800px;
+  max-width: 1600px;
 }
 
 .nav-item {
-  height: 43px;
+  display: flex;
+  justify-content: center;
+  height: 52px;
   border-bottom: 2px solid transparent;
-  padding-right: 20px;
+  width: 100px;
+  padding-top: 1px;
 }
 
-.end {
-  text-align: right;
-  justify-self: flex-end;
-  margin-left: 30px;
-
-  }
-
 .nav-item:hover {
-  border-bottom: 2px solid app.$gray;
+  border-bottom: 2px solid app.$purple;
   color: app.$main-bg-color;
 }
 
@@ -96,9 +76,9 @@
   color: app.$purple;
   display: flex;
   align-items: center;
-  text-decoration: none;
-  padding: 1.0rem 1rem;
+  text-decoration: none;;
   height: 100%;
+  padding-top: 3px;
 }
 
 .nav-links:hover {
@@ -107,9 +87,9 @@
 
 .nav-nonlink {
   color: app.$purple;
-  padding-left: 0;
-  padding-right: 3em;
-  line-height: 1.0em  ;
+  padding-left: 10px;
+  line-height: 1.0em;
+  padding-right: 2.0em;
  }
 
 .activated {
@@ -143,23 +123,24 @@
     width: 100%;
   }
 
-  .cross {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    left: 2px;
-  }
 
-  .burger {
+  .burger, .cross {
     position: relative;
     background-color: white;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     left: 2px;
-    padding: 6px;
+    top: -5px;
+    padding: 8px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     align-items: center;
     border-radius: 30px;
+  }
+
+  .cross {
+    padding: 0px;
   }
 
   .navbar-background {
@@ -188,7 +169,8 @@
     left: -250px;
     opacity: 1;
     transition: all 0.5s ease;
-    padding: 60px 0 30px;
+    padding: 90px 0 30px;
+
   }
 
   .nav-menu.active {
@@ -206,7 +188,7 @@
     padding: 0.25rem 2rem;
     width: 100%;
     color: app.$gray;
-    
+    line-height: 1.3em;
   }
 
   .nav-nonlink {
@@ -218,7 +200,7 @@
     position: absolute;
     font-size: 1.25rem;
     content: ".......................................";
-    bottom: 185px;
+    bottom: 240px;
     right: 85px;
     width: 100px;
     height: 2px;
@@ -241,15 +223,9 @@
 
   .nav-item {
     width: 100%;
-    height: 32px;
+    height: 46px;
   }
 
-  .navbar-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
-  }
 
   .menu-icon {
     display: block;

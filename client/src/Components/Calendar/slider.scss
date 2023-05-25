@@ -3,10 +3,12 @@
 
 .multi-range-slider-container {
     width: 90%;
-    max-width: 600px;
+    max-width: 400px;
     margin: 10px auto 0 !important;
     padding: 10px auto 0 !important;
 }
+
+
 
 .multi-range-slider * {
 	box-sizing: border-box;
@@ -225,8 +227,8 @@
 
 .divOutput {
     display: flex;
-    width: 300px;
-    justify-content: space-around;
+    width: 100%;
+    justify-content: center;
     align-items: center;
     font-size: 1.2em;
     margin: auto;
@@ -234,29 +236,27 @@
     color: app.$purple;
     padding: 10px 0 30px;
     position: relative;
-    left: -12px;
   }
 
-  .divOutput:after {
-   content: "h";
 
+  .divOutput::after {
+	content: "h";
+	position: relative;
+	right: 0px;
 
-  }
+}
 
-  .divOutput:before {
-    content: "from";
- 
-   }
 
 .divOutput--time {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90px;
-    height: 70px;
-    font-size: 1.4em;
+    width: 85px;
+    height: 60px;
+    font-size: 1.3em;
     font-weight: 800;
     background-color: white;
     border-radius: 0.3em;
     color: app.$purple;
+	margin: 0 0.5em;
 }

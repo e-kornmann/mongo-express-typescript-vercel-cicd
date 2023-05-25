@@ -1,7 +1,6 @@
 import Router from 'express';
 import { getAllSitters, getAvailableSitters, getSitterById } from '../handlers';
 import { InsertBooking } from '../types/types';
-import Post from './postSitterModel';
 
 const sitters = Router();
 
@@ -32,20 +31,5 @@ sitters.get('/:id', async (req, res) => {
   const sitter = await getSitterById(id);
   res.json(sitter);
 });
-
-
-sitters.get('/:_id', async (req, res) => {
-   try{
-    Post.findById(req.params._id)
-    .then(data => {
-        res.json(data)
-    }).catch(error => {
-        res.status(408).json({ error })
-    })
-}catch(error){
-    res.json({error})
-}
-})
-
 
 export default sitters;

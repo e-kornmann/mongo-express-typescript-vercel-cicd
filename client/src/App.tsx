@@ -16,24 +16,25 @@ const App = () => {
       <div className='mainpage' style={{ backgroundImage: `url(${background})` }}>
         <Header />
 
-        <div className='main__container'>
-          <div className='main__title'>
+        
+          <div className='main-title'>
             You go out... <br /> we take care <br /> of your <br /> little ones 
-          </div>
+        
 
           { userId === 'empty' ? (
-            <div className='main__btns'>
-              <Link className='pick__date' to='/calendar'>Pick Date</Link>
-              <Link className='main__link' to='/login'>Log in</Link>
-              <Link className='main__link' to='/register'>Create Account</Link>
+            <div className='main-btns'>
+              <Link className='pick-date' to='/calendar'>Pick Date</Link>
+              <Link className='main-link' to='/login'>Log in</Link>
+              <Link className='main-link' to='/register'>Create Account</Link>
             </div>
           ) : (
-            <div className='main__btns'>
-              <Link className='pick__date' to='/calendar'>Pick Date</Link>
+            <div className='main-btns'>
+              <Link className='pick-date' to='/calendar'>Pick Date</Link>
             </div>
           )}
+            </div>
       </div>
-      </div>
+      
 
     </>
   );

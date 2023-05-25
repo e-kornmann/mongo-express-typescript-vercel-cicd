@@ -47,7 +47,7 @@ const SuccessBooking: React.FC = () => {
       .then(() => {
       dispatch(clear())
       dispatch(clearSelectedSitter())
-      setTimeout(() => navigate("/"), 4000);
+      setTimeout(() => navigate("/"), 8000);
       })
       .catch((error) => {
         console.error("Error:", error);

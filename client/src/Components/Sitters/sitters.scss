@@ -36,7 +36,7 @@
     cursor: pointer;
     height: 50px;
     width: 50px;
-    z-index: 30;
+    z-index: 1;
   }
 
 
@@ -53,14 +53,14 @@
 }
 
 .timeribbon__container > h1 {
-  font-size: 1.5em;
+  font-size: 1.75em;
 }
 
 
 .timeribbon__container > h2 {
   position: relative;
-  bottom: 6px;
-  font-size: 1.4em;
+  bottom: 10px;
+  font-size: 1.55em;
 }
 
 .availablesitters {
@@ -80,7 +80,7 @@
 @media screen and (min-width: app.$triggerpoint) {
   .availablesitters {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    max-width: 1200px;
+    max-width: 860px;
   }
 }
 

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from "../../Api/api";
-import { InsertedBooking, SitterType } from "../../types";
-import background from "../../Assets/bg-green.svg";
+import { InsertedBooking, SitterType } from '../../types';
+import background from '../../Assets/bg-green.svg';
 import './sitters.scss';
-import Header from "../Header/Header";
+import Header from '../Header/Header';
+import OnRenderMessage from '../Popups/OnRenderMessage'
+
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setSitterForBooking } from '../../store/slices/bookingSlice';
@@ -38,13 +40,12 @@ const Sitters: React.FC = () => {
         console.error('Error fetching available sitters:', error);
       }
     };
-
     getAvailableSitters();
   }, [dateOfBooking, startTime, endTime, dayNameOfBooking]);
 
   return (
     <>
-        
+     
         <div className="islandaquabg" style={ { backgroundImage: `url(${background})` } }>
           <Header />
         <div className="timeribbon">
@@ -66,7 +67,10 @@ const Sitters: React.FC = () => {
         <div className="availablesitters">
 
         { isLoading?  (
-            <LoadingSpinner />
+          <>
+            <OnRenderMessage />
+           <LoadingSpinner />
+          </>
           ) : (
                       
                              

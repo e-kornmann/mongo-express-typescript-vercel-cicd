@@ -129,12 +129,12 @@ const Signup = () => {
     <>
       <div className="graybg">
         <Header />
-        <form onSubmit={submitForm} className="form__container">
-        <h2 className="main__container--titles">Create account</h2>
+        <form onSubmit={submitForm} className="form-container">
+        <h2 className="main-container--titles">Create account</h2>
           <fieldset className="formgrid">
             <legend>Personal details</legend>
-            <input className="form__container-input oneeleven" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
-            <input className="form__container-input oneeleven" type="text" name="lastName" value={userData.lastName} onChange={onInputChange} placeholder="Last name" />
+            <input className="form-container-input oneeleven" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
+            <input className="form-container-input oneeleven" type="text" name="lastName" value={userData.lastName} onChange={onInputChange} placeholder="Last name" />
             <div className="radio-button-wrapper oneeleven">
               <div className="custom_radio">
                 <input type="radio" id="father" value="father" checked={userData.parent === 'father'} onChange={onInputChange} name="parent" />
@@ -152,17 +152,17 @@ const Signup = () => {
             <hr className="oneeleven" />
           </fieldset>
           <fieldset className="formgrid">
-            <input className="form__container-input street" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
-            <input className="form__container-input housenumber" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
-            <input className="form__container-input zipcode" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
-            <input className="form__container-input place" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
-            <input className="form__container-input oneeleven" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
+            <input className="form-container-input street" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
+            <input className="form-container-input housenumber" type="text" name="houseNumber" value={userData.houseNumber} onChange={onInputChange} placeholder="no." />
+            <input className="form-container-input zipcode" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
+            <input className="form-container-input place" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
+            <input className="form-container-input oneeleven" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
           </fieldset>
 
           <fieldset className="formgrid">
-            <input className="form__container-input oneeleven" type="text" name="userEmail" value={userData.userEmail} onChange={onInputChange} placeholder="Email" />
-            <input className="form__container-input oneeleven" type="password" name="userPassword" value={userData.userPassword} onChange={onInputChange} placeholder="Password" />
-            <input className="form__container-input oneeleven" type="password" name="confirmPassword" value={userData.confirmPassword} onChange={onInputChange} placeholder="Confirm Password" />
+            <input className="form-container-input oneeleven" type="text" name="userEmail" value={userData.userEmail} onChange={onInputChange} placeholder="Email" />
+            <input className="form-container-input oneeleven" type="password" name="userPassword" value={userData.userPassword} onChange={onInputChange} placeholder="Password" />
+            <input className="form-container-input oneeleven" type="password" name="confirmPassword" value={userData.confirmPassword} onChange={onInputChange} placeholder="Confirm Password" />
             <hr className="oneeleven" />
           </fieldset>
 
@@ -172,8 +172,8 @@ const Signup = () => {
             {
               kids.map((val, i) =>
                 <div className="formgrid" key={i}>
-                  <input key={`kidname${i + 1}`} autoComplete='none' className="form__container-input oneeleven" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} placeholder="Name" />
-                  <input autoComplete='none' className="form__container-input dateofbirth" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
+                  <input key={`kidname${i + 1}`} autoComplete='none' className="form-container-input oneeleven" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} placeholder="Name" />
+                  <input autoComplete='none' className="form-container-input dateofbirth" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
                   <div className="radio-button-wrapper">
                     <div className="custom_radio">
                       <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
@@ -209,7 +209,7 @@ const Signup = () => {
           <fieldset>
             <legend>Notes:</legend>
 
-            <textarea className="form__container-textfieldinput oneeleven" name="notes" value={userData.notes} onChange={onInputChange} />
+            <textarea className="form-container-textfieldinput oneeleven" name="notes" value={userData.notes} onChange={onInputChange} />
           </fieldset>
 
 
@@ -218,7 +218,7 @@ const Signup = () => {
               {Object.values<string | undefined>(errors).map((error, index) => {
                 if (typeof error === 'string') {
                   return (
-                    <div className="form__container__error__container oneeleven" key={index}>
+                    <div className="form-container__error__container oneeleven" key={index}>
                       {error}
                     </div>
                   );
@@ -230,7 +230,7 @@ const Signup = () => {
 
 
           <button type="submit" className="btn oneeleven">Submit</button>
-          <h4 className="oneeleven">Already have an account? <Link to='/login' className="form__container-redirect">Please login</Link></h4>
+          <h4 className="oneeleven">Already have an account? <Link to='/login' className="form-container-redirect">Please login</Link></h4>
 
         </form>
       </div>

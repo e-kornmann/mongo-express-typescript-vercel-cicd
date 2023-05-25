@@ -20,9 +20,7 @@ const Header = () => {
 
 
   const handleLogoClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    navigate('/');
-   
-    
+    navigate('/');  
   };
 
   return (

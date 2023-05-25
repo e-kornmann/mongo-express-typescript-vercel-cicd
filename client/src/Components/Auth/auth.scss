@@ -19,14 +19,9 @@ fieldset {
   grid-column: 1 / 11;
 }
 
-
-
-.seveneleven {  
+.seveneleven {
   grid-column: 7 / 11;
 }
-
-
-
 
 .onetwo {
   grid-column: 1 / 2;
@@ -34,10 +29,7 @@ fieldset {
 
 .sixeight {
   grid-column: 6 / 8;
-  
- }
-
-
+}
 
 .fourseven {
   grid-column: 4 / 7;
@@ -47,7 +39,6 @@ fieldset {
 .fiveeleven {
   grid-column: 5 / 11;
 }
-
 
 .eightnine {
   grid-column: 8 / 9;
@@ -71,7 +62,7 @@ fieldset {
   grid-column: 1 / 3;
 }
 
-.place {  
+.place {
   grid-column: 3 / 11;
 }
 
@@ -85,7 +76,7 @@ fieldset {
 
 .dateofbirth {
   grid-column: 1 / 6;
-  }
+}
 
 .boygirl {
   grid-column: 6 / 11;
@@ -120,7 +111,9 @@ legend {
   padding-top: 20px;
 }
 
-.form__container-input, .form__container-input:focus, .form__container-textfieldinput { 
+.form-container-input,
+.form-container-input:focus,
+.form-container-textfieldinput {
   margin-top: 8px;
   color: app.$purple;
   font-size: 0.9em;
@@ -128,7 +121,7 @@ legend {
   border: 1px solid app.$light-purple;
   border-radius: 3px;
   padding: 0 5px;
-  width: 100%; 
+  width: 100%;
   max-width: 100%;
   height: 30px;
 }
@@ -137,7 +130,7 @@ label {
   font-size: 0.9em;
 }
 
-.form__container-textfieldinput {
+.form-container-textfieldinput {
   height: 250px;
   resize: none;
   padding: 20px 11px;
@@ -145,27 +138,26 @@ label {
   color: app.$asphalt;
 }
 
-.form__container-input:focus, .form__container-textfieldinput:focus {
+.form-container-input:focus,
+.form-container-textfieldinput:focus {
   border-color: app.$grapefruitred;
   outline: none;
   box-shadow: 0 0 0 2px app.$grapefruitred inset;
 }
 
-
-.form__container-input::placeholder {
+.form-container-input::placeholder {
   color: app.$light-purple;
   font-weight: 300;
 }
 
-.form__container-redirect {
+.form-container-redirect {
   color: app.$purple;
   padding: 10px;
   position: relative;
   font-weight: 300;
-  
 }
 
-.form__container__error__container {
+.form-container__error__container {
   list-style-type: none;
   border: 2px solid app.$grapefruitred;
   font-weight: 600;
@@ -176,16 +168,15 @@ label {
   font-size: 16px;
 }
 
-.signout{
+.signout {
   cursor: pointer;
 }
-
 
 @media only screen and (min-width: 540px) {
   .userid {
     grid-column: 1 / 4;
   }
-  
+
   .email {
     grid-column: 5 / 11;
   }
@@ -194,27 +185,26 @@ label {
     grid-column: 1 / 3;
   }
 
-  .place {  
+  .place {
     grid-column: 3 / 11;
   }
 
   .dateofbirth {
     grid-column: 1 / 5;
   }
-  
-  
+
   .boygirl {
     grid-column: 5 / 8;
   }
-  
-  .form__container-input, .form__container-input:focus, .form__container-textfieldinput { 
+
+  .form-container-input,
+  .form-container-input:focus,
+  .form-container-textfieldinput {
     font-size: 0.9em;
     padding: 0 10px;
   }
 
-  .form__container-textfieldinput { 
-  
+  .form-container-textfieldinput {
     padding: 11px 11px;
-}
-
+  }
 }
