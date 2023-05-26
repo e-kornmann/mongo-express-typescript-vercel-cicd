@@ -37,6 +37,18 @@
     margin-bottom: 30px;
     max-width: 360px;
   }
+
+  
+  .popup a {
+    font-weight: 400;
+    color: app.$dark-purple
+  }
+
+  .popup a:hover {
+    text-decoration: underline;
+    color: app.$purple
+  }
+
   
   .popup--details {
     margin-bottom: 20px;
@@ -52,8 +64,6 @@
     margin-right: 10px;
   }
 
-
-
   .minimize-icon, .close-icon {
     position: absolute;
     top: 30px;
@@ -63,7 +73,6 @@
     cursor: pointer;
     transition: all 0.3s ease;
   }
-
   
   .maximize-icon  {
     position: absolute;
@@ -76,3 +85,101 @@
     transition: all 0.3s ease;
   }
 
+
+  .key {
+    color: app.$purple;
+  }
+
+
+
+
+
+  @media only screen and (max-width: 450px) {
+
+    .value {
+      margin-bottom: 10px;
+    }
+   
+    .popup {
+      padding: 20px;
+      width: 80%;
+    }
+  
+    .popup h3 {
+      font-size: 17px;
+      margin-top: 10px;
+    }
+  
+    .popup p {
+      font-size: 0.7em;
+      margin-bottom: 10px;
+      max-width: 360px;
+    }
+
+  
+    .popup--details {
+      margin-bottom: 10px;
+      display: block;
+      font-size: 0.7em;
+    }
+  }
+
+@media only screen and (min-width: 451px) and (max-width: 600px) {
+
+  .value {
+    margin-bottom: 10px;
+  }
+  
+  .popup {
+    padding: 20px;
+    width: 80%;
+  }
+
+  .popup h3 {
+    font-size: 20px;
+  }
+
+  .popup p {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    max-width: 360px;
+  }
+
+  .popup--details {
+    margin-bottom: 20px;
+    display: block;
+    font-size: 0.9em;
+  }
+
+}
+
+
+
+@media only screen and (min-width: 601px) and (max-width: 960px) {
+
+  .value {
+    margin-bottom: 10px;
+  }
+  
+
+
+  .popup {
+    padding: 30px;
+    width: 60%;
+  }
+
+  .popup p {
+    font-size: 1.0em;
+    margin-bottom: 20px;
+    max-width: 360px;
+  }
+
+  .popup--details {
+    margin-bottom: 20px;
+    display: block;
+    font-size: 1.0em;
+  }
+
+}
+  
+  

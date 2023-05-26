@@ -100,7 +100,7 @@ const Summary: React.FC = () => {
 
   return (
     <>
-      <FakePayment />
+      <FakePayment sitterName={sitterName!} />
       <div className="graybg">
         <Header />
         <div className="main-container">

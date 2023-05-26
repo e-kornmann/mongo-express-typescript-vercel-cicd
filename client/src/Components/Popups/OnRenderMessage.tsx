@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as Delete } from '../../Assets/delete.svg';
 import './popup.scss';
+import { Link } from 'react-router-dom';
 
 const OnRenderMessage = () => {
   const [showOnRenderMessagePopup, setShowOnRenderMessagePopup] = useState(false);
@@ -17,19 +18,19 @@ const OnRenderMessage = () => {
   return (
     <>
       {showOnRenderMessagePopup && (
-      
             <>
             <div className="popup">
-              <h3 style={{ maxWidth : "230px" }}>Are you experiencing Slow Loading Times?</h3>
-              <p>Sometimes, it may take a while to load the available sitters because of 
-                the free-tier backend server being used on OnRender. However, this shouldn't take longer than 3 minutes.
+              <h3 style={{ maxWidth : "230px" }}>Are you experiencing slow Loading Times?</h3>
+              <p>
+              Sometimes it may take a while to load the available TinySitters due to the free-tier backend server running on <Link to='https://render.com/docs/free'>Render.com</Link>.
+              However, this should not take more than 3 minutes.
               </p>
          
               <Delete onClick={() => setShowOnRenderMessagePopup(!showOnRenderMessagePopup)} className="close-icon" />
               </div>
             </>
             
-          )}
+        )}
 
   
         

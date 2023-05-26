@@ -63,7 +63,6 @@ const getUserBookings = async (id: string) => {
   return allBookings;
 };
 
-
 export {
   getAllSitters,
   getAvailableSitters,

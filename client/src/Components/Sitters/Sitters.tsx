@@ -64,15 +64,17 @@ const Sitters: React.FC = () => {
           </div>
         </div>
         <div className="maincontainer">
+        <h2 className="main-container--titles" style={{ width: "90%", maxWidth: "600px", padding:"20px", margin: "50px auto"}}>These are our available TinySitters on that day and time slot.</h2>
         <div className="availablesitters">
 
+        
         { isLoading?  (
           <>
-            <OnRenderMessage />
+           <OnRenderMessage />
            <LoadingSpinner />
           </>
           ) : (
-                      
+                              
                              
         sitters.map((sitter: SitterType) => (
         <div key={sitter.id}>
