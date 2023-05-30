@@ -95,6 +95,11 @@
   padding-right: 2.0em;
  }
 
+ .whitespace {
+  width: 185px;
+}
+
+
 .activated {
   color: app.$gray;
 }
@@ -198,6 +203,11 @@
     color: app.$main-bg-color;
     padding: 1.25rem 2rem;
    }
+
+   .whitespace {
+display: none;
+  }
+  
 
   .nav-nonlink:after {
     position: absolute;

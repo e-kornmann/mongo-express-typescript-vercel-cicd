@@ -13,7 +13,7 @@ const App = () => {
     <>
 
 
-      <div className='mainpage' style={{ backgroundImage: `url(${background})` }}>
+<div className='mainpage' style={{ backgroundImage: `url(${background})` }}>
         <Header />
 
         

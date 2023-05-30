@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&display=swap');
 
-$main-bg-color: #ffafbe;
+$main-bg-color: #ffaebd;
 $light-purple: #a096b0; 
 $purple: #3b0380; 
 $dark-purple: #29065e; 
@@ -54,11 +54,11 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
 }
 
 .mainpage, .islandaquabg, .graybg, .lightpurplebg {
-  position: fixed;
+  position: absolute;
   background-color: $main-bg-color;
-  background-repeat: repeat;
-  background-size: 225% 150%, cover;
-  background-position: center, 50% 50%;
+  background-repeat: repeat-y;
+  background-size:cover;
+  background-position: center;
   height: 100%;
   width: 100%;
   z-index: 1004;
@@ -247,12 +247,25 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   .main-title {
     font-size: 3.9em;
   }
+  .mainpage, .islandaquabg, .graybg, .lightpurplebg {
+    background-size: 300%;
+    background-position: left;
+  }
 }
 
 @media only screen and (min-width: 401px) and (max-width: 500px) {
   .main-title {
     font-size: 4.1em;
   }
+
+.mainpage, .islandaquabg, .graybg, .lightpurplebg {
+  background-size: 300%;
+  background-position: -25px;
+}
+
+
+
+  
   // .main-container--titles {
   //   padding: 50px 5px 30px !important;
   // }
@@ -264,11 +277,14 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 800px) {
-  .main-title {
-    font-size: 5.5em;
+
+
+
+@media only screen and (min-width: 501px) and (max-width: 1000px) {
+  .mainpage, .islandaquabg, .graybg, .lightpurplebg {
+    background-size: 300%;
+    background-position: -100px;
   }
 }
-
 
 

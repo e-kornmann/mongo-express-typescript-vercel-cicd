@@ -55,6 +55,10 @@ The final version of the app, which has been further developed and improved, is 
 32px" align="left" src="https://github.com/e-kornmann/e-kornmann/blob/main/mockups/tinysitters_mockup.jpg?raw=true" alt="React" />
 
 <br>
+&nbsp;
+<br>
+&nbsp;
+
 
 
 

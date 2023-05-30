@@ -190,7 +190,7 @@ const Navbar = () => {
 										<Signout />
 									</div>
 								</li>	
-								<div className="nav-nonlink" style={{width: "185px"}}>
+								<div className="whitespace">
 	&nbsp;
 </div>
 									</>								
