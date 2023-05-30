@@ -114,8 +114,8 @@ const UpdateProfile = () => {
           <h2 className="main-container--titles">Update Profile</h2>
           <fieldset className="formgrid">
             <legend>Personal details</legend>
-            <div className="userid light-purple">UserId<br /><span className="asphalt">{userId}</span></div>
             <div className="email light-purple">Email:<br /><span className="asphalt">{userEmail}</span></div>
+            <div className="userid light-purple">UserId<br /><span className="asphalt">{userId}</span></div>
             <hr className="oneeleven" />
 
             <input className="form-container-input oneeleven" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
@@ -154,7 +154,7 @@ const UpdateProfile = () => {
                 <div className="formgrid" key={i}>
                   <input key={`kidname${i + 1}`} autoComplete='none' className="form-container-input oneeleven" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} placeholder="Name" />
                   <input autoComplete='none' className="form-container-input dateofbirth" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} placeholder="Date of birth" />
-                  <div className="radio-button-wrapper">
+                  <div className="radio-button-wrapper boygirl">
                     <div className="custom_radio">
                       <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
                       <label htmlFor={`boy${i + 1}`}>Boy</label>
@@ -181,8 +181,6 @@ const UpdateProfile = () => {
                   ) : null}
                   <hr className='oneeleven' />
                 </div>
-
-
               )
             }
           </fieldset>
@@ -208,7 +206,7 @@ const UpdateProfile = () => {
             </div>
           )}
 
-          <button type="submit" className="btn oneeleven">Update profile</button>
+          <button type="submit" className="btn auth-btn" style={{ paddingBottom: "4px"}}>Update profile</button>
 
 
         </form>

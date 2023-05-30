@@ -174,7 +174,7 @@ const Signup = () => {
                 <div className="formgrid" key={i}>
                   <input key={`kidname${i + 1}`} autoComplete='none' className="form-container-input oneeleven" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} placeholder="Name" />
                   <input autoComplete='none' className="form-container-input dateofbirth" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
-                  <div className="radio-button-wrapper">
+                  <div className="radio-button-wrapper boygirl">
                     <div className="custom_radio">
                       <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />
                       <label htmlFor={`boy${i + 1}`}>Boy</label>
@@ -229,7 +229,7 @@ const Signup = () => {
           )}
 
 
-          <button type="submit" className="btn oneeleven">Submit</button>
+          <button type="submit" className="btn auth-btn" style={{ paddingBottom: "4px"}}>Submit</button>
           <h4 className="oneeleven">Already have an account? <Link to='/login' className="form-container-redirect">Please login</Link></h4>
 
         </form>

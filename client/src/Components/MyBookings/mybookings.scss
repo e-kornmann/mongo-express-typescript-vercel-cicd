@@ -41,6 +41,12 @@
 }
 
 
+
+.kids .kid:not(:last-of-type)::after {
+  content: " / ";
+}
+
+
 @media only screen and (min-width: 250px) and (max-width: 400px) {
   .main-container__mybookingstable {
     grid-template-columns: 74%  21%;

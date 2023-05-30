@@ -42,13 +42,11 @@ const Signin = () => {
     }
   }  
   
-
   return (
     <>
       <div className="islandaquabg" style={{ backgroundImage: `url(${background})` }}>
         <Header />
  
-    
         <form onSubmit={submitUserData} className="form-container login">
         <h2 className="main-container--titles">Log In to your Account</h2>
           <input
@@ -66,7 +64,7 @@ const Signin = () => {
             placeholder="Enter your password"
           />
            {error && <p className="error-message">{error}</p>}
-          <button type="submit" className="btn">Log in</button>
+          <button type="submit" className="btn auth-btn">Log in</button>
           <h4>No account yet? <Link to='/register' className="form-container-redirect">Create Account</Link></h4>
         </form>
       </div>

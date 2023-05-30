@@ -150,13 +150,6 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
 }
 
 
-.form-container {
-  max-width: 400px; 
-}
-
-.log-in {
-  max-width: 400px; 
-}
 
 .form-container hr {
   border: 1px solid white;
@@ -246,7 +239,6 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
 
 @media only screen and (max-height: 800px) {
   .main-title {
-    padding-top: 40px;
     font-size: 5.5em;
   }
 }
@@ -261,9 +253,9 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   .main-title {
     font-size: 4.1em;
   }
-  .main-container--titles {
-    padding: 50px 5px 30px !important;
-  }
+  // .main-container--titles {
+  //   padding: 50px 5px 30px !important;
+  // }
 }
 
 @media only screen and (min-width: 501px) and (max-width: 600px) {

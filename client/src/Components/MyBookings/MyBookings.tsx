@@ -56,7 +56,9 @@ const MyBookings: React.FC = () => {
              
             <div key={`${bookingId}-name`} className="main-container__mybookingstable--left">
             <span className="main-container__mybookingstable--name">{ sitterName }</span><br />
-             {includedKids.map((k)=> <span key={k.name}>  —  {k.name}</span>)}<br/>
+            <p className="kids">
+              {includedKids.map((k) => (<span className="kid" key={k.name}>{k.name}</span>))}
+            </p>
              <span className="main-container__mybookingstable--date"> { dayNameOfBooking }, { dateOfBooking } from { startTime } till { endTime } h</span>
             </div>
 

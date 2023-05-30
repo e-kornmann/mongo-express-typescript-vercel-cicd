@@ -24,7 +24,7 @@ const Summary: React.FC = () => {
 
   useEffect(() => {
     if (userEmail === "empty") {
-      navigate('/login');
+      navigate('/profile');
     } 
     if (dateOfBooking === "empty") {
       navigate('/calendar');
