@@ -115,13 +115,14 @@ const Navbar = () => {
 						<div>
 							<div style={overlayStyle} className="gray" onClick={closeMobileMenu}>&nbsp;</div>
 						</div>
+						
 						<div className="menu-icon" onClick={handleClick}>
 							{click ? <div className="cross"><img src={cross} alt="hide button" /></div> : <div className="burger"><img src={burger} alt="show menu button" /></div>}
 						</div>
 						<ul className={click ? "nav-menu active" : "nav-menu"}>
+						<Logo onClick={handleLogoClick} className="navbar-logo" />
 
-
-								<Logo onClick={handleLogoClick} className="navbar-logo" />
+								
              
 							
 							{userId !== 'empty' ? (
@@ -180,11 +181,20 @@ const Navbar = () => {
 							</li>
 
 							{userId !== 'empty' ? (
+								<>
+
+
+								
 								<li className="nav-item">
 									<div className="nav-links" onClick={closeMobileMenu}>
 										<Signout />
 									</div>
-								</li>
+								</li>	
+								<div className="nav-nonlink" style={{width: "185px"}}>
+	&nbsp;
+</div>
+									</>								
+								
 							) : null}
 
 						</ul>

@@ -64,7 +64,7 @@ const Sitters: React.FC = () => {
           </div>
         </div>
         <div className="maincontainer">
-        <h2 className="main-container--titles" style={{ width: "90%", maxWidth: "600px", padding:"20px", margin: "50px auto"}}>These are our available TinySitters on that day and time slot.</h2>
+        <h2 className="main-container--titles" style={{ width: "90%", maxWidth: "600px", padding:"20px", margin: "50px auto"}}>These are our available TinySitters on the specified day and time.</h2>
         <div className="availablesitters">
 
         

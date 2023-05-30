@@ -7,8 +7,6 @@ import { useSelector } from "react-redux";
 import SummaryIconComponent from "../SvgComponents/SummaryIcon";
 import { InsertedBooking, User } from "../../types";
 
-
-
 const Header = () => {
   const user: User = useSelector((state: any) => state.user);
   const { userId } = user;
@@ -16,8 +14,6 @@ const Header = () => {
     
   const summaryInfo: InsertedBooking = useSelector((state: any) => state.booking);
   const { includedKids, dateOfBooking, sitterId } = summaryInfo;
-
-
 
   const handleLogoClick = (e: React.MouseEvent<HTMLDivElement>) => {
     navigate('/');  
