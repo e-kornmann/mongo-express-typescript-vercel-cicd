@@ -54,9 +54,9 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
 }
 
 .mainpage, .islandaquabg, .graybg, .lightpurplebg {
-  position: absolute;
+  position: fixed;
   background-color: $main-bg-color;
-  background-repeat: repeat-y;
+  background-repeat: repeat;
   background-size:cover;
   background-position: center;
   height: 100%;
@@ -249,7 +249,7 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   }
   .mainpage, .islandaquabg, .graybg, .lightpurplebg {
     background-size: 300%;
-    background-position: left;
+    background-position: -25px;
   }
 }
 
@@ -262,13 +262,6 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
   background-size: 300%;
   background-position: -25px;
 }
-
-
-
-  
-  // .main-container--titles {
-  //   padding: 50px 5px 30px !important;
-  // }
 }
 
 @media only screen and (min-width: 501px) and (max-width: 600px) {
@@ -276,9 +269,6 @@ h4 a, h4 a:hover, h4 a:focus, h4 a:active, h4 a:visited {
     font-size: 4.5em;
   }
 }
-
-
-
 
 @media only screen and (min-width: 501px) and (max-width: 1000px) {
   .mainpage, .islandaquabg, .graybg, .lightpurplebg {

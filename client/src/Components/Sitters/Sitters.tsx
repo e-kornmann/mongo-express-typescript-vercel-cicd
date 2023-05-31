@@ -70,7 +70,7 @@ const Sitters: React.FC = () => {
         
         { isLoading?  (
           <>
-           <OnRenderMessage />
+           <OnRenderMessage /> 
            <LoadingSpinner />
           </>
           ) : (

@@ -11,6 +11,7 @@
     border-radius: 4px;
     text-align: left;
     z-index: 3000;
+    max-width: 360px;
     transition: all 0.3s ease;
     &.minimized {
         left: 80%;
@@ -32,23 +33,23 @@
     border-bottom: 1px dotted app.$purple;
   }
   
-  .popup p {
+  .popup > p {
     font-size: 1.0em;
     margin-bottom: 30px;
     max-width: 360px;
   }
 
-  
-  .popup a {
-    font-weight: 400;
-    color: app.$dark-purple
+  .popup > p > a {
+    font-weight: 600 !important;
+    color: app.$grapefruitred !important;
   }
 
-  .popup a:hover {
+  .popup > p > a:hover {
     text-decoration: underline;
-    color: app.$purple
+    color: app.$purple;
   }
 
+ 
   
   .popup--details {
     margin-bottom: 20px;
@@ -66,10 +67,10 @@
 
   .minimize-icon, .close-icon {
     position: absolute;
-    top: 30px;
-    right: 30px;
-    width: 30px;
-    height: 30px;
+    top: 12px;
+    right: 12px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
   }

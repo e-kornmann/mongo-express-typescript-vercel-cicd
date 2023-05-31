@@ -27,11 +27,29 @@ pre {
   font-size: 1em; /* 2 */
 }
 
-*, :before, :after {box-sizing: border-box;}
-body, button, ul, ol, li, input {margin: 0; padding: 0;}
-button, input {max-width: 100%; font: inherit; outline: none; box-shadow: none; line-height: 1.5;}
-button {background-color: transparent; border: 0;}
-a {text-decoration: none; outline: none;}
-a:hover, a:focus, a:active, a:visited {text-decoration: none;}
-html, body {height: 100%;}
-.wrap {height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+*, ::before, ::after {box-sizing: border-box;}
+
+body, button, ul, ol, li, input { 
+  margin: 0; padding: 0; 
+}
+
+button, input {
+  max-width: 100%; font: inherit; outline: none; box-shadow: none; line-height: 1.5;
+}
+
+button {
+  background-color: transparent; border: 0;
+}
+
+a {
+  text-decoration: none; outline: none;
+}
+
+a:hover, a:focus, a:active, a:visited {
+  text-decoration: none;
+}
+
+.wrap {
+  height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
+}
+

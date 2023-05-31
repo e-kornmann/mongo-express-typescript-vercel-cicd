@@ -20,7 +20,7 @@ const OnRenderMessage = () => {
       {showOnRenderMessagePopup && (
             <>
             <div className="popup">
-              <h3 style={{ maxWidth : "230px" }}>Are you experiencing slow Loading Times?</h3>
+              <h3 style={{ maxWidth : "230px" }}>Are you experiencing extended wait times for content to load?</h3>
               <p>
               Sometimes it may take a while to load the available TinySitters due to the free-tier backend server running on <Link to='https://render.com/docs/free'>Render.com</Link>.
               However, this should not take more than 3 minutes.
