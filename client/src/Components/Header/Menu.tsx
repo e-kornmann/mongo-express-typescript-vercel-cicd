@@ -117,7 +117,7 @@ const Navbar = () => {
 						</div>
 						
 						<div className="menu-icon" onClick={handleClick}>
-							{click ? <div className="cross"><img src={cross} alt="hide button" /></div> : <div className="burger"><img src={burger} alt="show menu button" /></div>}
+							{ click ? <img className="cross" src={cross} alt="hide button" /> : <img className="burger" src={burger} alt="show menu button" /> }
 						</div>
 						<ul className={click ? "nav-menu active" : "nav-menu"}>
 						<Logo onClick={handleLogoClick} className="navbar-logo" />

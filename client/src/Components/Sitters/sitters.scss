@@ -17,6 +17,9 @@
   margin: 0 auto;
   }
 
+
+
+
   @media screen and (min-width: app.$triggerpoint) {
     .timeribbon {
       position: sticky;
@@ -84,9 +87,6 @@
   }
 }
 
-
-
-
 .availablesitters__card {
   border: 0;
   color: white;
@@ -115,5 +115,17 @@
 .sitter_description {
   width: 80%;
   margin: auto;
+}
+
+
+
+@media only screen and (max-width: 400px) {
+
+  .timeribbon__container > h1 {
+    font-size: 24px;
+  }
+  .timeribbon__container > h2 {
+    font-size: 22px;
+  }
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Header from '../Header/Header';
-import background from '../../Assets/bg.svg';
+import background from '../../Assets/bg_diag.svg';
 import 'react-datepicker/dist/react-datepicker.css';
 import './slider.scss'
 import './calendar.scss';
@@ -45,7 +45,7 @@ const [endTime, setEndTime] = useState("22:00");
   return (
     <>  
       
-      <div className='mainpage' style={{ backgroundImage: `url(${background})` }}>
+      <div className='pick-date-bg' style={{ backgroundImage: `url(${background})` }}>
         
         <Header />
 
