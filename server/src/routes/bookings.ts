@@ -1,6 +1,6 @@
 import Router from 'express';
 import { saveBookings, getUserBookings } from '../handlers';
-import { InsertedBooking } from 'types';
+import { InsertedBooking } from '../types/types';
 
 const bookings = Router();
 

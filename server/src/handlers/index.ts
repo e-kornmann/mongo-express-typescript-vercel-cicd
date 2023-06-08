@@ -34,7 +34,7 @@ const getAllSitters = async () => {
   await client.connect();
   const db: mongoDB.Db = client.db('saltdb');
   const col: mongoDB.Collection = db.collection('sitters');
-  const sitter = (await col.find({}).toArray())
+  const sitter = (await col.find({}).toArray());
   return sitter;
 };
 

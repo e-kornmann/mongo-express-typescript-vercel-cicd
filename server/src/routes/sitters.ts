@@ -9,7 +9,6 @@ sitters.get('/', async (_req, res) => {
   res.json(sitter);
 });
 
-
 sitters.get('/available', async (req, res) => {
   const {
     dateOfBooking,
