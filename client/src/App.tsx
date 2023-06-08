@@ -16,10 +16,10 @@ const App = () => {
 <div className='mainpage' style={{ backgroundImage: `url(${background})` }}>
         <Header />
 
-        
+        <div className="main-container stretch">
           <div className='main-title'>
             You go out... <br /> we take care <br /> of your <br /> little ones 
-        
+          </div>
 
           { userId === 'empty' ? (
             <div className='main-btns'>
@@ -33,8 +33,8 @@ const App = () => {
             </div>
           )}
             </div>
-      </div>
-      
+   
+          </div>
 
     </>
   );

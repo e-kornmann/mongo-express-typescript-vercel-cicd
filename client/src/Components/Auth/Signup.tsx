@@ -173,7 +173,7 @@ const Signup = () => {
               kids.map((val, i) =>
                 <div className="formgrid" key={i}>
                   <input key={`kidname${i + 1}`} autoComplete='none' className="form-container-input oneeleven" type="text" name="name" value={val.name} onChange={(e) => handleKidFieldsChange(e, i, 'name')} placeholder="Name" />
-                  <input autoComplete='none' className="form-container-input dateofbirth" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} />
+                  <input autoComplete='none' className="form-container-input dateofbirth" type="date" name="dateOfBirth" value={val.dateOfBirth} onChange={(e) => handleKidFieldsChange(e, i, 'dateOfBirth')} placeholder="Date of birth" />
                   <div className="radio-button-wrapper boygirl">
                     <div className="custom_radio">
                       <input type="radio" id={`boy${i + 1}`} value="boy" checked={val.gender === 'boy'} onChange={(e) => handleKidFieldsChange(e, i, 'gender')} />

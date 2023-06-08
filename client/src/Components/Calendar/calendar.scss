@@ -76,7 +76,7 @@
   background-color: white;
   width: 60%;
   margin: auto;
-  padding: 9px;
+  padding: 7px;
   border: 2px solid white;
   border-radius: 0.4em;
 }
@@ -86,9 +86,9 @@
   color: app.$purple;
   font-size: 1.40em;
   background-color: white;
-  width: 48px;
-  height: 47px;
-  margin: 2px 2px 2px 2px;
+  width: 46px;
+  height: 45px;
+  margin: 3px 3px 3px 3px;
   padding: 0.5em 0 0;
   font-weight: 600;
 }
@@ -160,11 +160,11 @@
  }
  
 .react-datepicker__navigation-icon--next {
-  left: -2px;
+  left: -12px;
  }
  
  .react-datepicker__navigation-icon--previous {
-  right: -4px;
+  right: -12px;
  }
 
 

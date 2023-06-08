@@ -38,7 +38,7 @@
 	width: 25%;
 	background-color: #ffe7e9  !important;
 	border-radius: 0px 0px 0px 10px;
-	box-shadow: inset 0px 1px 1px #e6969c !important;
+	box-shadow: inset 0px 1px 1px #716f7e !important;
 	padding: 3px 0px !important;
 }
 .multi-range-slider .bar-right {
@@ -46,10 +46,10 @@
 	width: 25%;
 	background-color: #ffe4e5 !important;
 	border-radius: 0px 10px 10px 0px;
-	box-shadow: inset 0px 1px 1px  #e6969c !important;
+	box-shadow: inset 0px 1px 1px  #716f7e !important;
 }
 .multi-range-slider .bar-inner {
-	background-color: app.$islandaqua!important;
+	background-color: app.$purple !important;
 	display: flex;
 	flex-grow: 1;
 	flex-shrink: 1;
@@ -57,7 +57,7 @@
 	position: relative;
 	border: solid 0px#efb9bd !important; 
 	justify-content: space-between;
-	box-shadow: inset 0px 1px 1px app.$light-purple !important;
+	box-shadow: inset 0px 1px 1px app.$asphalt !important;
     padding: 2px 0px !important
 }
 
