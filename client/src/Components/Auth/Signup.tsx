@@ -149,7 +149,7 @@ const Signup = () => {
                 <label htmlFor="other">Other</label>
               </div>
             </div>
-            <hr className="oneeleven" />
+            <div className="ruler oneeleven" />
           </fieldset>
           <fieldset className="formgrid">
             <input className="form-container-input street" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
@@ -163,7 +163,7 @@ const Signup = () => {
             <input className="form-container-input oneeleven" type="text" name="userEmail" value={userData.userEmail} onChange={onInputChange} placeholder="Email" />
             <input className="form-container-input oneeleven" type="password" name="userPassword" value={userData.userPassword} onChange={onInputChange} placeholder="Password" />
             <input className="form-container-input oneeleven" type="password" name="confirmPassword" value={userData.confirmPassword} onChange={onInputChange} placeholder="Confirm Password" />
-            <hr className="oneeleven" />
+            <div className="ruler oneeleven" />
           </fieldset>
 
           <fieldset>
@@ -199,7 +199,7 @@ const Signup = () => {
                     <div className="icon nineten" onClick={addKid}><AddIcon /></div>
 
                   ) : null}
-                  <hr className='oneeleven' />
+                  <div className='ruler oneeleven' />
                 </div>
 
 

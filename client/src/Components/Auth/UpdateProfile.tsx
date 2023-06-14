@@ -116,7 +116,7 @@ const UpdateProfile = () => {
             <legend>Personal details</legend>
             <div className="email light-purple">Email:<br /><span className="asphalt">{userEmail}</span></div>
             <div className="userid light-purple">UserId<br /><span className="asphalt">{userId}</span></div>
-            <hr className="oneeleven" />
+            <div className="ruler oneeleven" />
 
             <input className="form-container-input oneeleven" type="text" name="firstName" value={userData.firstName} onChange={onInputChange} placeholder="First name" />
             <input className="form-container-input oneeleven" type="text" name="lastName" value={userData.lastName} onChange={onInputChange} placeholder="Last name" />
@@ -134,7 +134,7 @@ const UpdateProfile = () => {
                 <label htmlFor="other">Other</label>
               </div>
             </div>
-            <hr className="oneeleven" />
+            <div className="ruler oneeleven" />
           </fieldset>
           <fieldset className="formgrid">
             <input className="form-container-input street" type="text" name="street" value={userData.street} onChange={onInputChange} placeholder="Street" />
@@ -142,7 +142,7 @@ const UpdateProfile = () => {
             <input className="form-container-input zipcode" type="text" name="zipCode" value={userData.zipCode} onChange={onInputChange} placeholder="Postal code" />
             <input className="form-container-input place" type="text" name="city" value={userData.city} onChange={onInputChange} placeholder="City" />
             <input className="form-container-input oneeleven" type="text" name="telephoneNumber" value={userData.telephoneNumber} onChange={onInputChange} placeholder="Telephone number" />
-            <hr className="oneeleven" />
+            <div className="ruler oneeleven" />
           </fieldset>
 
 
@@ -179,7 +179,7 @@ const UpdateProfile = () => {
                     <div className="icon nineten" onClick={addKid}><AddIcon /></div>
 
                   ) : null}
-                  <hr className='oneeleven' />
+                  <div className='ruler oneeleven' />
                 </div>
               )
             }
